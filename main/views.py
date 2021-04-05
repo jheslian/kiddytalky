@@ -4,6 +4,14 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.shortcuts import render
 
-def home(request):
-   return render(request, 'home.html')
 
+def home(request):
+   return render(request, 'main/home.html')
+
+
+def conversation(request):
+   return render(request, 'main/msg.html')
+
+
+"""def get_absolute_url(request):
+   return render(request, '/')"""
