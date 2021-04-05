@@ -9,9 +9,8 @@
    <a href="#">Correspondants précédent</a>
    <a href="#">Mes enfants</a>
    <a href="#">Mon compte</a>
-   <a href="" style="font-size: x-large ">Bonjour {%  if object.is_authenticated %} {{ object.first_name }} {% endif %}</a>
+   <a href="">Bonjour {{ object.email }}</a>
    <a href="">messagerie</a>
-    <a href="">Logout</a>
 </nav>
 
 {% endblock %}
