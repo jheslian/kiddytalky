@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 
-def conversation(request):
-    return render(request, 'msg.html')
+def conversation_view(request):
+    return render(request, 'main/msg.html')
 

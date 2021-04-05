@@ -1,10 +1,10 @@
 from django.urls import path, include
 
-from .views import conversation
+from .views import conversation_view
 
-app_name = conversation
+app_name = 'conversation'
 
 urlpatterns = [
-    path('', conversation),
+    path('', conversation_view),
     
 ]

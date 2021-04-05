@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+
+
+
     <h1>Registration form</h1>
     <form action="" method="post"> {% csrf_token %}
     {% for field in form %}
@@ -18,4 +22,7 @@
     {% endfor %}
     <button type="submit">Register</button>
     </form>
+
+
+   
 {% endblock %}
