@@ -4,8 +4,8 @@ from .views import *
 app_name = "main"
 
 urlpatterns = [
-    path('', home, name="home"),
-    path('index', index_view),
+    path('', index_view),
+    path('home', home, name="home"),
     path('account/', include('accounts.urls')),
     path('messages/', include('conversation.urls')),
     path('correspondents/', include('correspondents.urls')),

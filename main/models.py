@@ -18,7 +18,7 @@ class Language(models.Model):
 
 class Parent(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    #password = models.CharField(max_length=100) #editable=False
+    # password = models.CharField(max_length=100) #editable=False
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True, blank=True)

@@ -4,6 +4,7 @@ from accounts.forms import ParentRegistrationForm
 from django.views.generic import (CreateView, DetailView)
 from accounts.forms import ParentRegistrationForm
 from main.models import Parent
+from django.contrib import messages
 
 """def parent_registration_view(request):
     context = {}
@@ -26,19 +27,13 @@ from main.models import Parent
 """
 
 
-class ParentDetailView(DetailView):
+"""class ParentDetailView(DetailView):
 
-    """CHANGE TO GET FIRSTNAME ex:
-    def get_first_name(self):
-        return self.first_name
-
-    """
-
-    template_name = './home.html'
+    template_name = 'main/home.html'
 
     def get_object(self):
        id_ = self.kwargs.get("id")
-       return get_object_or_404(Parent, id=id_)
+       return get_object_or_404(Parent, id=id_)"""
 
 
 class RegisterParentView(CreateView):
@@ -52,4 +47,29 @@ class RegisterParentView(CreateView):
 
 
 def login_view(request):
-   return render(request, 'parent/login.html')
+    if request.method == 'POST':
+        try:
+            print("password", request.POST['password'])
+            # password=request.POST['password']
+            user = Parent.objects.get(email=request.POST['username'], password=request.POST['password'])
+            #user = Parent.objects.get(email=request.POST['username'])
+            print("email",request.POST['username'])
+            print("userdetails", user)
+            request.session['email']=user.email
+
+            return render(request, 'main/home.html')
+        except Parent.DoesNotExist:
+            messages.success(request, 'Username / Password Invalid')
+    return render(request, 'parent/login.html')
+
+
+def logout_view(request):
+    try:
+        del request.session['email']
+    except:
+        return render(request, 'parent/login.html')
+
+    #return render(request, 'parent/login.html')
+    return redirect('main:accounts:login')
+
+
