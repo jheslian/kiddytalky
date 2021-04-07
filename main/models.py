@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 
 
 class Language(models.Model):
@@ -16,9 +16,10 @@ class Language(models.Model):
         return self.name
 
 
-class Parent(AbstractBaseUser):
+class Parent(AbstractUser):
+    username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True)
-    # password = models.CharField(max_length=100) #editable=False
+    password = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True, blank=True)
@@ -27,24 +28,19 @@ class Parent(AbstractBaseUser):
     country = models.CharField(max_length=100, default='USA')
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
     last_login = models.DateTimeField(auto_now=True)
-
-    USERNAME_FIELD = 'email'
+    is_superuser = False
+    is_staff = False
+    is_active = True
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['last_name', 'first_name', 'country']
 
     def __str__(self):
-        return self.email
-
-    def get_absolute_url(self):
-        #return reverse("accounts:parent-detail", kwargs={"id": self.id})
-        return reverse("accounts:parent-detail", kwargs={"id": self.id})
+        return self.username
 
 
-    """ def get_success_url(self):
-        return '/'
-    """
-
+"""
 class Child(AbstractBaseUser):
-    pseudo = models.CharField(max_length=100, unique=True)
+    username = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
@@ -87,7 +83,7 @@ class Message(models.Model):
     def __str__(self):
         return self.message_date
 
-
+"""
 
 
 

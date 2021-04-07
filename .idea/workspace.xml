@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/registration/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/parent/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/parent/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/parent/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/parent/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kiddytalky/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kiddytalky/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
     </list>
     <list id="a0d4cd56-4264-4634-b55f-8cdcc444279b" name="Changes by yegabebar" comment="">
-      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -38,6 +36,20 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/accounts/forms.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/main/models.py">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="3" changelist="a0d4cd56-4264-4634-b55f-8cdcc444279b" />
+        <range start1="18" end1="19" start2="18" end2="20" changelist="a0d4cd56-4264-4634-b55f-8cdcc444279b" />
+        <range start1="20" end1="21" start2="21" end2="22" changelist="a0d4cd56-4264-4634-b55f-8cdcc444279b" />
+        <range start1="29" end1="31" start2="30" end2="34" changelist="a0d4cd56-4264-4634-b55f-8cdcc444279b" />
+        <range start1="34" end1="39" start2="37" end2="38" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="41" end1="45" start2="40" end2="41" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="46" end1="47" start2="42" end2="43" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="89" end1="90" start2="85" end2="86" changelist="76309212-af2a-436f-83f3-807724071e55" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
