@@ -18,7 +18,7 @@ class Language(models.Model):
 
 class Parent(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    #password = models.CharField(max_length=100) #editable=False
+    # password = models.CharField(max_length=100) #editable=False
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True, blank=True)
@@ -35,13 +35,13 @@ class Parent(AbstractBaseUser):
         return self.email
 
     def get_absolute_url(self):
-        #return reverse("accounts:parent-detail", kwargs={"id": self.id})
+        # return reverse("accounts:parent-detail", kwargs={"id": self.id})
         return reverse("accounts:parent-detail", kwargs={"id": self.id})
-
 
     """ def get_success_url(self):
         return '/'
     """
+
 
 class Child(AbstractBaseUser):
     pseudo = models.CharField(max_length=100, unique=True)
@@ -52,13 +52,20 @@ class Child(AbstractBaseUser):
     native_language = models.CharField(max_length=100, default="English")
     hobbies = models.CharField(max_length=300)
     description = models.TextField(max_length=300)
-    languagetolearn = models.ManyToManyField(Language, default="English")
+    # languagetolearn = models.ManyToManyField(Language, default="English")
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
     parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.pseudo
 
+
+class Languagetolearn(models.Model):
+    id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
+    id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    date_slot = models.DateTimeField()
+    start_time_slot = models.DateTimeField()
+    end_time_slot = models.DateTimeField()
 
 
 class Visio(models.Model):
@@ -86,11 +93,3 @@ class Message(models.Model):
 
     def __str__(self):
         return self.message_date
-
-
-
-
-
-
-
-

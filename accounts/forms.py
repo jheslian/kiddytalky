@@ -13,6 +13,5 @@ class ParentRegistrationForm(UserCreationForm):
         fields = ("email", "password1", "password2", "last_name", "first_name", "birthdate", "zipcode", "country")
         #widgets = {'birthdate': forms.DateInput(attrs=DateInput)}
 
-
 """class DateInput(forms.DateInput):
     input_type = 'date'"""
