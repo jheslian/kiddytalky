@@ -7,9 +7,13 @@
    <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
+{% block index %}
 
+{% endblock index %}
+
+{% if user.is_authenticated %}
 {% include 'navbar.html' %}
-
+{% endif %}
    {% block content %}
    
    {% endblock %}

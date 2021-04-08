@@ -3,16 +3,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.db import transaction
-from main.models import *
+from main.models import Parent, User as MyCustomUser, Child
 
 
 class ParentRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
-    email = models.EmailField()
+    email = forms.EmailField()
+    birthdate = forms.DateField(required=True)
+    zipcode = forms.CharField(required=True)
+    street = forms.CharField(required=True)
+    country = forms.CharField(required=True)
 
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = MyCustomUser
 
     @transaction.atomic
     def save(self):
@@ -20,26 +24,26 @@ class ParentRegistrationForm(UserCreationForm):
         user.is_parent = True
         user.first_name = self.cleaned_data.get('first_name')
         user.last_name = self.cleaned_data.get('last_name')
+        user.birthdate = self.cleaned_data.get('birthdate')
         user.save()
-        customer = Parent.objects.create(user=user)
-        user.email = self.cleaned_data.get('email')
-        customer.save()
+        parent = Parent.objects.create(user=user)
+        parent.email = self.cleaned_data.get('email')
+        parent.zipcode = self.cleaned_data.get('zipcode')
+        parent.street = self.cleaned_data.get('street')
+        parent.country = self.cleaned_data.get('country')
+        parent.save()
         return user
-    """email = forms.EmailField(max_length=100)
 
-    class Meta:
-        model = User
-        fields = ("username", "email", "password1", "password2", "last_name", "first_name")
-"""
+
 
 
 class ChildRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
-    native_language = models.CharField()
+    native_language = forms.CharField()
 
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = MyCustomUser
 
     @transaction.atomic
     def save(self):

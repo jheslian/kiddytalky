@@ -1,22 +1,14 @@
-<nav>
-   <a href="../">Kiddy talks</a>
-   <a href="../correspondents">Correspondants précédent</a>
-   <a href="../mykids">Mes enfants</a>
-   <a href="../myaccount">Mon compte</a>
-    {% if request.session.email %}
-        Bonjour {{ request.session.email }} <a href=" {% url 'accounts:logout' %}">log out</a>
 
-    {% endif %}
-
-   <a href="../messages">messagerie</a>
+    <nav>
+       <a href="../">Kiddy talks</a>
+       <a href="../correspondents">Correspondants précédent</a>
+       <a href="../mykids">Mes enfants</a>
+       <a href="../myaccount">
+            Bonjour {{ user.username }} <a href=" {% url 'logout' %}">log out</a>
+       </a>
 
 
+       <a href="../messages">messagerie</a>
 
-
-
-
-
-
-Bonjour {%  if object.is_authenticated %} {{ object.first_name }} {% endif %}
-</nav>
+    </nav>
 

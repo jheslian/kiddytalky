@@ -22,25 +22,22 @@ class User(AbstractUser):
     username = models.CharField(max_length=100, unique=True)
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
-    #birthdate = models.DateTimeField(null=True, blank=True)
-    #street = models.CharField(max_length=100, null=True, blank=True)
-    #zipcode = models.IntegerField(null=True, blank=True)
-    #country = models.CharField(max_length=100, default='USA')
-    # date_joined = models.DateTimeField(auto_now_add=True, null=True)
+    birthdate = models.DateTimeField(null=True, blank=True)
+    country = models.CharField(max_length=100, default='USA')
+    date_joined = models.DateTimeField(auto_now_add=True, null=True)
     # last_login = models.DateTimeField(auto_now=True)
-    #is_superuser = False
-    #is_staff = False
-    #is_active = True
+    # is_superuser = False
+    # is_staff = False
+    # is_active = True
     # USERNAME_FIELD = 'username'
     # REQUIRED_FIELDS = ['last_name', 'first_name']
 
 
 class Parent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    # username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True, null=True)
-    # password = models.CharField(max_length=100)
-
+    street = models.CharField(max_length=100, null=True, blank=True)
+    zipcode = models.IntegerField(null=True, blank=True)
 
 
 class Child(models.Model):
