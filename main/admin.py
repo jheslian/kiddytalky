@@ -5,6 +5,7 @@ from main.models import *
 
 admin.site.register(Language)
 # admin.site.register(Child)
+admin.site.register(User)
 admin.site.register(Parent)
 # admin.site.register(Visio)
 

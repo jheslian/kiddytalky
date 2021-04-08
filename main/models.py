@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 
 class Language(models.Model):
@@ -16,46 +16,48 @@ class Language(models.Model):
         return self.name
 
 
-class Parent(AbstractUser):
+class User(AbstractUser):
+    is_parent = models.BooleanField(default=False)
+    is_child = models.BooleanField(default=False)
     username = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
-    birthdate = models.DateTimeField(null=True, blank=True)
-    street = models.CharField(max_length=100, null=True, blank=True)
-    zipcode = models.IntegerField(null=True, blank=True)
-    country = models.CharField(max_length=100, default='USA')
-    date_joined = models.DateTimeField(auto_now_add=True, null=True)
-    last_login = models.DateTimeField(auto_now=True)
-    is_superuser = False
-    is_staff = False
-    is_active = True
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['last_name', 'first_name', 'country']
-
-    def __str__(self):
-        return self.username
+    #birthdate = models.DateTimeField(null=True, blank=True)
+    #street = models.CharField(max_length=100, null=True, blank=True)
+    #zipcode = models.IntegerField(null=True, blank=True)
+    #country = models.CharField(max_length=100, default='USA')
+    # date_joined = models.DateTimeField(auto_now_add=True, null=True)
+    # last_login = models.DateTimeField(auto_now=True)
+    #is_superuser = False
+    #is_staff = False
+    #is_active = True
+    # USERNAME_FIELD = 'username'
+    # REQUIRED_FIELDS = ['last_name', 'first_name']
 
 
-"""
-class Child(AbstractBaseUser):
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
+class Parent(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    # username = models.CharField(max_length=100, unique=True)
+    email = models.EmailField(unique=True, null=True)
+    # password = models.CharField(max_length=100)
+
+
+
+class Child(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    """password = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
-    age = models.IntegerField()
+    age = models.IntegerField()"""
     native_language = models.CharField(max_length=100, default="English")
-    hobbies = models.CharField(max_length=300)
+    """hobbies = models.CharField(max_length=300)
     description = models.TextField(max_length=300)
     languagetolearn = models.ManyToManyField(Language, default="English")
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.pseudo
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)"""
 
 
+"""
 
 class Visio(models.Model):
     child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
