@@ -3,7 +3,9 @@
        <a href="../">Kiddy talks</a>
        <a href="../correspondents">Correspondants précédent</a>
        <a href="../mykids">Mes enfants</a>
-       <a href="../myaccount">
+
+       <a href="../myaccount/{{user.id}}">
+
             Bonjour {{ user.username }} <a href=" {% url 'logout' %}">log out</a>
        </a>
 

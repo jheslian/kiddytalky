@@ -39,6 +39,9 @@ class Parent(models.Model):
     street = models.CharField(max_length=100, null=True, blank=True)
     zipcode = models.IntegerField(null=True, blank=True)
 
+    #def get_abosulte_url(self):
+        #return reverse('myaccounts:my-account', kwargs={"id": self.id})
+
 
 class Child(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
