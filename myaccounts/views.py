@@ -25,8 +25,9 @@ class UpdateParentView(UpdateView):
         return super().form_valid(form)
 
     def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(User, id=id_)
+        # id_ = self.kwargs.get("id")
+        # return get_object_or_404(User, id=id_)
+        return Parent.objects.get(user_id=self.kwargs.get("id"))
 
     def get_success_url(self):
         return reverse('main:home')
