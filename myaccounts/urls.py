@@ -7,5 +7,5 @@ app_name = 'myaccounts'
 urlpatterns = [
     path('<int:id>', MyAccountView.as_view(), name='my-account'),
     path('<int:id>/edit/', UpdateParentView.as_view(), name='edit-parent'),
-    path('<int:id>', DeleteParentView, name='delete-parent')
+    path('<int:id>', DeleteParentView.as_view(), name='delete-parent')
 ]

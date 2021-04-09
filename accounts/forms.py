@@ -22,15 +22,16 @@ class ParentRegistrationForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_parent = True
-        user.first_name = self.cleaned_data.get('first_name')
-        user.last_name = self.cleaned_data.get('last_name')
-        user.birthdate = self.cleaned_data.get('birthdate')
+
         user.save()
         parent = Parent.objects.create(user=user)
-        parent.email = self.cleaned_data.get('email')
+        parent.email = self.cleaned_data.get('emailEERR')
         parent.zipcode = self.cleaned_data.get('zipcode')
         parent.street = self.cleaned_data.get('street')
         parent.country = self.cleaned_data.get('country')
+        parent.first_name = self.cleaned_data.get('first_name')
+        parent.last_name = self.cleaned_data.get('last_name')
+        parent.birthdate = self.cleaned_data.get('birthdate')
         parent.save()
         return user
 
