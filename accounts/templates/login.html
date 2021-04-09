@@ -1,4 +1,4 @@
-<form action="{% url 'login' %}" method="POST" novalidate>
+<form action="{% url 'accounts:login' %}" method="POST" novalidate>
     {% csrf_token %}
     {% for field in form.visible_fields %}
         <div class="form-group">
@@ -12,6 +12,7 @@
     {% endfor %}
     <br>
     <input type="submit" value="Login" class="btn btn-block btn-primary">
-    <a href= "{% url 'parent_register' %}">Sign up</a>
+    <a href= "{% url 'accounts:parent_register' %}">Sign up</a>
+
     </div>
 </form>

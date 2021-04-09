@@ -19,7 +19,7 @@ class MyAccountView(DetailView):
 
 class UpdateParentView(UpdateView):
     form_class = EditParentInfo
-    template_name = 'parent/edit_profile.html'
+    template_name = 'parent/editprofile_parent.html'
 
     # queryset = Parent.objects.all()
 
@@ -35,7 +35,8 @@ class UpdateParentView(UpdateView):
 
 
 class DeleteParentView(DeleteView):
-    template_name = 'parent/edit_profile.html'
+    model = Parent
+    template_name = 'delete.html'
 
     def get_object(self):
         id_ = self.kwargs.get("id")

@@ -3,6 +3,9 @@
 {% block content %}
 
 <h1>My kids</h1>
-    
+    <h3> <a href= "{% url 'main:mykids:child-register' %}">Sign up Child</a></h3>
+
+    <a href="{{ user.id }}/delete"><input type="button" value="Delete profile"></a>
+    <a href="{{ user.id }}/edit"><input type="button" value="Edit profile"></a>
 
 {% endblock %}

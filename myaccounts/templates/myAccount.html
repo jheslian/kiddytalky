@@ -3,10 +3,6 @@
 {% block content %}
 
 <h1>My Account</h1>
-
-    <form action="." method="POST">{% csrf_token %}
-
-   <p><input type="submit" value="Delete my account"></p>
-</form>
+    <a href="{{ user.id }}/delete"><input type="button" value="Delete profile"></a>
     <a href="{{ user.id }}/edit"><input type="button" value="Edit profile"></a>
 {% endblock %}
