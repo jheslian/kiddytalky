@@ -39,6 +39,32 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/accounts/forms.py" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/accounts/views.py">
+      <ranges>
+        <range start1="0" end1="10" start2="0" end2="1" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="13" end1="14" start2="4" end2="5" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
+        <range start1="17" end1="17" start2="8" end2="9" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="21" end1="21" start2="13" end2="14" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="22" end1="22" start2="15" end2="16" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="33" end1="34" start2="27" end2="28" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
+        <range start1="44" end1="45" start2="38" end2="39" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="50" end1="52" start2="44" end2="46" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="54" end1="55" start2="48" end2="49" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="56" end1="57" start2="50" end2="53" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="58" end1="59" start2="54" end2="55" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="60" end1="60" start2="56" end2="57" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="85" end1="85" start2="82" end2="83" changelist="76309212-af2a-436f-83f3-807724071e55" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/templates/base.html">
+      <ranges>
+        <range start1="9" end1="9" start2="9" end2="12" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
+        <range start1="10" end1="10" start2="13" end2="14" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="11" end1="12" start2="15" end2="16" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
