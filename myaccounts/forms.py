@@ -32,7 +32,7 @@ class EditParentInfo(forms.ModelForm):
     #country = forms.CharField(required=False)
     class Meta:
         model = Parent
-        fields = ['first_name', 'last_name', 'birthdate', 'zipcode', 'street', 'country']
+        fields = ['first_name', 'last_name', 'birthdate', 'zipcode', 'street', 'country', 'email']
 
     """    def refresh_from_db(self, using=None, fields=None, **kwargs):
         # fields contains the name of the deferred field to be

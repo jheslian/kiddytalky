@@ -25,7 +25,7 @@ class ParentRegistrationForm(UserCreationForm):
 
         user.save()
         parent = Parent.objects.create(user=user)
-        parent.email = self.cleaned_data.get('emailEERR')
+        parent.email = self.cleaned_data.get('email')
         parent.zipcode = self.cleaned_data.get('zipcode')
         parent.street = self.cleaned_data.get('street')
         parent.country = self.cleaned_data.get('country')
@@ -42,6 +42,7 @@ class ChildRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     native_language = forms.CharField()
+    age = forms.IntegerField()
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
@@ -50,10 +51,11 @@ class ChildRegistrationForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_child = True
-        user.first_name = self.cleaned_data.get('first_name')
-        user.last_name = self.cleaned_data.get('last_name')
         user.save()
-        customer = Child.objects.create(user=user)
-        user.last_name = self.cleaned_data.get('email')
-        customer.save()
+        child = Child.objects.create(user=user)
+        child.first_name = self.cleaned_data.get('first_name')
+        child.last_name = self.cleaned_data.get('last_name')
+        child.last_name = self.cleaned_data.get('native_language')
+        child.last_name = self.cleaned_data.get('age')
+        child.save()
         return user

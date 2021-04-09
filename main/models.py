@@ -35,7 +35,7 @@ class User(AbstractUser):
     #USERNAME_FIELD ='username'
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    emailEERR = models.EmailField(unique=True, null=True)
+    email = models.EmailField(unique=True, null=True)
     street = models.CharField(max_length=100, null=True, blank=True)
     zipcode = models.IntegerField(null=True, blank=True)
     #username = models.CharField(max_length=100, unique=True, default='')
@@ -45,30 +45,25 @@ class Parent(models.Model):
     country = models.CharField(max_length=100, default='USA')
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
 
-
-
-
-
     def get_abosulte_url(self):
         return reverse('myaccounts:my-account', kwargs={"id": self.id})
 
 
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    """password = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    age = models.IntegerField()"""
+    last_name = models.CharField(max_length=100, null=True, blank=False)
+    first_name = models.CharField(max_length=100, null=True, blank=False)
+    age = models.IntegerField(null=True, blank=False)
     native_language = models.CharField(max_length=100, default="English")
     """hobbies = models.CharField(max_length=300)
     description = models.TextField(max_length=300)
     languagetolearn = models.ManyToManyField(Language, default="English")
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)"""
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)
 
 
+    """
 """
-
 class Visio(models.Model):
     child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
     child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent')
