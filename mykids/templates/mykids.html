@@ -5,7 +5,10 @@
 <h1>My kids</h1>
     <h3> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h3>
 
-    <a href="{{ user.id }}/delete"><input type="button" value="Delete profile"></a>
-    <a href="{{ user.id }}/edit"><input type="button" value="Edit profile"></a>
+    {% for child in object_list %}
+        <h2><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></h2>
+
+    {% endfor %}
+
 
 {% endblock %}

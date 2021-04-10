@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ object.first_name }} {{ object.last_name }} </h1>
+<p>Birthdate: {{ object.birthdate }}</p>
+<p>Languages:{{ object.native_language }}</p>
+
+
+<p>
+    <a href="{{ object.id }}/delete"><input type="button" value="Delete profile"></a>
+    <a href="{{ object.id }}/edit"><input type="button" value="Edit profile"></a>
+</p>
+
+{% endblock %}
