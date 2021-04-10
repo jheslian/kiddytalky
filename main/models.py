@@ -19,56 +19,49 @@ class Language(models.Model):
 class User(AbstractUser):
     is_parent = models.BooleanField(default=False)
     is_child = models.BooleanField(default=False)
-    """username = models.CharField(max_length=100, unique=True)
-    last_name = models.CharField(max_length=100, default='')
-    first_name = models.CharField(max_length=100, default='')
-    birthdate = models.DateTimeField(null=True, blank=True)
-    country = models.CharField(max_length=100, default='USA')
-    date_joined = models.DateTimeField(auto_now_add=True, null=True)"""
-    # last_login = models.DateTimeField(auto_now=True)
-    # is_superuser = False
-    # is_staff = False
-    # is_active = True
-    # USERNAME_FIELD = 'username'
-    # REQUIRED_FIELDS = ['last_name', 'first_name']
 
-    #USERNAME_FIELD ='username'
+    def get_absolute_url(self):
+        return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
+
+    def get_url_signup_parent(self):
+        return reverse('main:accounts:parent-register')
+
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    emailEERR = models.EmailField(unique=True, null=True)
+    email = models.EmailField(unique=True, null=True)
     street = models.CharField(max_length=100, null=True, blank=True)
     zipcode = models.IntegerField(null=True, blank=True)
-    #username = models.CharField(max_length=100, unique=True, default='')
     last_name = models.CharField(max_length=100, default='')
     first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True, blank=True)
     country = models.CharField(max_length=100, default='USA')
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
 
-
-
-
-
-    def get_abosulte_url(self):
-        return reverse('myaccounts:my-account', kwargs={"id": self.id})
-
+    def get_absolute_url(self):
+        return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    """password = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    age = models.IntegerField()"""
+    last_name = models.CharField(max_length=100, null=True, blank=False)
+    first_name = models.CharField(max_length=100, null=True, blank=False)
+    birthdate = models.DateTimeField(null=True)
     native_language = models.CharField(max_length=100, default="English")
-    """hobbies = models.CharField(max_length=300)
-    description = models.TextField(max_length=300)
-    languagetolearn = models.ManyToManyField(Language, default="English")
-    date_joined = models.DateTimeField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)"""
+    hobbies = models.CharField(max_length=300, null=True, blank=True)
+    description = models.TextField(max_length=300, null=True, blank=True)
+    country = models.CharField(max_length=100, null=True, blank=True)
+    #language_to_learn = models.ManyToManyField(Language, default="")
+    language_choices = [
+        ('English', 'English'),
+        ('Mandarin', 'Mandarin'),
+        ('Spanish', 'Spanish')
+    ]
+    language_to_learn = models.CharField(choices=language_choices, max_length=100, default='')
+    date_joined = models.DateField(auto_now_add=True, null=True)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)
+
 
 
 """
-
 class Visio(models.Model):
     child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
     child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent')
@@ -96,8 +89,3 @@ class Message(models.Model):
         return self.message_date
 
 """
-
-
-
-
-

@@ -1,19 +1,17 @@
-from django.contrib.auth import login, logout, authenticate, get_user_model
+from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.views.generic import CreateView
-from .forms import ParentRegistrationForm, ChildRegistrationForm
+from .forms import ParentRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from main.models import User
 
 
 def register(request):
     return render(request, 'registration/register.html')
-    # html parent vs child btn
 
 
-class parent_register(CreateView):
-    #User =get_user_model()
+class ParentRegisterView(CreateView):
     model = User
     form_class = ParentRegistrationForm
     template_name = 'parent/parent_register.html'
@@ -23,16 +21,6 @@ class parent_register(CreateView):
         login(self.request, user)
         return redirect('main:home')
 
-
-class child_register(CreateView):
-    #model = User
-    form_class = ChildRegistrationForm
-    template_name = 'child/child_register.html'
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('main:home')
 
 
 def login_request(request):
@@ -59,24 +47,3 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
-
-"""
-def logout_view(request):
-    logout(request)
-    return redirect('accounts:login')
-
-
-def register_parent(request):
-    if request.method == 'POST':
-        form = ParentRegistrationForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            form.cleaned_data['username']
-            return redirect('accounts:login')
-    else:
-        form = ParentRegistrationForm
-
-    context = {'form': form}
-    return render(request, 'registration/register.html', context)
-"""

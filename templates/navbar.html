@@ -1,16 +1,16 @@
 
     <nav>
-       <a href="../">Kiddy talks</a>
-       <a href="../correspondents">Correspondants précédent</a>
-       <a href="../mykids">Mes enfants</a>
+       <a href="{% url 'main:home' %}">Kiddy talks</a>
+       <a href="{%  url 'main:correspondents:correpondent' %}">Correspondants précédent</a>
+       <a href="{% url 'main:mykids:kids' %}">Mes enfants</a>
 
-       <a href="../myaccount/{{user.id}}">
+       <a href="{{ user.get_absolute_url }}">
 
             Bonjour {{ user.username }} <a href=" {% url 'logout' %}">log out</a>
        </a>
 
 
-       <a href="../messages">messagerie</a>
+       <a href="{% url 'main:conversation:messages' %}">messagerie</a>
 
     </nav>
 

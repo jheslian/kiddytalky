@@ -19,38 +19,22 @@ class MyAccountView(DetailView):
 
 class UpdateParentView(UpdateView):
     form_class = EditParentInfo
-    template_name = 'parent/edit_profile.html'
-    # queryset = Parent.objects.all()
-
+    template_name = 'parent/editprofile_parent.html'
 
     def form_valid(self, form):
-        #user = super().save(commit=False)
-        """User.first_name = self.cleaned_data.get('first_name')
-        User.last_name = self.cleaned_data.get('last_name')
-        User.birthdate = self.cleaned_data.get('birthdate')
-        User.save()
-        parent = Parent.objects.filter(user_id=id)
-        parent.email = self.cleaned_data.get('email')
-        parent.zipcode = self.cleaned_data.get('zipcode')
-        parent.street = self.cleaned_data.get('street')
-        parent.country = self.cleaned_data.get('country')
-        parent.save()"""
-
-
         return super().form_valid(form)
-        #return user
-
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(Parent, id=id_)
+        return get_object_or_404(Parent, user_id=id_)
 
     def get_success_url(self):
-        return reverse('main:home')
+        return reverse('main:myaccounts:edit-parent')
 
 
 class DeleteParentView(DeleteView):
-    template_name = 'parent/edit_profile.html'
+    model = Parent
+    template_name = 'delete.html'
 
     def get_object(self):
         id_ = self.kwargs.get("id")

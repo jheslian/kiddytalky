@@ -1,9 +1,7 @@
-from django import forms
 from django.contrib.auth.forms import UserCreationForm
-#from django.contrib.auth.models import User
 from django import forms
 from django.db import transaction
-from main.models import Parent, User as MyCustomUser, Child
+from main.models import Parent, User as MyCustomUser
 
 
 class ParentRegistrationForm(UserCreationForm):
@@ -25,7 +23,7 @@ class ParentRegistrationForm(UserCreationForm):
 
         user.save()
         parent = Parent.objects.create(user=user)
-        parent.email = self.cleaned_data.get('emailEERR')
+        parent.email = self.cleaned_data.get('email')
         parent.zipcode = self.cleaned_data.get('zipcode')
         parent.street = self.cleaned_data.get('street')
         parent.country = self.cleaned_data.get('country')
@@ -38,10 +36,12 @@ class ParentRegistrationForm(UserCreationForm):
 
 
 
-class ChildRegistrationForm(UserCreationForm):
+"""class ChildRegistrationForm(UserCreationForm ):
+
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     native_language = forms.CharField()
+    birthdate = forms.DateField()
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
@@ -50,10 +50,12 @@ class ChildRegistrationForm(UserCreationForm):
     def save(self):
         user = super().save(commit=False)
         user.is_child = True
-        user.first_name = self.cleaned_data.get('first_name')
-        user.last_name = self.cleaned_data.get('last_name')
         user.save()
-        customer = Child.objects.create(user=user)
-        user.last_name = self.cleaned_data.get('email')
-        customer.save()
-        return user
+        child = Child.objects.create(user=user)
+        #child.parent_id = Parent.objects.get(id=id)
+        child.first_name = self.cleaned_data.get('first_name')
+        child.last_name = self.cleaned_data.get('last_name')
+        child.native_language = self.cleaned_data.get('native_language')
+        child.birthdate = self.cleaned_data.get('birthdate')
+        child.save()
+        return user"""

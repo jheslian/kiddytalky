@@ -5,6 +5,6 @@ from .views import conversation_view
 app_name = 'conversation'
 
 urlpatterns = [
-    path('', conversation_view),
+    path('', conversation_view, name='messages'),
     
 ]

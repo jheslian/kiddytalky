@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/734f5324-163b-4494-8543-a783465e3b98.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bd38f46d-fd88-4d8e-b92d-dfe03f337234.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d7165061-a802-4fae-b517-3f5ec3b1318a.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/migrations/0002_auto_20210408_1501.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/parent/parent_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/parent/parent_register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myaccounts/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/templates/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myaccounts/templates/myAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/templates/myAccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myaccounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/child/child_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/child/child_register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/mykids.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/mykids.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
     </list>
     <list id="772ee25f-3711-4f09-a34e-b20b62e27efb" name="Changes by jesusa" comment="" />
     <list id="a0d4cd56-4264-4634-b55f-8cdcc444279b" name="Changes by yegabebar" comment="" />
@@ -36,34 +45,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/accounts/forms.py" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/accounts/views.py">
-      <ranges>
-        <range start1="0" end1="10" start2="0" end2="1" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="13" end1="14" start2="4" end2="5" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
-        <range start1="17" end1="17" start2="8" end2="9" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="21" end1="21" start2="13" end2="14" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="22" end1="22" start2="15" end2="16" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="33" end1="34" start2="27" end2="28" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
-        <range start1="44" end1="45" start2="38" end2="39" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="50" end1="52" start2="44" end2="46" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="54" end1="55" start2="48" end2="49" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="56" end1="57" start2="50" end2="53" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="58" end1="59" start2="54" end2="55" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="60" end1="60" start2="56" end2="57" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="85" end1="85" start2="82" end2="83" changelist="76309212-af2a-436f-83f3-807724071e55" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/templates/base.html">
-      <ranges>
-        <range start1="9" end1="9" start2="9" end2="12" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
-        <range start1="10" end1="10" start2="13" end2="14" changelist="76309212-af2a-436f-83f3-807724071e55" />
-        <range start1="11" end1="12" start2="15" end2="16" changelist="772ee25f-3711-4f09-a34e-b20b62e27efb" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -80,7 +71,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mykids/templates" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -90,12 +81,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mykids/templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mykids/templates" />
       <recent name="$PROJECT_DIR$/accounts/templates/child" />
       <recent name="$PROJECT_DIR$/myaccounts/templates" />
       <recent name="$PROJECT_DIR$/conversation" />
       <recent name="$PROJECT_DIR$/kiddytalky" />
-      <recent name="$PROJECT_DIR$/templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -143,6 +137,7 @@
       <workItem from="1617876883448" duration="171000" />
       <workItem from="1617877102078" duration="5463000" />
       <workItem from="1617888268330" duration="12667000" />
+      <workItem from="1618032881403" duration="5610000" />
     </task>
     <task id="LOCAL-00001" summary="creation de gitignore">
       <created>1617268768064</created>
