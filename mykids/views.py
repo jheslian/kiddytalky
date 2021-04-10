@@ -4,12 +4,12 @@ from .forms import EditChildInfo, ChildRegistrationForm
 from main.models import Child, User
 
 
-'''class MyChildView(DetailView):
+class MyChildView(DetailView):
     template_name = 'mykids.html'
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(User, id=id_)'''
+        return get_object_or_404(User, id=id_)
 
 def mykid_view(request):
    return render(request, 'mykids.html')
@@ -39,15 +39,14 @@ class DeleteChildView(DeleteView):
         return get_object_or_404(Child, user_id=id_)
 
     def get_success_url(self):
-        return redirect('myaccounts:my-account')
+        return redirect('myaccounts:my-account') """
 
-"""
+
 class ChildRegisterView(CreateView):
     model = User
     form_class = ChildRegistrationForm
     template_name = 'child/child_register.html'
 
     def form_valid(self, form):
-        user = form.save()
-        # login(self.request, user)
-        return redirect('child-register')
+        form.save()
+        return redirect('main:mykids:childregister')

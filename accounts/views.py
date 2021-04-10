@@ -11,7 +11,7 @@ def register(request):
     return render(request, 'registration/register.html')
 
 
-class parent_register(CreateView):
+class ParentRegisterView(CreateView):
     model = User
     form_class = ParentRegistrationForm
     template_name = 'parent/parent_register.html'
@@ -21,16 +21,6 @@ class parent_register(CreateView):
         login(self.request, user)
         return redirect('main:home')
 
-
-"""class child_register(CreateView):
-    model = User
-    form_class = ChildRegistrationForm
-    template_name = 'child/child_register.html'
-
-    def form_valid(self, form):
-        user = form.save()
-        # login(self.request, user)
-        return redirect('child_register')"""
 
 
 def login_request(request):

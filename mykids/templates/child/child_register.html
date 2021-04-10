@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'child-register' %}" method="POST" novalidate>
+<form action="{% url 'main:mykids:childregister' %}" method="POST" novalidate>
                       {% csrf_token %}
                          {% for field in form.visible_fields %}
 

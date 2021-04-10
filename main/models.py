@@ -20,6 +20,11 @@ class User(AbstractUser):
     is_parent = models.BooleanField(default=False)
     is_child = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
+
+    def get_url_signup_parent(self):
+        return reverse('main:accounts:parent-register')
 
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -32,9 +37,8 @@ class Parent(models.Model):
     country = models.CharField(max_length=100, default='USA')
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
 
-    def get_abosulte_url(self):
-        return reverse('myaccounts:my-account', kwargs={"id": self.id})
-
+    def get_absolute_url(self):
+        return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

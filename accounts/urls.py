@@ -1,11 +1,11 @@
 from django.urls import path
-from . import views
+from .views import ParentRegisterView, login_request, logout_view
 
-app_name = 'accounts'
+# app_name = 'accounts'
 
 urlpatterns=[
-     path('parent_register/',views.parent_register.as_view(), name='parent_register'),
+     path('parent_register/', ParentRegisterView.as_view(), name='parent-register'),
      # path('child_register/',views.child_register.as_view(), name='child_register'),
-     path('login/',views.login_request, name='login'),
-     path('logout/',views.logout_view, name='logout'),
+     path('login/', login_request, name='login'),
+     path('logout/', logout_view, name='logout'),
 ]

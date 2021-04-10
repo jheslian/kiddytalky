@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'parent_register' %}" method="POST" novalidate>
+<form action="{% url 'parent-register' %}" method="POST" novalidate>
                       {% csrf_token %}
                          {% for field in form.visible_fields %}
                            <div class="form-group">
