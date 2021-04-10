@@ -5,12 +5,6 @@ from django.db import transaction
 from main.models import Child, User as MyCustomUser
 
 
-class EditChildInfo(forms.ModelForm):
-    class Meta:
-        model = Child
-        fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description', 'language_to_learn']
-
-
 class ChildRegistrationForm(UserCreationForm):
 
     first_name = forms.CharField(required=True)
@@ -32,5 +26,15 @@ class ChildRegistrationForm(UserCreationForm):
         child.last_name = self.cleaned_data.get('last_name')
         child.native_language = self.cleaned_data.get('native_language')
         child.birthdate = self.cleaned_data.get('birthdate')
+        #child.parent_id = 3
         child.save()
         return user
+
+
+class EditChildInfo(forms.ModelForm):
+    class Meta:
+        model = Child
+        fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description', 'language_to_learn']
+
+
+print("pk parent:")

@@ -26,6 +26,9 @@ class User(AbstractUser):
     def get_url_signup_parent(self):
         return reverse('main:accounts:parent-register')
 
+    def get_absolute_child_url(self):
+        return reverse("main:mykids:child-view", kwargs={"id": self.id})
+
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField(unique=True, null=True)
@@ -42,10 +45,10 @@ class Parent(models.Model):
 
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    last_name = models.CharField(max_length=100, null=True, blank=False)
-    first_name = models.CharField(max_length=100, null=True, blank=False)
+    last_name = models.CharField(max_length=100, blank=True, default='')
+    first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True)
-    native_language = models.CharField(max_length=100, default="English")
+    native_language = models.CharField(max_length=100, default="")
     hobbies = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(max_length=300, null=True, blank=True)
     country = models.CharField(max_length=100, null=True, blank=True)
@@ -56,10 +59,11 @@ class Child(models.Model):
         ('Spanish', 'Spanish')
     ]
     language_to_learn = models.CharField(choices=language_choices, max_length=100, default='')
-    date_joined = models.DateField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, null=True)
+    # date_joined = models.DateField(auto_now_add=True, null=True)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=2)
 
-
+    def get_absolute_url(self):
+        return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
 """
 class Visio(models.Model):

@@ -2,27 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/734f5324-163b-4494-8543-a783465e3b98.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bd38f46d-fd88-4d8e-b92d-dfe03f337234.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d7165061-a802-4fae-b517-3f5ec3b1318a.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/parent/parent_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/parent/parent_register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/templates/delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/templates/myAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/templates/myAccount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/templates/child/child_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/child/child_register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myaccounts/templates/enfant/editprofile_enfant.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/editprofile_enfant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/delete.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/templates/mykids.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/mykids.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
     </list>
     <list id="772ee25f-3711-4f09-a34e-b20b62e27efb" name="Changes by jesusa" comment="" />
     <list id="a0d4cd56-4264-4634-b55f-8cdcc444279b" name="Changes by yegabebar" comment="" />
@@ -37,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -183,5 +171,16 @@
     <MESSAGE value="creation de base de données" />
     <MESSAGE value="creation des apps" />
     <option name="LAST_COMMIT_MESSAGE" value="creation des apps" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/mykids/templates/childview.html</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
