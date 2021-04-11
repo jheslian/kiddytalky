@@ -4,16 +4,16 @@
 
 <form action="{% url 'main:mykids:childregister' %}" method="POST" novalidate>
                       {% csrf_token %}
+
                          {% for field in form.visible_fields %}
 
                               <p> {{ field.label_tag }}
                                   {{ field }}</p>
+
                                     {% for error in field.errors %}
                                       <span style="color:red">{{ error }}</span>
                                     {% endfor %}
                          {% endfor %}
-
-
 
                              <input type="submit" value="Register">
 

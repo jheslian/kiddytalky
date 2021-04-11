@@ -1,27 +1,38 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import get_object_or_404, reverse, redirect
 from django.views.generic import UpdateView, DetailView, DeleteView, CreateView, ListView
 from .forms import EditChildInfo, ChildRegistrationForm
 from main.models import Child, User, Parent
-from django.core.cache import cache
+from crum import get_current_user
+
+
 
 
 class ChildListView(ListView):
-    print("recover cacheZZPPPPPPPPPPPPPPPPPPPPPPPPPZZZ", cache.get('parent_id', 'has expired'))
     template_name = 'mykids.html'
-    queryset = Child.objects.all().filter(parent_id=2)
-    # queryset = Child.objects.all()
+
+    #e = get_current_user()
+    #print("HOME CRUMMMMMM", e.id)
+
+    def get_queryset(self, *args, **kwargs):
+        id_ = self.kwargs.get("id")
+        queryset = Child.objects.all().filter(parent_id=id_)
+        return queryset
+
+    """    def get(self, request, *args):
+        request.GET.get('id')
+
+        print("TTTTTTT", request.GET.get('id') )
+        print("TTTTAAAATTT", self.request.session['id_parent'])
+
+        return super(ChildListView, self).get(request, *args)"""
 
 
-# print(request.session['id_parent'])
 
 class MyChildView(DetailView):
-    cache.get('id_parent')
     template_name = 'childview.html'
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-
-        print("PARENT ID MY KIDS:", cache.get('id_parent'))
         return get_object_or_404(Child, id=id_)
 
 
@@ -69,8 +80,7 @@ class ChildRegisterView(CreateView):
         #  child = Child.objects.create(parent_id=parent.id)
         # child = Child.parent_id
         # print("child object",child)
-        #child.save()
-
+        # child.save()
 
     """ def get_context_data(self):
         context = super().get_context_data()
@@ -79,4 +89,3 @@ class ChildRegisterView(CreateView):
         child = self.request.child
         context["parent_id"] = parent.objects.all()
         return context"""
-

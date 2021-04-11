@@ -4,8 +4,8 @@ from .views import ChildRegisterView, ChildListView, MyChildView, UpdateChildVie
 app_name = 'mykids'
 
 urlpatterns = [
-    path('', ChildListView.as_view(), name='kids'),
-    path('<int:id>', MyChildView.as_view(), name='child-view'),
+    path('<int:id>', ChildListView.as_view(), name='kids'),
+    path('detail/<int:id>', MyChildView.as_view(), name='child-view'),
     path('register/', ChildRegisterView.as_view(), name='childregister'),
     path('<int:id>/edit', UpdateChildView.as_view(), name='edit-child'),
     path('<int:id>/delete', DeleteChildView.as_view(), name='delete-child'),

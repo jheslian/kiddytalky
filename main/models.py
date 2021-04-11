@@ -29,6 +29,9 @@ class User(AbstractUser):
     def get_absolute_child_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
+    def get_absolute_childlist_url(self):
+        return reverse("main:mykids:kids", kwargs={"id": self.id})
+
 
 
 class Parent(models.Model):
@@ -62,7 +65,7 @@ class Child(models.Model):
     ]
     language_to_learn = models.CharField(choices=language_choices, max_length=100, default='')
     # date_joined = models.DateField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=1)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0)
 
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})

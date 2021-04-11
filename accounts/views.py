@@ -4,8 +4,7 @@ from django.contrib import messages
 from django.views.generic import CreateView
 from .forms import ParentRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
-from main.models import User, Parent
-from django.core.cache import cache
+from main.models import User
 
 
 class ParentRegisterView(CreateView):
@@ -16,6 +15,7 @@ class ParentRegisterView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
+        self.request.session['username'] = user.username
         return redirect('main:home')
 
 
@@ -28,20 +28,13 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                print("sessionOOK", username)
                 request.session['username'] = username
-                user = User.objects.get(username=username)
-                parent = Parent.objects.get(user_id=user.id)
-
-                request.session['id_parent'] = parent.id
-                print('AZZZAZAZAZAZA', parent.id)
-                cache.set('id_parent', parent.id)
+                request.session['id_parent'] = user.id
 
                 return redirect('main:home')
             else:
                 messages.error(request, "Invalid username or password")
         else:
-            # messages.error(request,"Invalid username or password")
             AuthenticationForm()
 
     return render(request, 'login.html',
