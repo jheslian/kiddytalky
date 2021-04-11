@@ -25,9 +25,16 @@ def get_queryset(self, *args, **kwargs):
 
 
 def child_list_view(request):
+    print("inseide")
     user_id = request.session['id_parent']
+    print("afteruser1", user_id )
     parent = Parent.objects.get(user_id=user_id)
+
+    print("AAAAAA111111")
+
     queryset = Child.objects.filter(parent_id=parent.id)
+
+    print('after queryyyyyyy:',  queryset)
     context = {
         "object_list": queryset
     }
@@ -54,11 +61,7 @@ class UpdateChildView(UpdateView):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Child, id=id_)
 
-    """def get_success_url(self):
-        id_ = self.kwargs.get("id")
-        return HttpResponseRedirect(reverse('main:myaccounts:my-account', kwargs={'id':id_}))
-        #return reverse('main:mykids:child-view')# + id_
-"""
+
 
 class DeleteChildView(DeleteView):
     template_name = 'child/delete.html'
@@ -66,10 +69,9 @@ class DeleteChildView(DeleteView):
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(Child, id=id_)
+        return get_object_or_404(User, id=id_)
 
-    """def get_success_url(self):
-        return redirect('main:mykids:kids')"""
+
 
 
 class ChildRegisterView(CreateView):

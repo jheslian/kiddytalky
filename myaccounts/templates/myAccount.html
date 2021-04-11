@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>My Account</h1>
+<h1>My Account {{ request.session.id_parent }}</h1>
 
    <h2>{{ parent.first_name}} {{ parent.last_name}}</h2>
     <a href="{{ user.get_absolute_url }}/delete"><input type="button" value="Delete profile"></a>
