@@ -6,16 +6,19 @@
    <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
-{% block index %}
 
-{% endblock index %}
+    {% block index %}
 
-{% if user.is_authenticated %}
-{% include 'navbar.html' %}
-{% endif %}
-   {% block content %}
-   
-   {% endblock %}
+    {% endblock index %}
 
+
+
+    {% if request.session.username %}
+        {% include 'navbar.html' %}
+
+        {% block content %}
+
+        {% endblock %}
+    {% endif %}
 </body>
 </html>
