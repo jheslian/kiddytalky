@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
 
-{% block content %}
+
+
 
 <form action="{% url 'parent-register' %}" method="POST" novalidate>
                       {% csrf_token %}
@@ -16,5 +16,3 @@
                            </div>
                     </form>
 
-
-{% endblock %}
