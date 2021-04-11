@@ -2,7 +2,7 @@
     <nav>
         <a href="{% url 'main:home' %}">Correspondents</a>
         <a href="{% url 'main:kiddytalks:contacts' %}">Previous sessions</a>
-        <a href="{{ user.get_absolute_childlist_url }}">Mes enfants</a>
+        <a href="{% url 'main:mykids:kids' %}">Mes enfants</a>
         <a href="{{ user.get_absolute_url }}">
             Hello {% if request.session.username %} {{ request.session.username }} {% endif %}<a href=" {% url 'logout' %}">log out</a>
         </a>

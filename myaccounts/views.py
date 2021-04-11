@@ -36,6 +36,7 @@ class UpdateParentView(UpdateView):
     form_class = EditParentInfo
     template_name = 'parent/editprofile_parent.html'
 
+
     def form_valid(self, form):
         return super().form_valid(form)
 
@@ -43,17 +44,16 @@ class UpdateParentView(UpdateView):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Parent, user_id=id_)
 
-    def get_success_url(self):
-        return reverse('main:myaccounts:edit-parent')
 
 
 class DeleteParentView(DeleteView):
-    model = Parent
-    template_name = 'delete.html'
+
+    template_name = 'parent/delete.html'
+    success_url = '/'
 
     def get_object(self):
-        id_ = self.kwargs.get("id")
+        id_ = self.kwargs.get('id')
         return get_object_or_404(Parent, user_id=id_)
 
-    def get_success_url(self):
-        return redirect('index')
+    """def get_success_url(self):
+        return redirect('index')"""

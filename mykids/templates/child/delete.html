@@ -4,7 +4,7 @@
 
 <p>Are you sure you want to delete {{ object.first_name }}'s account?</p>
 
-    <form action="." method="POST">{% csrf_token %}
+    <form method="POST">{% csrf_token %}
 
    <p><input type="submit" value="Yes"><a href="../{{ user.id }}"><input type="button" value="Cancel"></a> </p>
 

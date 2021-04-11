@@ -48,6 +48,10 @@ class Parent(models.Model):
     def get_absolute_url(self):
         return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
+    def get_success_url(self):
+        user_id = self.kwargs.get('id')
+        return reverse('myaccounts:my-account', kwargs={'id':user_id})
+
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     last_name = models.CharField(max_length=100, blank=True, default='')
@@ -65,10 +69,11 @@ class Child(models.Model):
     ]
     language_to_learn = models.CharField(choices=language_choices, max_length=100, default='')
     # date_joined = models.DateField(auto_now_add=True, null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0, blank=True)
 
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
+
 
 """
 class Visio(models.Model):
