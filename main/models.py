@@ -38,6 +38,13 @@ class Parent(AbstractBaseUser):
         # return reverse("accounts:parent-detail", kwargs={"id": self.id})
         return reverse("accounts:parent-detail", kwargs={"id": self.id})
 
+
+
+    def get_absolute_mykids(self):
+        # return reverse("accounts:parent-detail", kwargs={"id": self.id})
+        return reverse("main:mykids:planning")
+
+
     """ def get_success_url(self):
         return '/'
     """
@@ -67,11 +74,27 @@ class Languagetolearn(models.Model):
         ('All', 'Allemdand'),
     ]
     title = models.CharField(max_length=20, choices=TITLE_CHOICES)
-    id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
-    id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    #id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
+    #id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
     date_slot = models.DateField()
     start_time_slot = models.TimeField()
     end_time_slot = models.TimeField()
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('planning:event-detail', args=(self.id,))
+
+    @property
+    def get_html_url(self):
+        url = reverse('planning:event-detail', args=(self.id,))
+        return f'<a href="{url}"> {self.title} </a>'
+
+
+
+#-------------------------------------
+#-------------------------------------
 
 
 class Visio(models.Model):

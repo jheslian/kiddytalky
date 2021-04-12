@@ -3,7 +3,7 @@ from main.models import Languagetolearn
 import datetime as dt
 
 from django.forms import ModelForm, DateInput, TimeInput
-from calendarapp.models import Event, EventMember
+#from calendarapp.models import EventMember
 from django import forms
 from django.core.validators import ValidationError, validate_slug
 
@@ -35,7 +35,7 @@ class EventForm(ModelForm):
         # input_formats to parse HTML5 datetime-local input to datetime field
         self.fields['date_slot'].input_formats = ('%Y-%m-%d',)
         self.fields['start_time_slot'].input_formats = ('%H:%M',)
-        self.fields['end_time'].input_formats = ('%H:%M',)
+        self.fields['end_time_slot'].input_formats = ('%H:%M',)
 
     def clean_date_slot(self):
 
@@ -47,6 +47,8 @@ class EventForm(ModelForm):
 
 # ---------------------------------------------------
 # ---------------------------------------------------
+
+"""
 class SignupForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
@@ -58,7 +60,7 @@ class AddMemberForm(forms.ModelForm):
         fields = ['user']
 
 
-"""
+
 class FormPlanning(forms):
     required_language = forms.Select()
     start_time_slot = forms.DateField()

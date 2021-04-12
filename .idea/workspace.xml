@@ -2,24 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
-      <change afterPath="$PROJECT_DIR$/kiddytalks/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kiddytalks/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kiddytalky/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mykids/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kiddytalky.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kiddytalky.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/parent/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/parent/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiddytalks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kiddytalks/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0002_auto_20210407_1305.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/formplanning.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/formplanning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/mykids.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/mykids.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/templates/planning.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/planning.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
     </list>
-    <list id="695d940a-d66c-4ae9-b1ec-c2424c27484b" name="Changes by melissabenard" comment="" />
+    <list id="cba08e4a-43ee-4320-88fe-5649c7d4e18a" name="Changes by jesusa" comment="">
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
+    </list>
+    <list id="695d940a-d66c-4ae9-b1ec-c2424c27484b" name="Changes by melissabenard" comment="">
+      <change beforePath="$PROJECT_DIR$/mykids/templates/planning.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/planning.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +73,21 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/accounts/forms.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/mykids/templates/planning.html">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="5" changelist="695d940a-d66c-4ae9-b1ec-c2424c27484b" />
+        <range start1="28" end1="31" start2="28" end2="31" changelist="76309212-af2a-436f-83f3-807724071e55" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/main/models.py">
+      <ranges>
+        <range start1="40" end1="40" start2="40" end2="47" changelist="cba08e4a-43ee-4320-88fe-5649c7d4e18a" />
+        <range start1="69" end1="71" start2="76" end2="78" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="74" end1="74" start2="81" end2="97" changelist="76309212-af2a-436f-83f3-807724071e55" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -166,7 +181,11 @@
       <workItem from="1617808861124" duration="2246000" />
       <workItem from="1617815396018" duration="13725000" />
       <workItem from="1618173438027" duration="464000" />
-      <workItem from="1618174047226" duration="6261000" />
+      <workItem from="1618174047226" duration="14021000" />
+      <workItem from="1618226326380" duration="711000" />
+      <workItem from="1618227516694" duration="7181000" />
+      <workItem from="1618235562861" duration="3932000" />
+      <workItem from="1618239828882" duration="1994000" />
     </task>
     <task id="LOCAL-00001" summary="creation de gitignore">
       <created>1617268768064</created>

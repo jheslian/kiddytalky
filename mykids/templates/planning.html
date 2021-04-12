@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>My kids</h1>
+<h1>Planning</h1>
     <form  method="post">
         {% csrf_token %}
       <table class="form form-table">
@@ -26,9 +26,9 @@
 
 
 <div class="clearfix">
-    <span class="left m-2" style="font-size: 20px;">Wellcome</span>
-	<a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ next_month }} "> Next Month >> </a>
-    <a class="btn btn-info right mr-2" href="{% url 'calendarapp:calendar' %}?{{ prev_month }}"> << Previous Month </a>
+
+	<a class="btn btn-info right mr-2" href="?{{ next_month }} "> Next Month >> </a>
+    <a class="btn btn-info right mr-2" href="?{{ prev_month }}"> << Previous Month </a>
 <!--    <a class="btn btn-info right mr-2" href=" {#% url 'calendarapp:event_new' %#}"> + New Event </a>-->
 </div>
 <div style="color: #2be234;">

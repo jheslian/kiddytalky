@@ -5,6 +5,6 @@ app_name = 'mykids'
 
 urlpatterns = [
     path('', mykid_view),
-    path('planning/', planning_view.as_view, name='planning'),
+    path('planning/', planning_view.as_view(), name='planning'),
 
 ]
