@@ -61,11 +61,17 @@ class Child(AbstractBaseUser):
 
 
 class Languagetolearn(models.Model):
+    TITLE_CHOICES = [
+        ('An', 'Anglais.'),
+        ('Fr', 'Français.'),
+        ('All', 'Allemdand'),
+    ]
+    title = models.CharField(max_length=20, choices=TITLE_CHOICES)
     id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
     id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    date_slot = models.DateTimeField()
-    start_time_slot = models.DateTimeField()
-    end_time_slot = models.DateTimeField()
+    date_slot = models.DateField()
+    start_time_slot = models.TimeField()
+    end_time_slot = models.TimeField()
 
 
 class Visio(models.Model):
