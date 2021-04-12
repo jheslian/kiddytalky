@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>My kids</h1>
+
     <h3> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h3>
 
     {% for child in object_list %}
@@ -10,5 +11,13 @@
 
     {% endfor %}
 
+
+
+
+<div class="clearfix">
+
+	<button><a class="btn btn-info right mr-2" href="{% url 'main:mykids:planning' %}"> plannification</a></button>
+</div>
+>>>>>>> Planification_Kiddy-Talks
 
 {% endblock %}

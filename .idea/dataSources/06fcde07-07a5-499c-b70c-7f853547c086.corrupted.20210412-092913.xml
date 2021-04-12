@@ -372,6 +372,7 @@
     <table id="170" parent="2" name="auth_group"/>
     <table id="171" parent="2" name="auth_group_permissions"/>
     <table id="172" parent="2" name="auth_permission"/>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <table id="173" parent="2" name="django_admin_log"/>
     <table id="174" parent="2" name="django_content_type"/>
     <table id="175" parent="2" name="django_migrations"/>
@@ -383,6 +384,22 @@
     <table id="181" parent="2" name="main_user_groups"/>
     <table id="182" parent="2" name="main_user_user_permissions"/>
     <table id="183" parent="2" name="sqlite_master">
+=======
+    <table id="173" parent="2" name="auth_user"/>
+    <table id="174" parent="2" name="auth_user_groups"/>
+    <table id="175" parent="2" name="auth_user_user_permissions"/>
+    <table id="176" parent="2" name="django_admin_log"/>
+    <table id="177" parent="2" name="django_content_type"/>
+    <table id="178" parent="2" name="django_migrations"/>
+    <table id="179" parent="2" name="django_session"/>
+    <table id="180" parent="2" name="main_child"/>
+    <table id="181" parent="2" name="main_language"/>
+    <table id="182" parent="2" name="main_languagetolearn"/>
+    <table id="183" parent="2" name="main_message"/>
+    <table id="184" parent="2" name="main_parent"/>
+    <table id="185" parent="2" name="main_visio"/>
+    <table id="186" parent="2" name="sqlite_master">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <System>1</System>
     </table>
     <table id="184" parent="2" name="sqlite_sequence">
@@ -1615,30 +1632,50 @@ model</ColNames>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="557" parent="177" name="native_language">
+=======
+    <column id="592" parent="180" name="last_login">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>2</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>datetime|0s</DataType>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="558" parent="177" name="user_id">
+=======
+    <column id="593" parent="180" name="pseudo">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="559" parent="177" name="first_name">
+=======
+    <column id="594" parent="180" name="password">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="560" parent="177" name="last_name">
+=======
+    <column id="595" parent="180" name="last_name">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>5</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="561" parent="177" name="birthdate">
+=======
+    <column id="596" parent="180" name="first_name">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="562" parent="177" name="country">
       <Position>7</Position>
       <DataType>varchar(100)|0s</DataType>
@@ -1676,17 +1713,150 @@ model</ColNames>
     <foreign-key id="570" parent="177">
       <ColNames>user_id</ColNames>
       <RefTableName>main_user</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="571" parent="177">
+=======
+    <column id="597" parent="180" name="age">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="598" parent="180" name="native_language">
+      <Position>8</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="599" parent="180" name="hobbies">
+      <Position>9</Position>
+      <DataType>varchar(300)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="600" parent="180" name="description">
+      <Position>10</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="601" parent="180" name="date_joined">
+      <Position>11</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="602" parent="180" name="parent_id">
+      <Position>12</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="603" parent="180" name="sqlite_autoindex_main_child_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pseudo</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="604" parent="180" name="main_child_parent_id_8acc8da7">
+      <ColNames>parent_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="605" parent="180">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="606" parent="180">
+      <ColNames>pseudo</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_main_child_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="607" parent="180">
       <ColNames>parent_id</ColNames>
       <RefTableName>main_parent</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
+    <column id="608" parent="181" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="609" parent="181" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="610" parent="181" name="sqlite_autoindex_main_language_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="611" parent="181">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="612" parent="181">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_main_language_1</UnderlyingIndexName>
+    </key>
+    <column id="613" parent="182" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="614" parent="182" name="date_slot">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="615" parent="182" name="start_time_slot">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="616" parent="182" name="end_time_slot">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="617" parent="182" name="id_child_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="618" parent="182" name="id_language_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="619" parent="182" name="main_languagetolearn_id_child_id_098afe7f">
+      <ColNames>id_child_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="620" parent="182" name="main_languagetolearn_id_language_id_d9cde1ac">
+      <ColNames>id_language_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="621" parent="182">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="622" parent="182">
+      <ColNames>id_child_id</ColNames>
+      <RefTableName>main_child</RefTableName>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
+    <foreign-key id="571" parent="177">
+      <ColNames>parent_id</ColNames>
+      <RefTableName>main_parent</RefTableName>
+=======
+    <foreign-key id="623" parent="182">
+      <ColNames>id_language_id</ColNames>
+      <RefTableName>main_language</RefTableName>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="572" parent="178" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
@@ -1713,11 +1883,15 @@ model</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_main_language_1</UnderlyingIndexName>
     </key>
     <column id="577" parent="179" name="id">
+=======
+    <column id="624" parent="183" name="id">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="578" parent="179" name="street">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
@@ -1727,10 +1901,24 @@ model</ColNames>
       <DataType>integer|0s</DataType>
     </column>
     <column id="580" parent="179" name="last_name">
+=======
+    <column id="625" parent="183" name="message_date">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="626" parent="183" name="content">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="627" parent="183" name="message_from_id">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="581" parent="179" name="first_name">
       <Position>5</Position>
       <DataType>varchar(100)|0s</DataType>
@@ -1761,9 +1949,19 @@ model</ColNames>
     <index id="587" parent="179" name="sqlite_autoindex_main_parent_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
+=======
+    <column id="628" parent="183" name="message_to_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="629" parent="183" name="main_message_message_from_id_583d7705">
+      <ColNames>message_from_id</ColNames>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <index id="588" parent="179" name="main_parent_user_id_9bb94389">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
@@ -1779,21 +1977,50 @@ model</ColNames>
     <foreign-key id="591" parent="179">
       <ColNames>user_id</ColNames>
       <RefTableName>main_user</RefTableName>
+=======
+    <index id="630" parent="183" name="main_message_message_to_id_1a823d22">
+      <ColNames>message_to_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="631" parent="183">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="632" parent="183">
+      <ColNames>message_from_id</ColNames>
+      <RefTableName>main_parent</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
+    <foreign-key id="633" parent="183">
+      <ColNames>message_to_id</ColNames>
+      <RefTableName>main_parent</RefTableName>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="592" parent="180" name="id">
+=======
+    <column id="634" parent="184" name="id">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="593" parent="180" name="password">
+=======
+    <column id="635" parent="184" name="password">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="594" parent="180" name="last_login">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
@@ -1849,11 +2076,56 @@ model</ColNames>
       <NotNull>1</NotNull>
     </column>
     <index id="605" parent="180" name="sqlite_autoindex_main_user_1">
+=======
+    <column id="636" parent="184" name="email">
+      <Position>3</Position>
+      <DataType>varchar(254)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="637" parent="184" name="last_name">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="638" parent="184" name="first_name">
+      <Position>5</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="639" parent="184" name="birthdate">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="640" parent="184" name="street">
+      <Position>7</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="641" parent="184" name="zipcode">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="642" parent="184" name="country">
+      <Position>9</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="643" parent="184" name="date_joined">
+      <Position>10</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="644" parent="184" name="last_login">
+      <Position>11</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="645" parent="184" name="sqlite_autoindex_main_parent_1">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <NameSurrogate>1</NameSurrogate>
       <ColNames>username</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <key id="606" parent="180">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
@@ -1863,16 +2135,32 @@ model</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_main_user_1</UnderlyingIndexName>
     </key>
     <column id="608" parent="181" name="id">
+=======
+    <key id="646" parent="184">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="647" parent="184">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_main_parent_1</UnderlyingIndexName>
+    </key>
+    <column id="648" parent="185" name="id">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="609" parent="181" name="user_id">
+=======
+    <column id="649" parent="185" name="visio_start">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="610" parent="181" name="group_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
@@ -1912,10 +2200,30 @@ group_id</ColNames>
     </foreign-key>
     <column id="617" parent="182" name="id">
       <Position>1</Position>
+=======
+    <column id="650" parent="185" name="visio_end">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="651" parent="185" name="visio_date">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="652" parent="185" name="validation_status">
+      <Position>5</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="653" parent="185" name="child_correspondent_id">
+      <Position>6</Position>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="618" parent="182" name="user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
@@ -1929,9 +2237,33 @@ group_id</ColNames>
     <index id="620" parent="182" name="main_user_user_permissions_user_id_permission_id_96b9fadf_uniq">
       <ColNames>user_id
 permission_id</ColNames>
+=======
+    <column id="654" parent="185" name="child_participant_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="655" parent="185" name="correspondent_language_id">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="656" parent="185" name="participant_language_id">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="657" parent="185" name="main_visio_child_correspondent_id_f80aa00c">
+      <ColNames>child_correspondent_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="658" parent="185" name="main_visio_child_participant_id_eddc6385">
+      <ColNames>child_participant_id</ColNames>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <index id="621" parent="182" name="main_user_user_permissions_user_id_451ce57f">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
@@ -1947,17 +2279,55 @@ permission_id</ColNames>
     <foreign-key id="624" parent="182">
       <ColNames>user_id</ColNames>
       <RefTableName>main_user</RefTableName>
+=======
+    <index id="659" parent="185" name="main_visio_correspondent_language_id_06bd35a6">
+      <ColNames>correspondent_language_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="660" parent="185" name="main_visio_participant_language_id_374908c1">
+      <ColNames>participant_language_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="661" parent="185">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="662" parent="185">
+      <ColNames>child_correspondent_id</ColNames>
+      <RefTableName>main_child</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
+    <foreign-key id="663" parent="185">
+      <ColNames>child_participant_id</ColNames>
+      <RefTableName>main_child</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="664" parent="185">
+      <ColNames>correspondent_language_id</ColNames>
+      <RefTableName>main_language</RefTableName>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <foreign-key id="625" parent="182">
       <ColNames>permission_id</ColNames>
       <RefTableName>auth_permission</RefTableName>
+=======
+    <foreign-key id="665" parent="185">
+      <ColNames>participant_language_id</ColNames>
+      <RefTableName>main_language</RefTableName>
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
+<<<<<<< HEAD:.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml
     <column id="626" parent="183" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
@@ -1982,6 +2352,32 @@ permission_id</ColNames>
       <Position>1</Position>
     </column>
     <column id="632" parent="184" name="seq">
+=======
+    <column id="666" parent="186" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="667" parent="186" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="668" parent="186" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="669" parent="186" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="670" parent="186" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="671" parent="187" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="672" parent="187" name="seq">
+>>>>>>> Planification_Kiddy-Talks:.idea/dataSources/7b655d50-62ad-4a0c-9d9d-7e289f182644.xml
       <Position>2</Position>
     </column>
   </database-model>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/kiddytalks/templates/previous_session.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kiddytalks/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml" afterDir="false" />
@@ -24,6 +25,25 @@
       <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/0002_auto_20210407_1305.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/formplanning.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/formplanning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/mykids.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/mykids.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/templates/planning.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/planning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
+    </list>
+    <list id="cba08e4a-43ee-4320-88fe-5649c7d4e18a" name="Changes by jesusa" comment="">
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mykids/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/urls.py" afterDir="false" />
+    </list>
+    <list id="695d940a-d66c-4ae9-b1ec-c2424c27484b" name="Changes by melissabenard" comment="">
+      <change beforePath="$PROJECT_DIR$/mykids/templates/planning.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/planning.html" afterDir="false" />
+>>>>>>> Planification_Kiddy-Talks
     </list>
     <list id="772ee25f-3711-4f09-a34e-b20b62e27efb" name="Changes by jesusa" comment="" />
     <list id="a0d4cd56-4264-4634-b55f-8cdcc444279b" name="Changes by yegabebar" comment="">
@@ -41,14 +61,25 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="HTML File" />
+        <option value="CSS File" />
+>>>>>>> Planification_Kiddy-Talks
         <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -56,11 +87,39 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+=======
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Planification_Kiddy-Talks" />
+                    <option name="lastUsedInstant" value="1617694308" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1617694307" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+>>>>>>> Planification_Kiddy-Talks
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/accounts/forms.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LineStatusTrackerManager">
+<<<<<<< HEAD
     <file path="$PROJECT_DIR$/mykids/forms.py">
       <ranges>
         <range start1="3" end1="5" start2="3" end2="5" changelist="76309212-af2a-436f-83f3-807724071e55" />
@@ -86,25 +145,46 @@
         <range start1="17" end1="17" start2="22" end2="24" changelist="76309212-af2a-436f-83f3-807724071e55" />
         <range start1="53" end1="53" start2="60" end2="61" changelist="76309212-af2a-436f-83f3-807724071e55" />
         <range start1="55" end1="55" start2="63" end2="83" changelist="76309212-af2a-436f-83f3-807724071e55" />
+=======
+    <file path="$PROJECT_DIR$/mykids/templates/planning.html">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="5" changelist="695d940a-d66c-4ae9-b1ec-c2424c27484b" />
+        <range start1="28" end1="31" start2="28" end2="31" changelist="76309212-af2a-436f-83f3-807724071e55" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/main/models.py">
+      <ranges>
+        <range start1="40" end1="40" start2="40" end2="47" changelist="cba08e4a-43ee-4320-88fe-5649c7d4e18a" />
+        <range start1="69" end1="71" start2="76" end2="78" changelist="76309212-af2a-436f-83f3-807724071e55" />
+        <range start1="74" end1="74" start2="81" end2="97" changelist="76309212-af2a-436f-83f3-807724071e55" />
+>>>>>>> Planification_Kiddy-Talks
       </ranges>
     </file>
   </component>
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mykids/templates" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/kiddytalks" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+>>>>>>> Planification_Kiddy-Talks
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -115,11 +195,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="$PROJECT_DIR$/mykids/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mykids/templates" />
       <recent name="$PROJECT_DIR$/accounts/templates/child" />
+=======
+      <recent name="$PROJECT_DIR$/kiddytalks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mykids" />
+>>>>>>> Planification_Kiddy-Talks
       <recent name="$PROJECT_DIR$/myaccounts/templates" />
       <recent name="$PROJECT_DIR$/conversation" />
       <recent name="$PROJECT_DIR$/kiddytalky" />
@@ -166,12 +253,33 @@
       <workItem from="1617551274184" duration="817000" />
       <workItem from="1617552125901" duration="55000" />
       <workItem from="1617561812583" duration="21125000" />
+<<<<<<< HEAD
       <workItem from="1617785005207" duration="3175000" />
       <workItem from="1617876883448" duration="171000" />
       <workItem from="1617877102078" duration="5463000" />
       <workItem from="1617888268330" duration="12667000" />
       <workItem from="1618032881403" duration="5610000" />
       <workItem from="1618079931945" duration="20888000" />
+=======
+      <workItem from="1617656961912" duration="845000" />
+      <workItem from="1617658279705" duration="524000" />
+      <workItem from="1617659269821" duration="120000" />
+      <workItem from="1617663362490" duration="688000" />
+      <workItem from="1617693543108" duration="1679000" />
+      <workItem from="1617785628596" duration="1757000" />
+      <workItem from="1617788354231" duration="13000" />
+      <workItem from="1617788426890" duration="59000" />
+      <workItem from="1617788497648" duration="10980000" />
+      <workItem from="1617808381137" duration="390000" />
+      <workItem from="1617808861124" duration="2246000" />
+      <workItem from="1617815396018" duration="13725000" />
+      <workItem from="1618173438027" duration="464000" />
+      <workItem from="1618174047226" duration="14021000" />
+      <workItem from="1618226326380" duration="711000" />
+      <workItem from="1618227516694" duration="7181000" />
+      <workItem from="1618235562861" duration="3932000" />
+      <workItem from="1618239828882" duration="1994000" />
+>>>>>>> Planification_Kiddy-Talks
     </task>
     <task id="LOCAL-00001" summary="creation de gitignore">
       <created>1617268768064</created>
@@ -194,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617551961426</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first commit">
+      <created>1617788770730</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617788770730</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +320,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Planification_Kiddy-Talks" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -213,9 +340,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="creation de gitignore" />
     <MESSAGE value="creation de base de données" />
     <MESSAGE value="creation des apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="creation des apps" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

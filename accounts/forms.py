@@ -43,6 +43,7 @@ class ParentRegistrationForm(UserCreationForm):
     native_language = forms.CharField()
     birthdate = forms.DateField()
 
+<<<<<<< HEAD
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
 
@@ -59,3 +60,7 @@ class ParentRegistrationForm(UserCreationForm):
         child.birthdate = self.cleaned_data.get('birthdate')
         child.save()
         return user"""
+=======
+"""class DateInput(forms.DateInput):
+    input_type = 'date'"""
+>>>>>>> Planification_Kiddy-Talks

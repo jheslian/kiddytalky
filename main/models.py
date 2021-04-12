@@ -3,6 +3,20 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 
+class Languagetolearn(models.Model):
+    TITLE_CHOICES = [
+        ('An', 'Anglais.'),
+        ('Fr', 'Français.'),
+        ('All', 'Allemdand'),
+    ]
+    title = models.CharField(max_length=20, choices=TITLE_CHOICES)
+    id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
+    id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    date_slot = models.DateField()
+    start_time_slot = models.TimeField()
+    end_time_slot = models.TimeField()
+
+
 class Language(models.Model):
     """language_choices = [
         ('English', 'English'),
@@ -30,7 +44,6 @@ class User(AbstractUser):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
 
-
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField(unique=True, null=True)
@@ -45,6 +58,7 @@ class Parent(models.Model):
     def get_absolute_url(self):
         return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
+
 class Child(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     last_name = models.CharField(max_length=100, blank=True, default='')
@@ -54,7 +68,7 @@ class Child(models.Model):
     hobbies = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(max_length=300, null=True, blank=True)
     country = models.CharField(max_length=100, null=True, blank=True)
-    #language_to_learn = models.ManyToManyField(Language, default="")
+    # language_to_learn = models.ManyToManyField(Language, default="")
     language_choices = [
         ('English', 'English'),
         ('Mandarin', 'Mandarin'),
@@ -66,6 +80,7 @@ class Child(models.Model):
 
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
+
 
 """
 class Visio(models.Model):
