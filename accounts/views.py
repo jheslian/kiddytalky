@@ -13,10 +13,11 @@ class ParentRegisterView(CreateView):
     template_name = 'parent/parent_register.html'
 
     def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        self.request.session['username'] = user.username
-        return redirect('main:home')
+        form.save()
+        #user = form.save()
+        #login(self.request, user)
+        #self.request.session['username'] = user.username
+        return redirect('main:login')
 
 
 def login_request(request):
