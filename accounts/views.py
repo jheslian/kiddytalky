@@ -32,7 +32,11 @@ def login_request(request):
                 request.session['username'] = username
                 request.session['id_parent'] = user.id
 
-                return redirect('main:home')
+                if user.is_parent:
+                    return redirect('main:home')
+                #else:
+                    #return redirect('main:kids_accounts')
+
             else:
                 messages.error(request, "Invalid username or password")
         else:
