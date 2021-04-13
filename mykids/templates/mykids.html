@@ -3,11 +3,15 @@
 {% block content %}
 
 <h1>My kids</h1>
+<<<<<<< HEAD
 
     <h3> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h3>
+=======
+    <h2> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h2>
+>>>>>>> b07bc620841d1f7d48f2220e0389f661c4522ea5
 
     {% for child in object_list %}
-        <h2><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></h2>
+        <p><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></p>
 
     {% endfor %}
 
