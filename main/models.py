@@ -3,28 +3,18 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 
-class Languagetolearn(models.Model):
-    TITLE_CHOICES = [
-        ('An', 'Anglais.'),
-        ('Fr', 'Français.'),
-        ('All', 'Allemdand'),
-    ]
-    title = models.CharField(max_length=20, choices=TITLE_CHOICES)
-    #id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
-    #id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    date_slot = models.DateField()
-    start_time_slot = models.TimeField()
-    end_time_slot = models.TimeField()
+
 
 
 class Language(models.Model):
-    """language_choices = [
+    language_choices = [
         ('English', 'English'),
         ('Mandarin', 'Mandarin'),
         ('Spanish', 'Spanish')
     ]
-    """
-    name = models.CharField(max_length=100, unique=True)
+
+
+    name = models.CharField(choices=language_choices,max_length=100, unique=True)
 
     def __str__(self):
         return self.name
@@ -80,3 +70,32 @@ class Child(models.Model):
 
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
+    def __str__(self):
+        return self.first_name
+
+
+
+class Languagetolearn(models.Model):
+    """
+    TITLE_CHOICES = [
+        ('An', 'Anglais.'),
+        ('Fr', 'Français.'),
+        ('All', 'Allemdand'),
+    ]
+    """
+    #title = models.CharField(max_length=20, choices=TITLE_CHOICES)
+
+    #title = models.CharField(max_length=20)
+    last_name = models.ForeignKey(Child, on_delete=models.CASCADE)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
+    date_slot = models.DateField()
+    start_time_slot = models.TimeField()
+    end_time_slot = models.TimeField()
+
+    def get_absolute_url(self):
+        return reverse('m:event-detail', args=(self.id,))
+
+    @property
+    def get_html_url(self):
+        url = reverse('', args=(self.id,))
+        return f'<a href="{url}"> {self.title} </a>'

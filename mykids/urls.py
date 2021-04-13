@@ -16,5 +16,7 @@ urlpatterns = [
     path('<int:id>/delete', DeleteChildView.as_view(), name='delete-child'),
     path('', mykid_view),
     path('planning/', planning_view.as_view(), name='planning'),
+    path('planning/details/', views.event_details, name='event-detail')
+
 
 ]

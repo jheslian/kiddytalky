@@ -1,8 +1,8 @@
 
-from main.models import Languagetolearn
+from main.models import Languagetolearn, Language, Child
 import datetime as dt
 
-from django.forms import ModelForm, DateInput, TimeInput
+from django.forms import ModelForm, DateInput, TimeInput,ChoiceField
 #from calendarapp.models import EventMember
 from django import forms
 from django.core.validators import ValidationError, validate_slug
@@ -18,13 +18,17 @@ from django.core.validators import ValidationError, validate_slug
 class EventForm(ModelForm):
     class Meta:
         model = Languagetolearn
+
         fields = '__all__'
+
 
         # datetime-local is a HTML5 input type, format to make date time show on fields
         widgets = {
+
             'date_slot': DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
             'start_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
             'end_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
+            #'language': ChoiceField(queryset=Language.objects.all())
 
         }
 
@@ -36,6 +40,9 @@ class EventForm(ModelForm):
         self.fields['date_slot'].input_formats = ('%Y-%m-%d',)
         self.fields['start_time_slot'].input_formats = ('%H:%M',)
         self.fields['end_time_slot'].input_formats = ('%H:%M',)
+        self.fields['language'].queryset=Language.objects.all()
+        self.fields['language'].queryset = Language.objects.all()
+        self.fields['last_name'].queryset = Child.objects.filter(parent_id=2)
 
     def clean_date_slot(self):
 
