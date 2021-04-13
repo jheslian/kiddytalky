@@ -1,33 +1,58 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import get_object_or_404, reverse, redirect, render, HttpResponseRedirect
 from django.views.generic import UpdateView, DetailView, DeleteView, CreateView, ListView
 from .forms import EditChildInfo, ChildRegistrationForm
 from main.models import Child, User, Parent
-from django.core.cache import cache
+from crum import get_current_user
+
+"""class ChildListView(ListView):
+template_name = 'mykids.html'
+
+#e = get_current_user()
+#print("HOME CRUMMMMMM", e.id)
+
+def get_queryset(self, *args, **kwargs):
+    id_ = self.kwargs.get("id")
+    queryset = Child.objects.all().filter(parent_id=id_)
+    return queryset"""
+
+"""    def get(self, request, *args):
+    request.GET.get('id')
+
+    print("TTTTTTT", request.GET.get('id') )
+    print("TTTTAAAATTT", self.request.session['id_parent'])
+
+    return super(ChildListView, self).get(request, *args)"""
 
 
-class ChildListView(ListView):
-    print("recover cacheZZPPPPPPPPPPPPPPPPPPPPPPPPPZZZ", cache.get('parent_id', 'has expired'))
-    template_name = 'mykids.html'
-    queryset = Child.objects.all().filter(parent_id=2)
-    # queryset = Child.objects.all()
+def child_list_view(request):
+    print("inseide")
+    user_id = request.session['id_parent']
+    print("afteruser1", user_id )
+    parent = Parent.objects.get(user_id=user_id)
 
+    print("AAAAAA111111")
 
-# print(request.session['id_parent'])
+    queryset = Child.objects.filter(parent_id=parent.id)
+
+    print('after queryyyyyyy:',  queryset)
+    context = {
+        "object_list": queryset
+    }
+    return render(request, 'mykids.html', context)
+
 
 class MyChildView(DetailView):
-    cache.get('id_parent')
     template_name = 'childview.html'
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-
-        print("PARENT ID MY KIDS:", cache.get('id_parent'))
         return get_object_or_404(Child, id=id_)
 
 
 class UpdateChildView(UpdateView):
     form_class = EditChildInfo
     template_name = 'editprofile_enfant.html'
+    success_url = '/mykids'
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -36,20 +61,17 @@ class UpdateChildView(UpdateView):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Child, id=id_)
 
-    def get_success_url(self):
-        return reverse('main:mykids:kids')
 
 
 class DeleteChildView(DeleteView):
-    model = Child
-    template_name = 'delete.html'
+    template_name = 'child/delete.html'
+    success_url = '/mykids'
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(Child, user_id=id_)
+        return get_object_or_404(User, id=id_)
 
-    def get_success_url(self):
-        return redirect('main:mykids:kids')
+
 
 
 class ChildRegisterView(CreateView):
@@ -58,9 +80,8 @@ class ChildRegisterView(CreateView):
     template_name = 'child/child_register.html'
 
     def form_valid(self, form):
-
         form.save()
-        return redirect('main:mykids:childregister')
+        return redirect('main:mykids:kids')
         """print('id user: ', id_)
         parent = Parent.objects.get(user_id=id_)
         print('Objet user: ', parent)
@@ -69,8 +90,7 @@ class ChildRegisterView(CreateView):
         #  child = Child.objects.create(parent_id=parent.id)
         # child = Child.parent_id
         # print("child object",child)
-        #child.save()
-
+        # child.save()
 
     """ def get_context_data(self):
         context = super().get_context_data()
@@ -79,4 +99,3 @@ class ChildRegisterView(CreateView):
         child = self.request.child
         context["parent_id"] = parent.objects.all()
         return context"""
-

@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.core.cache import cache
 from main.models import Child, User as MyCustomUser, Parent
+from django.contrib.sessions.models import Session
+from django.utils import timezone
+from crum import get_current_user
 
 """def get_object(self):
     id_ = self.request.session['id_parent']
@@ -11,42 +14,32 @@ from main.models import Child, User as MyCustomUser, Parent
     print('Objet user: ', parent)
     print("id du parent: ", parent.id)
     return parent.id"""
-print("£CHILD PARENT ID:", cache.get('id_parent'))
+
+
 class ChildRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     native_language = forms.CharField()
     birthdate = forms.DateField()
-    #parent_id = forms.IntegerField(disabled=True, required=False)
-
-
+    #parent_id = forms.IntegerField()
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
 
-    def get_parent_id(request):
-        return request.session['id_parent']
-
     @transaction.atomic
     def save(self):
-        print("111111111111",cache.get('id_parent'))
-        print("22222222", cache.get('id_parent'))
         user = super().save(commit=False)
         user.is_child = True
         user.save()
-        print("USER SAVED")
         child = Child.objects.create(user=user)
         child.first_name = self.cleaned_data.get('first_name')
         child.last_name = self.cleaned_data.get('last_name')
         child.native_language = self.cleaned_data.get('native_language')
         child.birthdate = self.cleaned_data.get('birthdate')
-        child.parent_id = cache.get('id_parent')
-        print("BEFORE CHILD SAVE")
-
-
+        user_id = get_current_user().id
+        parent = Parent.objects.get(user_id=user_id)
+        child.parent_id = parent.id
         child.save()
-        print("AFTER CHILD SAVE:", cache.get('id_parent'))
-
 
         return user
 
