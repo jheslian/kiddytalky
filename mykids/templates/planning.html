@@ -22,19 +22,44 @@
       </table>
 
 
+
     </form>
 
 
-<div class="clearfix">
+    <table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Start time slot</th>
+      <th scope="col">End time slot</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for requete in rqt %}
+    <tr>
+      <td>{{ requete.date_slot}}</td>
+        {{ requete }}
+      <td>{{ requete.start_time_slot}}</td>
+      <td>{{ requete.end_time_slot}}</td>
+      <td> <button type="submit" class="btn btn-info right"> Delete </button></td>
 
-	<a class="btn btn-info right mr-2" href="?{{ next_month }} "> Next Month >> </a>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+
+<!--<div class="clearfix">
+
+	 <a class="btn btn-info right mr-2" href="?{{ next_month }} "> Next Month >> </a>
     <a class="btn btn-info right mr-2" href="?{{ prev_month }}"> << Previous Month </a>
-<!--    <a class="btn btn-info right mr-2" href=" {#% url 'calendarapp:event_new' %#}"> + New Event </a>-->
+   <a class="btn btn-info right mr-2" href=" {#% url 'calendarapp:event_new' %#}"> + New Event </a>
 </div>
 
 <div style="color: #2be234;">
 
-    {{ calendar }}
-</div>
+    {#  #}{ calendar }}
+</div>-->
+
 
 {% endblock %}

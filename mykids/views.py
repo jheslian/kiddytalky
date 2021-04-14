@@ -138,9 +138,6 @@ def next_month(d):
     return month
 
 
-
-
-
 class planning_view(FormView, generic.ListView):
     # login_url = 'signup'
     model = Languagetolearn
@@ -150,7 +147,7 @@ class planning_view(FormView, generic.ListView):
     def post(self, request, *args, **kwargs):
 
         id_ = self.kwargs.get("id")
-
+        self.request.session['child_id'] = id_
         print("CHILD ID URL", id_)
         print('PPPPPP', request.POST['start_time_slot'] >= request.POST['end_time_slot'])
 
@@ -169,8 +166,16 @@ class planning_view(FormView, generic.ListView):
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
                             end_time_slot=request.POST['end_time_slot'], last_name_id=id_,
                             date_slot=request.POST['date_slot']).save()
+        rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
-        return redirect(f"/mykids/{id_}/planning")
+        return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['rqt'] = Languagetolearn.objects.filter(last_name_id=self.request.session['child_id'])
+
+        return context
 
 
 """
@@ -213,6 +218,3 @@ def event_details(request, event_id):
     }
     return render(request, 'event-details.html', context)
 """
-
-
-
