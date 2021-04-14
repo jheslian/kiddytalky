@@ -116,6 +116,7 @@ class ChildRegisterView(CreateView):
 
 # -------------------------------------------------
 # -------------------------------------------------
+"""
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
@@ -136,10 +137,22 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+"""
+
+
+# -------------------------------------------------
+# -------------------------------------------------
+def deletevent(request, id_event):
+    print(id_event)
+    #id_ = self.kwargs.get("id")
+    id_ =request.session['child_id']
+    print('ZZZZZZZZZZ', id_)
+    Languagetolearn.objects.get(id=id_event).delete()
+
+    return redirect(f"/mykids/{id_}/planning")
 
 
 class planning_view(FormView, generic.ListView):
-    # login_url = 'signup'
     model = Languagetolearn
     form_class = EventForm
     template_name = 'planning.html'
@@ -148,16 +161,8 @@ class planning_view(FormView, generic.ListView):
 
         id_ = self.kwargs.get("id")
         self.request.session['child_id'] = id_
-        print("CHILD ID URL", id_)
-        print('PPPPPP', request.POST['start_time_slot'] >= request.POST['end_time_slot'])
-
-        # event_form = EventForm(request.POST)
-
-        print('rrrrr', datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today())
-
         if datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today():
             messages.error(request, 'the date must be greater than today')
-
         elif request.POST['start_time_slot'] >= request.POST['end_time_slot']:
             messages.error(request, 'start date must be less than the end date ')
 
@@ -175,6 +180,7 @@ class planning_view(FormView, generic.ListView):
 
         context['rqt'] = Languagetolearn.objects.filter(last_name_id=self.request.session['child_id'])
 
+        # context['deleteEvent'] = delete_event(request, id_event=self.kwargs.get("id_event"))
         return context
 
 

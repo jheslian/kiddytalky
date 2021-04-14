@@ -2,57 +2,68 @@
 
 {% block content %}
 
-<h1>Planning</h1>
-    <form  method="post">
+    <h1>Planning</h1>
+    <form method="post">
         {% csrf_token %}
-      <table class="form form-table">
-        {{ product_item_form.non_form_errors }}
-        {{ form }}
+        <table class="form form-table">
+            {{ product_item_form.non_form_errors }}
+            {{ form }}
 
-        <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
-          <tr><td colspan="2">
-              {% if messages %}
-                {% for msg in messages %}
-                 <p>{{ msg }}</p>
-                {% endfor %}
-              {% endif %}
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-info right"> Submit</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <p>{{ msg }}</p>
+                        {% endfor %}
+                    {% endif %}
 
 
-          </td></tr>
-      </table>
-
+                </td>
+            </tr>
+        </table>
 
 
     </form>
 
 
     <table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Start time slot</th>
-      <th scope="col">End time slot</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for requete in rqt %}
-    <tr>
-      <td>{{ requete.date_slot}}</td>
-        {{ requete }}
-      <td>{{ requete.start_time_slot}}</td>
-      <td>{{ requete.end_time_slot}}</td>
-      <td> <button type="submit" class="btn btn-info right"> Delete </button></td>
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Start time slot</th>
+            <th scope="col">End time slot</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for requete in rqt %}
+            <tr>
+                <td>{{ requete.date_slot }}</td>
 
-    </tr>
-     {% endfor %}
-  </tbody>
-</table>
+                <td>{{ requete.start_time_slot }}</td>
+                <td>{{ requete.end_time_slot }}</td>
 
-<!--<div class="clearfix">
+                <!--<a class="btn btn-info right mr-2" href="{#% url 'main:mykids:planning'%#}?{#  #}{ deleteEvent }} %}">-->
 
-	 <a class="btn btn-info right mr-2" href="?{{ next_month }} "> Next Month >> </a>
-    <a class="btn btn-info right mr-2" href="?{{ prev_month }}"> << Previous Month </a>
+                <td>
+                    <a class="btn btn-info right mr-2"
+                       href="{% url 'main:mykids:deletevent' requete.id %} ">Delete </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!--<div class="clearfix">
+
+	 <a class="btn btn-info right mr-2" href="?{#  #}{ next_month }} "> Next Month >> </a>
+    <a class="btn btn-info right mr-2" href="?{#  #}{ prev_month }}"> << Previous Month </a>
    <a class="btn btn-info right mr-2" href=" {#% url 'calendarapp:event_new' %#}"> + New Event </a>
 </div>
 
