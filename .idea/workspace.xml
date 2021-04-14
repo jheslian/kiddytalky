@@ -2,37 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76309212-af2a-436f-83f3-807724071e55" name="Default Changelist" comment="creation des apps">
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/kiddytalks/templates/previous_session.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kiddytalks/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/06fcde07-07a5-499c-b70c-7f853547c086.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_04_2021_10_16__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_04_2021_10_16__Default_Changelist_1.xml" beforeDir="false" />
->>>>>>> b07bc620841d1f7d48f2220e0389f661c4522ea5
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myaccounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myaccounts/views.py" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/mykids/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/migrations/0002_auto_20210407_1305.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kiddytalky/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kiddytalky/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/formplanning.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/formplanning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/templates/mykids.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/mykids.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/templates/planning.html" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/templates/planning.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mykids/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mykids/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
     </list>
     <list id="cba08e4a-43ee-4320-88fe-5649c7d4e18a" name="Changes by jesusa" comment="">
       <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
@@ -162,7 +139,7 @@
 >>>>>>> b07bc620841d1f7d48f2220e0389f661c4522ea5
   <component name="ProjectId" id="1qYpTzLU6jYepcqaiYSub3X8GYN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />

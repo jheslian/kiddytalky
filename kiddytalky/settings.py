@@ -24,8 +24,8 @@ SECRET_KEY = '+d*2u@#suiq^fajftnqc*782rvncnnfdqtk#8tvxk4i5ff+if+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['kiddytalky.eu.ngrok.io', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -123,6 +123,10 @@ AUTH_USER_MODEL = 'main.User'
 # AUTH_USER_MODEL = 'main.Child'
 
 STATIC_URL = '/static/'
+
+
+
+
 
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
