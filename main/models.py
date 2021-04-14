@@ -71,6 +71,9 @@ class Child(models.Model):
     # date_joined = models.DateField(auto_now_add=True, null=True)
     parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0, blank=True)
 
+    def __str__(self):
+        return self.first_name
+
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
@@ -96,7 +99,6 @@ class Visio(models.Model):
     def __str__(self):
         return self.first_name
 
-"""
 class Message(models.Model):
     message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
     message_from = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_from')
@@ -113,14 +115,9 @@ class Message(models.Model):
 
 
 
+
 class Languagetolearn(models.Model):
-    """
-    TITLE_CHOICES = [
-        ('An', 'Anglais.'),
-        ('Fr', 'Français.'),
-        ('All', 'Allemdand'),
-    ]
-    """
+    
     # title = models.CharField(max_length=20, choices=TITLE_CHOICES)
 
     # title = models.CharField(max_length=20)
@@ -130,6 +127,8 @@ class Languagetolearn(models.Model):
     start_time_slot = models.TimeField()
     end_time_slot = models.TimeField()
 
+
+
     def get_absolute_url(self):
         return reverse('main:mykids:event-detail', args=(self.id,))
 
@@ -137,4 +136,3 @@ class Languagetolearn(models.Model):
     def get_html_url(self):
         url = reverse('', args=(self.id,))
         return f'<a href="{url}"> {self.language} </a>'
-   
