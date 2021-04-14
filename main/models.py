@@ -75,24 +75,28 @@ class Child(models.Model):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
 
-"""
+
 class Visio(models.Model):
-    child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
-    child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent')
+    child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant', default=1)
+    child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent', default=1)
     participant_language = models.ForeignKey(Language, on_delete=models.CASCADE, default='English',
                                              related_name="participant_language")
     correspondent_language = models.ForeignKey(Language, default='', on_delete=models.CASCADE,
                                                related_name='correspondent_language')
     visio_start = models.DateTimeField()
     visio_end = models.DateTimeField()
-    visio_date = models.DateTimeField(auto_now=True)
-    status_choice = [('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Completed', 'Completed')]
-    validation_status = models.CharField(max_length=10, choices=status_choice)
+    visio_date = models.DateTimeField()
+    link_video = models.CharField(max_length=500, blank=True, default='')
+    meeting_id = models.IntegerField()
+    #
+
+    #status_choice = [('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Completed', 'Completed')]
+    #validation_status = models.CharField(max_length=10, choices=status_choice)
 
     def __str__(self):
         return self.visio_date
 
-
+"""
 class Message(models.Model):
     message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
     message_from = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_from')
