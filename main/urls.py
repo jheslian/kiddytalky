@@ -5,11 +5,11 @@ app_name = "main"
 
 urlpatterns = [
     # this is index view
-    path('', index_view, name='index'),
+    #path('', index_view, name='index'),
 
 
     # ZOOM MEETING OK
-    #path('', create_meeting),
+    path('', create_meeting),
     #path('', get_meeting),
 
     # NOT OK

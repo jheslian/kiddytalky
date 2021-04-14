@@ -17,37 +17,13 @@ from .formplanning import EventForm
 
 from crum import get_current_user
 
-"""class ChildListView(ListView):
-template_name = 'mykids.html'
-
-#e = get_current_user()
-#print("HOME CRUMMMMMM", e.id)
-
-def get_queryset(self, *args, **kwargs):
-    id_ = self.kwargs.get("id")
-    queryset = Child.objects.all().filter(parent_id=id_)
-    return queryset"""
-
-"""    def get(self, request, *args):
-    request.GET.get('id')
-
-    print("TTTTTTT", request.GET.get('id') )
-    print("TTTTAAAATTT", self.request.session['id_parent'])
-
-    return super(ChildListView, self).get(request, *args)"""
-
 
 def child_list_view(request):
-    print("inseide")
     user_id = request.session['id_parent']
-    print("afteruser1", user_id)
     parent = Parent.objects.get(user_id=user_id)
-
-    print("AAAAAA111111")
-
     queryset = Child.objects.filter(parent_id=parent.id)
 
-    print('after queryyyyyyy:', queryset)
+
     context = {
         "object_list": queryset
     }
@@ -84,7 +60,9 @@ class DeleteChildView(DeleteView):
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(User, id=id_)
+        child = Child.objects.get(id=id_)
+        print("OOOOODIDIIDID", child.user_id)
+        return get_object_or_404(User, id=child.user_id)
 
 
 class ChildRegisterView(CreateView):

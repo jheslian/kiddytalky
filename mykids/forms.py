@@ -51,4 +51,4 @@ class ChildRegistrationForm(UserCreationForm):
 class EditChildInfo(forms.ModelForm):
     class Meta:
         model = Child
-        fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description', 'language_to_learn']
+        fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description']
