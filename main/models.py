@@ -89,7 +89,7 @@ class Languagetolearn(models.Model):
     # title = models.CharField(max_length=20, choices=TITLE_CHOICES)
 
     # title = models.CharField(max_length=20)
-    last_name = models.ForeignKey(Child, on_delete=models.CASCADE)
+    child = models.ForeignKey(Child, on_delete=models.CASCADE)
     language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
     date_slot = models.DateField()
     start_time_slot = models.TimeField()

@@ -105,13 +105,6 @@ class ChildRegisterView(CreateView):
         # print("child object",child)
         # child.save()
 
-    """ def get_context_data(self):
-        context = super().get_context_data()
-        id_ = self.request.session['id_parent']
-        parent = Parent.objects.get(user_id=id_)
-        child = self.request.child
-        context["parent_id"] = parent.objects.all()
-        return context"""
 
 
 # -------------------------------------------------
@@ -151,12 +144,6 @@ class planning_view(FormView, generic.ListView):
 
         id_ = self.kwargs.get("id")
 
-        print("CHILD ID URL", id_)
-        print('PPPPPP', request.POST['start_time_slot'] >= request.POST['end_time_slot'])
-
-        # event_form = EventForm(request.POST)
-
-        print('rrrrr', datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today())
 
         if datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today():
             messages.error(request, 'the date must be greater than today')
@@ -167,7 +154,7 @@ class planning_view(FormView, generic.ListView):
         else:
 
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
-                            end_time_slot=request.POST['end_time_slot'], last_name_id=id_,
+                            end_time_slot=request.POST['end_time_slot'], child_id=id_,
                             date_slot=request.POST['date_slot']).save()
 
         return redirect(f"/mykids/{id_}/planning")
