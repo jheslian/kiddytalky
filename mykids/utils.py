@@ -3,6 +3,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from main.models import Languagetolearn
+from django.http import request
 
 
 # from eventcalendar.helper import get_current_user
@@ -21,38 +22,42 @@ class Calendar(HTMLCalendar):
         d = ''
 
         for event in events_per_day:
+            print(event)
 
-            d += f'<li> {event.get_html_url} </li>'
-            print('TTTTTT', d)
-
-        if day != 0:
-            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+            #d += f'<li> {event.get_html_url} </li>'
+            d += f'<li>  </li>'
+            print('JJJJJJJJJJJJJJJJJJJ', d)
+            if day != 0:
+                return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+               # return f"<td><span class='date'>{day}</span><ul> </ul></td>"
         return '<td></td>'
+
 
     # formats a week as a tr
     def formatweek(self, theweek, events):
-        # print('*************************** 6')
+        print('*************************** 6')
         week = ''
         for d, weekday in theweek:
-            # print('*************************** ', d)
-            week += self.formatday(d, events)
+             print('jourrrrrrrrrrrr ', d)
+             week += self.formatday(d, events)
         return f'<tr> {week} </tr>'
 
     # formats a month as a table
     # filter events by year and month
     def formatmonth(self, withyear=True):
-        # print('***************************')
+        print('***************************')
+        Languagetolearn.last_name
         events = Languagetolearn.objects.filter(date_slot__year=self.year, date_slot__month=self.month)
-        # print('EVENN', events)
+        print('EVENN', events)
         # events = Event.objects.all(start_time__year=self.year, start_time__month=self.month)
         cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
-        # print('***************************', cal)
+        print('***************************', cal)
         cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
-        # print('*************************** 2')
+        print('*************************** 2')
         cal += f'{self.formatweekheader()}\n'
-        # print('*************************** 3')
+        print('*************************** 3')
         for week in self.monthdays2calendar(self.year, self.month):
-            # print('*************************** 4')
+            print('*************************** 4')
             cal += f'{self.formatweek(week, events)}\n'
-            # print('*************************** 5')
+            print('*************************** 5')
         return cal

@@ -3,28 +3,14 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 
-class Languagetolearn(models.Model):
-    TITLE_CHOICES = [
-        ('An', 'Anglais.'),
-        ('Fr', 'Français.'),
-        ('All', 'Allemdand'),
-    ]
-    title = models.CharField(max_length=20, choices=TITLE_CHOICES)
-    id_child = models.ForeignKey(Child, on_delete=models.CASCADE)
-    id_language = models.ForeignKey(Language, on_delete=models.CASCADE)
-    date_slot = models.DateField()
-    start_time_slot = models.TimeField()
-    end_time_slot = models.TimeField()
-
-
 class Language(models.Model):
-    """language_choices = [
+    language_choices = [
         ('English', 'English'),
         ('Mandarin', 'Mandarin'),
         ('Spanish', 'Spanish')
     ]
-    """
-    name = models.CharField(max_length=100, unique=True)
+
+    name = models.CharField(choices=language_choices, max_length=100, unique=True)
 
     def __str__(self):
         return self.name
@@ -63,7 +49,7 @@ class Parent(models.Model):
 
     def get_success_url(self):
         user_id = self.kwargs.get('id')
-        return reverse('myaccounts:my-account', kwargs={'id':user_id})
+        return reverse('myaccounts:my-account', kwargs={'id': user_id})
 
 
 class Child(models.Model):
@@ -88,32 +74,31 @@ class Child(models.Model):
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
-
-"""
-class Visio(models.Model):
-    child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
-    child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent')
-    participant_language = models.ForeignKey(Language, on_delete=models.CASCADE, default='English',
-                                             related_name="participant_language")
-    correspondent_language = models.ForeignKey(Language, default='', on_delete=models.CASCADE,
-                                               related_name='correspondent_language')
-    visio_start = models.DateTimeField()
-    visio_end = models.DateTimeField()
-    visio_date = models.DateTimeField(auto_now=True)
-    status_choice = [('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Completed', 'Completed')]
-    validation_status = models.CharField(max_length=10, choices=status_choice)
-
     def __str__(self):
-        return self.visio_date
+        return self.first_name
 
 
-class Message(models.Model):
-    message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
-    message_from = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_from')
-    message_date = models.DateTimeField('date sent', auto_now_add=True)
-    content = models.TextField()
+class Languagetolearn(models.Model):
+    """
+    TITLE_CHOICES = [
+        ('An', 'Anglais.'),
+        ('Fr', 'Français.'),
+        ('All', 'Allemdand'),
+    ]
+    """
+    # title = models.CharField(max_length=20, choices=TITLE_CHOICES)
 
-    def __str__(self):
-        return self.message_date
+    # title = models.CharField(max_length=20)
+    last_name = models.ForeignKey(Child, on_delete=models.CASCADE)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
+    date_slot = models.DateField()
+    start_time_slot = models.TimeField()
+    end_time_slot = models.TimeField()
 
-"""
+    def get_absolute_url(self):
+        return reverse('main:mykids:event-detail', args=(self.id,))
+
+    @property
+    def get_html_url(self):
+        url = reverse('', args=(self.id,))
+        return f'<a href="{url}"> {self.language} </a>'

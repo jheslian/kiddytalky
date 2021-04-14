@@ -16,12 +16,15 @@ from crum import get_current_user
     return parent.id"""
 
 
+
 class ChildRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     native_language = forms.CharField()
     birthdate = forms.DateField()
-    #parent_id = forms.IntegerField()
+
+
+
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
@@ -41,13 +44,11 @@ class ChildRegistrationForm(UserCreationForm):
         child.parent_id = parent.id
         child.save()
 
-        return user
 
+        return user
 
 
 class EditChildInfo(forms.ModelForm):
     class Meta:
         model = Child
         fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description', 'language_to_learn']
-
-

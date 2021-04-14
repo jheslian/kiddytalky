@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from main.models import Parent
 from django.views.generic import DetailView
-from crum import get_current_user
+#from crum import get_current_user
 
 
 def home_view(request):
@@ -9,8 +9,8 @@ def home_view(request):
    #self.request.session['id_parent'] = id_
    #parent = Parent.objects.get(user_id=id_)
    #cache.set('parent_id', parent.id)
-   e = get_current_user()
-   print("HOME CRUMMMMMM", e.id)
+   #e = get_current_user()
+   #print("HOME CRUMMMMMM", e.id)
 
    return render(request, 'main/home.html')
 

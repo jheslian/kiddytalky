@@ -31,6 +31,7 @@ def login_request(request):
                 login(request, user)
                 request.session['username'] = username
                 request.session['id_parent'] = user.id
+                print(request.session['id_parent'])
 
                 return redirect('main:home')
             else:
