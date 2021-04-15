@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'correspondents',
     'mykids',
     'myaccounts',
+    'conversation'
 ]
 
 MIDDLEWARE = [

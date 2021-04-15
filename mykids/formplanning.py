@@ -41,6 +41,10 @@ class EventForm(ModelForm):
         self.fields['start_time_slot'].input_formats = ('%H:%M',)
         self.fields['end_time_slot'].input_formats = ('%H:%M',)
         self.fields['language'].queryset = Language.objects.all()
+        self.fields['child_correspondent'].queryset = Child.objects.filter(parent_id=1)
+
+
+
 
 
     def clean_date_slot(self):

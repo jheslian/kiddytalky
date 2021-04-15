@@ -3,12 +3,11 @@
 {% block title %}Edit my profile {% endblock title %}
 
 {% block content %}
-    
+
     <form action='' method="POST"> {% csrf_token %}
        {{ form.as_p }}
        <input type="submit" value="Save">
     </form>
 
-    </div>
 
 {% endblock content %}

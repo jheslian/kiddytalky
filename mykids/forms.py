@@ -28,9 +28,6 @@ class ChildRegistrationForm(UserCreationForm):
     #def __init__(self):
 
 
-
-
-
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
 
@@ -48,7 +45,7 @@ class ChildRegistrationForm(UserCreationForm):
         parent = Parent.objects.get(user_id=user_id)
         child.parent_id = parent.id
         child.language_id = self.cleaned_data.get('language')
-       
+
         child.save()
 
 

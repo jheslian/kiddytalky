@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from main.models import Parent, Child
-from django.views.generic import DetailView, ListView
+from .models import Parent, Child, Languagetolearn, Language
+from django.views.generic import DetailView, ListView, UpdateView
 from crum import get_current_user
+from mykids.formplanning import EventForm
 import requests
 import json
 import http.client
+from .forms import MeetingValidationForm
 from django.http import HttpResponseRedirect
+from mykids.forms import EditChildInfo
 
 
 def index_view(request):
@@ -24,31 +27,67 @@ def home_view(request):
 
 
 class CorrespondentListView(ListView):
-   template_name = 'main/home.html'
-   queryset = Child.objects.all()
+    template_name = 'main/home.html'
+    queryset = Child.objects.all()
 
-
-
-
-class CorrespondentDetailView(DetailView):
+    """class CorrespondentDetailView(DetailView):
     template_name = 'main/correspondent-detail.html'
     queryset = Child.objects.all()
 
     def get_object(self):
         id_ = self.kwargs.get("id")
-        return get_object_or_404(Child, id=id_)
+        return get_object_or_404(Child, id=id_)"""
+
+    """def get_context_data(self, **kwargs):
+        context = super(CorrespondentDetailView, self).get_context_data(**kwargs)
+        context['meeting_update'] = MeetingValidationForm(self.request.POST)
+        return context
+    """
 
 
-class MyHomeView(DetailView):
-    template_name = 'main/home.html'
+class MeetingValidationView(ListView):
+    model = Languagetolearn
+    template_name = 'main/correspondent-detail.html'
+    success_url = '/home'
 
-    def get_object(self):
-        id_parent = self.request.session['id_parent']
+    def get_context_data(self , **kwargs):
+        #context = super().get_context_data(**kwargs)
+        #context = super(CorrespondentDetailView, self).get_context_data(**kwargs)
+        id_ = self.kwargs.get('id')
 
-        print('id userparentAAAAAAAA: ', id_parent)
-        # parent = Parent.objects.get(user_id=id_)
+        # proposition of the child
+        context = super(MeetingValidationView, self).get_context_data(**kwargs)
+        context['proposition'] = Languagetolearn.objects.filter(child_id=id_)
 
-        return get_object_or_404(Parent, id=id_parent)
+        user = get_current_user().id
+        parent = Parent.objects.get(user_id=user)
+        option = Child.objects.filter(parent_id=parent.id)
+        context['select_child'] = option
+
+        child = Child.objects.filter(id=id_)
+        context['child_data'] = child
+
+        """ child_lang = Languagetolearn.objects.filter(child_id=id_)
+
+        proposed_language = Language.objects.filter(id=child_lang.language_id)
+        print("HGDGNFFNDS", proposed_language)
+        context['language_proposed'] = proposed_language"""
+        return context
+
+# language_proposed = Language.objects.get(id=child.langu)
+
+
+# context['deleteEvent'] = delete_event(request, id_event=self.kwargs.get("id_event"))
+
+
+
+"""def form_valid(self, form):
+    return super().form_valid(form)
+    
+
+def get_object(self):
+    id_ = self.kwargs.get("id")
+    return get_object_or_404(Languagetolearn, id=id_)"""
 
 
 def create_meeting(request):
@@ -70,7 +109,6 @@ def create_meeting(request):
     return HttpResponseRedirect('/')
 
 
-
 """def get_meeting(request):
     conn = http.client.HTTPSConnection("api.zoom.us")
     headers = {
@@ -84,7 +122,3 @@ def create_meeting(request):
     #print("THIS IS THE GET METTING", res)
 
     return HttpResponseRedirect('/')"""
-
-
-
-

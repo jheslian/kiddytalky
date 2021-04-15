@@ -24,7 +24,8 @@ urlpatterns = [
     # MAIN MENU
     #path('home/', home_view, name='home'),
     path('home/', CorrespondentListView.as_view(), name='home'),
-    path('<int:id>', CorrespondentDetailView.as_view(), name="correspondent-detail"),
+    #path('<int:id>', CorrespondentDetailView.as_view(), name="correspondent-detail"),
+    path('<int:id>', MeetingValidationView.as_view(), name='meeting-update'),
 
 
 

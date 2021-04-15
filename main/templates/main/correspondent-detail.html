@@ -5,18 +5,65 @@
 <h1>Homepage Correspondents </h1>
 
 
-        <h4>{{ object.first_name }} {{ object.last_name }}</h4>
-        <p>Birthdate: {{ object.birthdate }}</p>
-        <p>Native language: {{ object.native_language }}</p>
-        <p>Hobbies: {{ object.hobbies }} </p>
-        <p>Description: {{ object.description }} </p>
+    {% for data in child_data %}
+        {{ data.first_name }} {{ data.last_name }}
+        Birthdate: {{ data.birthdate }}
+        Country: {{ data.country }}
+        Hobbies: {{ data.hobbies }}
+        Description: {{ data.description }}
+    {% endfor %}
 
 
-    <form method="post">
 
 
-    </form>
+{#% for field in meeting_update %#}
 
+
+
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Language</th>
+            <th scope="col">Details</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+            <tr>
+            {% for detail in proposition %}
+                <h1>this is the language id {{ detail.language_id}}</h1>{{ detail.language }}
+                {% for language in language_proposed %}
+                <td>{{ language.name }}</td>
+
+                {% endfor %}
+
+
+                <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}
+
+                </td>
+                <td>
+                    <select id="org">
+                  <option  value="" selected="selected">--------</option>
+                  {% for obj in select_child %}
+                   <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
+                  {% endfor %}
+                </select>
+                </td>
+
+                <td>
+
+                    <a class="btn btn-info right mr-2"
+                       href="">Submit</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{#% endfor %#}
 
 
 

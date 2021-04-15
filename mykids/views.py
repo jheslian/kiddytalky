@@ -54,6 +54,8 @@ class UpdateChildView(UpdateView):
 
     def get_object(self):
         id_ = self.kwargs.get("id")
+
+        # Languagetolearn.objects.filter('language__language_choices'=)
         return get_object_or_404(Child, id=id_)
 
 
@@ -151,7 +153,6 @@ class planning_view(FormView, generic.ListView):
 
             conn = http.client.HTTPSConnection("api.zoom.us")
 
-
             date_input = request.POST['date_slot']
             start_time = request.POST['start_time_slot']
             end_time = request.POST['end_time_slot']
@@ -173,11 +174,11 @@ class planning_view(FormView, generic.ListView):
             minutes = int(delta.total_seconds() / 60)
             print(minutes)
 
-            print("DURATION",minutes)
+            print("DURATION", minutes)
 
 
 
-            payload = "{\"topic\":\"API Test\",\"type\":\"1\",\"start_time\":\"+"+str(date_input)+"T"+str(start_time)+"Z\",\"duration\":\""+str(minutes)+"\",\"timezone\":\"America/New_York\",\"password\":\"password\",\"agenda\":\"Test de creation de meeting\",\"settings\":{\"host_video\":\"True\",\"participant_video\":\"True\",\"cn_meeting\":\"False\",\"in_meeting\":\"False\",\"join_before_host\":\"False\",\"mute_upon_entry\":\"False\",\"watermark\":\"False\",\"use_pmi\":\"False\",\"approval_type\":\"0\",\"audio\":\"0\",\"auto_recording\":\"none\",\"enforce_login\":\"False\",\"registrants_email_notification\":\"False\"}}"
+            payload = "{\"topic\":\"API Test\",\"type\":\"2\",\"start_time\":\"+"+str(date_input)+"T"+str(start_time)+"Z\",\"duration\":\""+str(minutes)+"\",\"timezone\":\"America/New_York\",\"password\":\"password\",\"agenda\":\"Test de creation de meeting\",\"settings\":{\"host_video\":\"True\",\"participant_video\":\"True\",\"cn_meeting\":\"False\",\"in_meeting\":\"False\",\"join_before_host\":\"True\",\"mute_upon_entry\":\"False\",\"watermark\":\"False\",\"use_pmi\":\"False\",\"approval_type\":\"0\",\"audio\":\"0\",\"auto_recording\":\"none\",\"enforce_login\":\"False\",\"registrants_email_notification\":\"False\"}}"
             envdict = dotenv_values('.env')
 
             print('EEEEE', payload)
@@ -191,13 +192,11 @@ class planning_view(FormView, generic.ListView):
             data = json.load(conn.getresponse())
 
             # ZOOM JOIN URL
-            print("THIS IS THE JOIN URL", data['join_url'])
-            print("THIS IS THE JOIN URL", data['id'])
             print('TOKEN',load_dotenv('TOKEN_URL'))
 
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
                             end_time_slot=request.POST['end_time_slot'], child_id=id_,
-                            date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['start_url']).save()
+                            date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['join_url']).save()
         #rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
         return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
