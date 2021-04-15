@@ -47,9 +47,9 @@ class Parent(models.Model):
     def get_absolute_url(self):
         return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
-    def get_success_url(self):
+    """def get_success_url(self):
         user_id = self.kwargs.get('id')
-        return reverse('myaccounts:my-account', kwargs={'id': user_id})
+        return reverse('myaccounts:my-account', kwargs={'user_id': user_id})"""
 
 
 class Child(models.Model):
