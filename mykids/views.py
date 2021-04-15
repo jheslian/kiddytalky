@@ -97,6 +97,7 @@ class ChildRegisterView(CreateView):
 
 # -------------------------------------------------
 # -------------------------------------------------
+"""
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
@@ -117,13 +118,22 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+"""
 
 
+# -------------------------------------------------
+# -------------------------------------------------
+def deletevent(request, id_event):
+    print(id_event)
+    #id_ = self.kwargs.get("id")
+    id_ =request.session['child_id']
+    print('ZZZZZZZZZZ', id_)
+    Languagetolearn.objects.get(id=id_event).delete()
 
+    return redirect(f"/mykids/{id_}/planning")
 
 
 class planning_view(FormView, generic.ListView):
-    # login_url = 'signup'
     model = Languagetolearn
     form_class = EventForm
     template_name = 'planning.html'
@@ -131,17 +141,9 @@ class planning_view(FormView, generic.ListView):
     def post(self, request, *args, **kwargs):
 
         id_ = self.kwargs.get("id")
-
-        print("CHILD ID URL", id_)
-        print('PPPPPP', request.POST['start_time_slot'] >= request.POST['end_time_slot'])
-
-        # event_form = EventForm(request.POST)
-
-        print('rrrrr', datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today())
-
+        self.request.session['child_id'] = id_
         if datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today():
             messages.error(request, 'the date must be greater than today')
-
         elif request.POST['start_time_slot'] >= request.POST['end_time_slot']:
             messages.error(request, 'start date must be less than the end date ')
 
@@ -196,8 +198,17 @@ class planning_view(FormView, generic.ListView):
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
                             end_time_slot=request.POST['end_time_slot'], child_id=id_,
                             date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['join_url']).save()
+        rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
-        return redirect(f"/mykids/{id_}/planning")
+        return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['rqt'] = Languagetolearn.objects.filter(last_name_id=self.request.session['child_id'])
+
+        # context['deleteEvent'] = delete_event(request, id_event=self.kwargs.get("id_event"))
+        return context
 
 
 """
@@ -240,5 +251,6 @@ def event_details(request, event_id):
     }
     return render(request, 'event-details.html', context)
 """
+
 
 
