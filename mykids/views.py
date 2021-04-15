@@ -197,15 +197,15 @@ class planning_view(FormView, generic.ListView):
 
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
                             end_time_slot=request.POST['end_time_slot'], child_id=id_,
-                            date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['join_url']).save()
-        rqt = Languagetolearn.objects.filter(last_name_id=id_)
+                            date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['start_url']).save()
+        #rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
         return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['rqt'] = Languagetolearn.objects.filter(last_name_id=self.request.session['child_id'])
+        context['rqt'] = Languagetolearn.objects.filter(child_id=self.request.session['child_id'])
 
         # context['deleteEvent'] = delete_event(request, id_event=self.kwargs.get("id_event"))
         return context
