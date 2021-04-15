@@ -145,7 +145,7 @@ def next_month(d):
 def deletevent(request, id_event):
     print(id_event)
     #id_ = self.kwargs.get("id")
-    id_ =request.session['child_id']
+    id_ = request.session['child_id']
     print('ZZZZZZZZZZ', id_)
     Languagetolearn.objects.get(id=id_event).delete()
 

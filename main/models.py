@@ -102,3 +102,19 @@ class Languagetolearn(models.Model):
     def get_html_url(self):
         url = reverse('', args=(self.id,))
         return f'<a href="{url}"> {self.language} </a>'
+
+
+
+
+class Message(models.Model):
+    message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
+    message_from = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_from')
+    message_date = models.DateTimeField('date sent', auto_now_add=True)
+    content = models.TextField()
+
+    # title = models.CharField(max_length=20)
+    child = models.ForeignKey(Child, on_delete=models.CASCADE)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
+    date_slot = models.DateField()
+    start_time_slot = models.TimeField()
+    end_time_slot = models.TimeField()

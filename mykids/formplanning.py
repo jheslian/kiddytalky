@@ -26,7 +26,7 @@ class EventForm(ModelForm):
             'start_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
             'end_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
         }
-
+        field1 = forms.ModelChoiceField(queryset=Language.objects.all())
         exclude = ['last_name']
 
     def __init__(self, *args, **kwargs):
