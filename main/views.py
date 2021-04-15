@@ -1,11 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from main.models import Parent
-from django.views.generic import DetailView
+from main.models import Parent, Child
+from django.views.generic import DetailView, ListView
 from crum import get_current_user
 import requests
 import json
 import http.client
 from django.http import HttpResponseRedirect
+
+
+def index_view(request):
+    return render(request, 'index.html')
 
 
 def home_view(request):
@@ -19,8 +23,20 @@ def home_view(request):
     return render(request, 'main/home.html')
 
 
-def index_view(request):
-    return render(request, 'index.html')
+class CorrespondentListView(ListView):
+   template_name = 'main/home.html'
+   queryset = Child.objects.all()
+
+
+
+
+class CorrespondentDetailView(DetailView):
+    template_name = 'main/correspondent-detail.html'
+    queryset = Child.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Child, id=id_)
 
 
 class MyHomeView(DetailView):

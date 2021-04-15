@@ -4,6 +4,15 @@
 
 <h1>Homepage Correspondents </h1>
 
+    {% for child in object_list %}
+        <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a></h4>
+        <p>wish to learn: {{ child.language}} </p>
+        <p>native language: {{ child.native_language }}</p>
+
+
+
+    {% endfor %}
+
 
 
 

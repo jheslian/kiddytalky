@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>My kids</h1>
-
-
-    <h3> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h3>
-
-    <h2> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h2>
-
-    {% for child in object_list %}
-        <p><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></p>
-
-    {% endfor %}
+    <h1>My kids</h1>
+      <h2> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h2>
 
 
+
+<div class="container">
+
+{% for child in object_list %}
+   {% if forloop.counter|divisibleby:3  %}<div class="row">{% endif %}
+
+    <div class="col-sm">
+     <p><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></p>
+
+    </div>
+
+       {% endfor %}
+
+  </div>
+</div>
 
 
 {% endblock %}

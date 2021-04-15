@@ -14,8 +14,11 @@ from django.urls import reverse_lazy
 from main.models import *
 from .utils import Calendar
 from .formplanning import EventForm
-
-from crum import get_current_user
+import json
+import http.client
+from dotenv import load_dotenv, dotenv_values
+from django.http import HttpResponseRedirect
+from datetime import datetime, timedelta
 
 
 def child_list_view(request):
@@ -144,9 +147,55 @@ class planning_view(FormView, generic.ListView):
 
         else:
 
+            conn = http.client.HTTPSConnection("api.zoom.us")
+
+
+            date_input = request.POST['date_slot']
+            start_time = request.POST['start_time_slot']
+            end_time = request.POST['end_time_slot']
+            #duration_time = end_time - start_time
+
+            fmt = '%H:%M'
+            start_timestamp = datetime.strptime(start_time, fmt)
+            print("00000")
+            end_timestamp = datetime.strptime(end_time, fmt)
+            print("Start: ", start_timestamp)
+            print("End: ", end_timestamp)
+            # duration = timedelta(end_timestamp.time()-start_timestamp.time())
+            print("YYY",end_timestamp.time(), start_timestamp.time())
+            calcul = end_timestamp - start_timestamp
+            calcul = str(calcul)
+
+
+            delta = timedelta(hours=int(calcul.split(':')[0]), minutes=int(calcul.split(':')[1]), seconds=int(calcul.split(':')[2]))
+            minutes = int(delta.total_seconds() / 60)
+            print(minutes)
+
+            print("DURATION",minutes)
+
+
+
+            payload = "{\"topic\":\"API Test\",\"type\":\"1\",\"start_time\":\"+"+str(date_input)+"T"+str(start_time)+"Z\",\"duration\":\""+str(minutes)+"\",\"timezone\":\"America/New_York\",\"password\":\"password\",\"agenda\":\"Test de creation de meeting\",\"settings\":{\"host_video\":\"True\",\"participant_video\":\"True\",\"cn_meeting\":\"False\",\"in_meeting\":\"False\",\"join_before_host\":\"False\",\"mute_upon_entry\":\"False\",\"watermark\":\"False\",\"use_pmi\":\"False\",\"approval_type\":\"0\",\"audio\":\"0\",\"auto_recording\":\"none\",\"enforce_login\":\"False\",\"registrants_email_notification\":\"False\"}}"
+            envdict = dotenv_values('.env')
+
+            print('EEEEE', payload)
+
+            headers = {
+                'content-type': "application/json",
+                'authorization': envdict["TOKEN_URL"]
+            }
+
+            conn.request("POST", "/v2/users/justinjhes@gmail.com/meetings", payload, headers)
+            data = json.load(conn.getresponse())
+
+            # ZOOM JOIN URL
+            print("THIS IS THE JOIN URL", data['join_url'])
+            print("THIS IS THE JOIN URL", data['id'])
+            print('TOKEN',load_dotenv('TOKEN_URL'))
+
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
-                            end_time_slot=request.POST['end_time_slot'], last_name_id=id_,
-                            date_slot=request.POST['date_slot']).save()
+                            end_time_slot=request.POST['end_time_slot'], child_id=id_,
+                            date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['join_url']).save()
 
         return redirect(f"/mykids/{id_}/planning")
 

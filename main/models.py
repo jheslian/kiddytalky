@@ -62,13 +62,9 @@ class Child(models.Model):
     description = models.TextField(max_length=300, null=True, blank=True)
     country = models.CharField(max_length=100, null=True, blank=True)
     # language_to_learn = models.ManyToManyField(Language, default="")
-    """language_choices = [
-        ('English', 'English'),
-        ('Mandarin', 'Mandarin'),
-        ('Spanish', 'Spanish')
-    ]
-    language_to_learn = models.CharField(choices=language_choices, max_length=100, default='')"""
+
     # date_joined = models.DateField(auto_now_add=True, null=True)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
     parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0, blank=True)
 
     def __str__(self):
@@ -77,15 +73,23 @@ class Child(models.Model):
     def get_absolute_url(self):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
+    def get_corresponent_url(self):
+        return reverse("main:correspondent-detail", kwargs={"id": self.id})
+
 
 class Languagetolearn(models.Model):
-    
+    child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent',
+                                            default=1)
+    child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1, related_name="participant_language")
+    correspondent_language = models.ForeignKey(Language, default=1, on_delete=models.CASCADE,
+                                               related_name='correspondent_language', blank=True)
 
+    status_choice = [('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Completed', 'Completed')]
+    validation_status = models.CharField(max_length=10, choices=status_choice, default="Pending")
+    link_video = models.CharField(max_length=500, blank=True, default='',)
+    meeting_id = models.IntegerField(default=0)
 
-
-
-    child = models.ForeignKey(Child, on_delete=models.CASCADE)
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
     date_slot = models.DateField()
     start_time_slot = models.TimeField()
     end_time_slot = models.TimeField()
@@ -93,35 +97,12 @@ class Languagetolearn(models.Model):
     def get_absolute_url(self):
         return reverse('main:mykids:event-detail', args=(self.id,))
 
-    @property
-    def get_html_url(self):
-        url = reverse('', args=(self.id,))
-        return f'<a href="{url}"> {self.language} </a>'
+
+    def __str__(self):
+        self.date_slot
 
 
 """
-
-class Visio(models.Model):
-    child_participant = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant', default=1)
-    child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent', default=1)
-    participant_language = models.ForeignKey(Language, on_delete=models.CASCADE, default='English',
-                                             related_name="participant_language")
-    correspondent_language = models.ForeignKey(Language, default='', on_delete=models.CASCADE,
-                                               related_name='correspondent_language')
-    visio_start = models.DateTimeField()
-    visio_end = models.DateTimeField()
-    visio_date = models.DateTimeField()
-    link_video = models.CharField(max_length=500, blank=True, default='')
-    meeting_id = models.IntegerField()
-    #
-
-    #status_choice = [('Pending', 'Pending'), ('Confirmed', 'Confirmed'), ('Completed', 'Completed')]
-    #validation_status = models.CharField(max_length=10, choices=status_choice)
-
-    def __str__(self):
-        return self.first_name
-
-
 
 class Message(models.Model):
     message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
@@ -135,7 +116,6 @@ class Message(models.Model):
     date_slot = models.DateField()
     start_time_slot = models.TimeField()
     end_time_slot = models.TimeField()
-
 
 """
 

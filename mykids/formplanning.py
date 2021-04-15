@@ -25,6 +25,12 @@ class EventForm(ModelForm):
             'date_slot': DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
             'start_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
             'end_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
+            'child_correspondent': forms.HiddenInput(),
+            'correspondent_language': forms.HiddenInput(),
+            'validation_status': forms.HiddenInput(),
+            'link_video': forms.HiddenInput(),
+            'meeting_id': forms.HiddenInput()
+
         }
 
         exclude = ['last_name']
@@ -35,6 +41,7 @@ class EventForm(ModelForm):
         self.fields['start_time_slot'].input_formats = ('%H:%M',)
         self.fields['end_time_slot'].input_formats = ('%H:%M',)
         self.fields['language'].queryset = Language.objects.all()
+
 
     def clean_date_slot(self):
         date_slot = self.cleaned_data['date_slot']

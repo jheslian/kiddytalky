@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Homepage Correspondents </h1>
+
+
+        <h4>{{ object.first_name }} {{ object.last_name }}</h4>
+        <p>Birthdate: {{ object.birthdate }}</p>
+        <p>Native language: {{ object.native_language }}</p>
+        <p>Hobbies: {{ object.hobbies }} </p>
+        <p>Description: {{ object.description }} </p>
+
+
+    <form method="post">
+
+
+    </form>
+
+
+
+
+{% endblock %}
