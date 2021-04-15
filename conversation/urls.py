@@ -6,5 +6,6 @@ app_name = 'conversation'
 
 urlpatterns = [
     path('', conversation_view, name='messages'),
+
     
 ]

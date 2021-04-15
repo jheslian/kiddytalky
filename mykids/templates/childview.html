@@ -14,15 +14,39 @@
 	<button><a class="btn btn-info right mr-2" href="{{ object.id }}/planning"> plannification</a></button>
 </div>
 
-<div class="clearfix">
-
-	<button><a class="btn btn-info right mr-2" href="{{ object.id }}/planning"> Messages</a></button>
-</div>
 
 
 <p>
     <a href="{{ object.id }}/delete"><input type="button" value="Delete profile"></a>
     <a href="{{ object.id }}/edit"><input type="button" value="Edit profile"></a>
 </p>
+
+
+ <!--  +++++++++++++++++++++++++++++++ Messagerie vue profile mon ami++++++++++++++++  -->
+
+
+    <h1> Messagerie </h1>
+    <form action="{% url 'main:mykids:sendmessage' %}" method="post">
+        {% csrf_token %}
+        <!--<table class="form form-table">
+            {#  #}{ form.as_p }}</table>-->
+           <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+
+               <textarea name="content"></textarea>
+
+                <span class="message-time pull-right"> Sun</span>
+            </div>
+          </div>
+
+        </div>
+
+
+
+    <button type="submit"> Envoyer </button>
+    </form>
+
+
 
 {% endblock %}

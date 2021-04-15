@@ -13,8 +13,7 @@ import calendar
 from django.urls import reverse_lazy
 from main.models import *
 from .utils import Calendar
-from .formplanning import EventForm
-
+from .formplanning import EventForm, SendMessage
 from crum import get_current_user
 
 """class ChildListView(ListView):
@@ -144,7 +143,7 @@ def next_month(d):
 # -------------------------------------------------
 def deletevent(request, id_event):
     print(id_event)
-    #id_ = self.kwargs.get("id")
+    # id_ = self.kwargs.get("id")
     id_ = request.session['child_id']
     print('ZZZZZZZZZZ', id_)
     Languagetolearn.objects.get(id=id_event).delete()
@@ -184,43 +183,18 @@ class planning_view(FormView, generic.ListView):
         return context
 
 
-"""
+# --------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # print('CCCCC-----------', context)
-        # print('SsSS-------------', self.request.GET.get('month', None))
-        d1 = datetime.today()
-        print('TTTTTToday---------------', d1)
 
-        print('Year____TTTTTT', d1.year)
-        print('Month____TTTTTTTT', d1.month)
+def sendmessage(request):
+    form = SendMessage(request.POST)
+    id_ = request.session['child_id']
+    print('______________________',id_)
+    if request.method == 'POST':
 
-        d = get_date(self.request.GET.get('month', None))
+        print('XXXXXXXXX',request.POST['content'])
 
-        # print('DDDDD---------------', d)
-        # print('Year___DDDDDd', d.year)
-        # print('Month___DDDDDDD', d.month)
-        cal = Calendar(d.year, d.month)
-        print('_______________________________________________')
-        html_cal = cal.formatmonth(withyear=True)
+        Message(content=request.POST['content'], child_id=id_, message_from_id=1, message_to_id=1).save()
 
-        # print('_________', html_cal)
-        context['calendar'] = mark_safe(html_cal)
-        print('_______________________________________________')
-        context['prev_month'] = prev_month(d)
-        context['next_month'] = next_month(d)
-
-        return context
-
-"""
-
-"""
-
-def event_details(request, event_id):
-    event = Languagetolearn.objects.get(id=event_id)
-    context = {
-        'event': event,
-    }
-    return render(request, 'event-details.html', context)
-"""
+    return redirect(f"/mykids/{id_}/planning")
