@@ -1,36 +1,50 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Parent, Child, Languagetolearn, Language
+from .models import Parent, Child, Languagetolearn, Language, Country
 from django.views.generic import DetailView, ListView, UpdateView
 from crum import get_current_user
-from mykids.formplanning import EventForm
-import requests
 import json
 import http.client
-from .forms import MeetingValidationForm
+
 from django.http import HttpResponseRedirect
-from mykids.forms import EditChildInfo
 
 
 def index_view(request):
     return render(request, 'index.html')
 
 
-"""
-def home_view(request):
-    # id_ = self.kwargs.get("id")
-    # self.request.session['id_parent'] = id_
-    # parent = Parent.objects.get(user_id=id_)
-    # cache.set('parent_id', parent.id)
-    #request.session['correspondent_id']
-    e = get_current_user()
-    print("HOME CRUMMMMMM", e.id)
-
-    return render(request, 'main/home.html')"""
-
-
-class CorrespondentListView(ListView):
+"""class CorrespondentListView(ListView):
     template_name = 'main/home.html'
-    queryset = Child.objects.all()
+    queryset = Child.objects.all()"""
+
+
+def correspondent_list_view(request):
+    country = Country.objects.all()
+    language = Language.objects.all()
+
+    language_option = request.GET.get('language')
+    print("lang", language)
+
+    country_option = request.GET.get('country')
+    print("count", country)
+
+
+    if country_option and language_option:
+        queryset = Child.objects.filter(country_id=country_option, language_id=language_option)
+    elif country_option:
+        queryset = Child.objects.filter(country_id=country_option)
+    elif language_option:
+        queryset = Child.objects.filter(language_id=language_option)
+    else:
+        queryset = Child.objects.all()
+    
+
+
+    context = {
+        "object_list": queryset,
+        "option_country": country,
+        "option_laguage": language
+    }
+    return render(request, 'main/home.html', context)
 
 
 class MeetingValidationView(ListView):
@@ -42,7 +56,6 @@ class MeetingValidationView(ListView):
         # context = super(CorrespondentDetailView, self).get_context_data(**kwargs)
         id_ = self.kwargs.get('id')
         print("GETCONTEXT ID", id_)
-
 
         context = super(MeetingValidationView, self).get_context_data(**kwargs)
 
@@ -62,10 +75,8 @@ class MeetingValidationView(ListView):
         return context
 
 
-
-
-def accept_event(request,id_child, id_event):
-    #print('SELECT CHILD ID', id)
+def accept_event(request, id_child, id_event):
+    # print('SELECT CHILD ID', id)
     correspondent_id = request.GET.get('option', None)
 
     print("ID CHILD who proposed", id_child)
@@ -75,10 +86,11 @@ def accept_event(request,id_child, id_event):
     language = Child.objects.get(id=id_child)
     print("Child langID", language.id)
 
-    Languagetolearn.objects.filter(id=id_event).update(validation_status='Confirmed', child_correspondent_id=correspondent_id, correspondent_language_id=language.language_id)
+    Languagetolearn.objects.filter(id=id_event).update(validation_status='Confirmed',
+                                                       child_correspondent_id=correspondent_id,
+                                                       correspondent_language_id=language.language_id)
 
     print("buttona accept")
-
 
     return redirect(f"/{id_child}")
 

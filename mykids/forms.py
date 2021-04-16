@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.core.cache import cache
-from main.models import Child, User as MyCustomUser, Parent, Language
+from main.models import Child, User as MyCustomUser, Parent, Language, Country
 from django.contrib.sessions.models import Session
 from django.utils import timezone
 from crum import get_current_user
@@ -22,6 +22,7 @@ class ChildRegistrationForm(UserCreationForm):
     last_name = forms.CharField(required=True)
     native_language = forms.CharField()
     birthdate = forms.DateField()
+    country = forms.ModelChoiceField(queryset=Country.objects.all())
     language = forms.ModelChoiceField(queryset=Language.objects.all())
 
 
@@ -45,6 +46,7 @@ class ChildRegistrationForm(UserCreationForm):
         parent = Parent.objects.get(user_id=user_id)
         child.parent_id = parent.id
         child.language_id = self.cleaned_data.get('language')
+        child.country_id=self.cleaned_data.get('country')
 
         child.save()
 

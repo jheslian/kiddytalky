@@ -9,7 +9,7 @@ urlpatterns = [
 
     # MAIN MENU
     #path('home/', home_view, name='home'),
-    path('home/', CorrespondentListView.as_view(), name='home'),
+    path('home/', correspondent_list_view, name='home'),
     path('<int:id>', MeetingValidationView.as_view(), name='meeting-update'),
     path('accept/(?P<id_event>\d+)/(?P<id_child>\d+)', accept_event, name='accept-event'),
     path('contacts', include('kiddytalks.urls')),
