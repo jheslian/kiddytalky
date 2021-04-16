@@ -21,19 +21,6 @@ class ParentRegisterView(CreateView):
 
 
 def login_request(request):
-    """url = "https://api.zoom.us/v2/meetings/7786931907"
-
-    headers = {
-        'authorization': 'Bearer eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiI2YTNkMTAzMy1iNTk1LTQ4YTYtOGQ4MC0yNmFhOTY2NzVhOWQifQ.eyJ2ZXIiOjcsImF1aWQiOiIwNjYwNGNmZjIzM2YyMGExMjMzOGE1ZjU5YTMyNzkyNCIsImNvZGUiOiJMM1FualYwMEI4X0tUaEVoaGZNU2NlWFBDNEFYZjZsRnciLCJpc3MiOiJ6bTpjaWQ6ZldUNzI2YVNTS1NwOE5VSzh5YzY5ZyIsImdubyI6MCwidHlwZSI6MCwidGlkIjowLCJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiJLVGhFaGhmTVNjZVhQQzRBWGY2bEZ3IiwibmJmIjoxNjE4MzI5OTc4LCJleHAiOjE2MTgzMzM1NzgsImlhdCI6MTYxODMyOTk3OCwiYWlkIjoiZXo3R0ZuSDhUb1dvNUdUOWY0eDVxUSIsImp0aSI6IjQ0Yzk1NzI0LTAwODktNDg1YS05NWQyLTZiY2VkYzU3ZmM0YSJ9.nc-8v0deNHEmGo4DUw2EDfyCwZNgjKgPLx0R4Wc-y_ihyYS7lXNXOGFqp2r0Kk2ridY4UL36cIVdm0QXGXMeeA'}
-
-    response = request("GET", url, headers=headers)
-
-    print(response.text)"""
-
-
-
-
-
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
@@ -62,6 +49,7 @@ def login_request(request):
 
 def logout_view(request):
     logout(request)
+    request.session.flush()
     return redirect('/')
 
 

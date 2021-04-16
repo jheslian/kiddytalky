@@ -36,7 +36,6 @@ class CorrespondentListView(ListView):
 class MeetingValidationView(ListView):
     model = Languagetolearn
     template_name = 'main/correspondent-detail.html'
-    success_url = '/home'
 
     def get_context_data(self, **kwargs):
         # context = super().get_context_data(**kwargs)
@@ -60,51 +59,8 @@ class MeetingValidationView(ListView):
         child = Child.objects.filter(id=id_)
         context['child_data'] = child
 
-        """ child_lang = Languagetolearn.objects.filter(child_id=id_)
-
-        proposed_language = Language.objects.filter(id=child_lang.language_id)
-        print("HGDGNFFNDS", proposed_language)
-        context['language_proposed'] = proposed_language"""
         return context
 
-
-    """class AcceptEvent(UpdateView):
-    print('the proposition id', id)
-    # id_ = self.kwargs.get("id")
-    test = request.GET.get('option', None)
-
-    print("ID CHILD", id_child)
-    print("ID EVENT", id_event)
-    print("the select value", test)
-    
-    template_name = 'main/correspondent-detail.html'
-    form_class = MeetingValidationForm
-    queryset = Languagetolearn.objects.all()
-    #success_url = f"/{id}"
-
-    def form_valid(self, form,):
-
-        print(form.cleaned_data)
-        return super().form_valid(form)
-
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Languagetolearn, id=id_)
-
-
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-
-
-    #id_ = request.session['child_id']
-    #print('ZZZZZZZZZZ', id_)
-    # Languagetolearn.objects.get(id=id_event).delete()
-    Languagetolearn.objects.filter(id=id).update(validation_status='Confirmed' )
-    # correspondent_language_id=1
-    # child_correspondent_id = id,"""
-
-    # return redirect(f"/{id}")
 
 
 

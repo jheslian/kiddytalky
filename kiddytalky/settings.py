@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'kiddytalks',
-    'correspondents',
     'mykids',
     'myaccounts',
     'conversation'

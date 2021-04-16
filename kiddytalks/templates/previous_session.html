@@ -3,6 +3,13 @@
 {% block content %}
 
 <h1>Previous Contacts</h1>
+    {% for child in parent_childs %}
+
+        {{ child.first_name }} {#{ child.last_name }#}
+        {#{ child.native_language }#}
+        {#{ child.country }#}
+
+    {% endfor %}
 
 
 {% endblock %}
