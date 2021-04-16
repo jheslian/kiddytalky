@@ -8,7 +8,7 @@ class MeetingValidationForm(forms.ModelForm):
         model = Languagetolearn
 
 
-        fields = ['child_correspondent']
+        fields = ['child_correspondent', 'correspondent_language', 'validation_status']
 
 
 

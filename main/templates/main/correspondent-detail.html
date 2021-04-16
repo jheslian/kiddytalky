@@ -2,29 +2,27 @@
 
 {% block content %}
 
-<h1>Homepage Correspondents </h1>
 
 
-    {% for data in child_data %}
-        {{ data.first_name }} {{ data.last_name }}
-        Birthdate: {{ data.birthdate }}
-        Country: {{ data.country }}
-        Hobbies: {{ data.hobbies }}
-        Description: {{ data.description }}
+    {% for data in child_data %} My id: {{ data.id }}
+        <h3> {{ data.first_name|capfirst }} {{ data.last_name|capfirst }} </h3>
+        <p> Birthdate: {{ data.birthdate }} </p>
+        {% if data.country %} <p>  Country:  {{ data.country }} </p> {% endif %}
+        {% if data.hobbies %} <p> Hobbies: {{ data.hobbies }} </p> {% endif %}
+        {% if data.description %} <p> Description: {{ data.description }} </p> {% endif %}
     {% endfor %}
 
 
+    <form action="">
 
-
-{#% for field in meeting_update %#}
-
-
+    </form>
 
     <table class="table table-sm">
         <thead>
         <tr>
             <th scope="col">Language</th>
-            <th scope="col">Details</th>
+            <th scope="col">Time</th>
+            <th scope="col">Child</th>
             <th scope="col"></th>
 
         </tr>
@@ -34,30 +32,32 @@
 
             <tr>
             {% for detail in proposition %}
-                <h1>this is the language id {{ detail.language_id}}</h1>{{ detail.language }}
-                {% for language in language_proposed %}
-                <td>{{ language.name }}</td>
 
-                {% endfor %}
+                <td> {{ detail.language }}</td>
 
 
-                <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}
+                <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}</td>
 
-                </td>
-                <td>
-                    <select id="org">
-                  <option  value="" selected="selected">--------</option>
-                  {% for obj in select_child %}
-                   <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
-                  {% endfor %}
-                </select>
-                </td>
 
                 <td>
+                    <select id="option">
+                      <option  value="" selected="selected">--------</option>
+                            {% for obj in select_child %}
+                       <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
+                        {% endfor %}
 
-                    <a class="btn btn-info right mr-2"
-                       href="">Submit</a>
+                    </select>
+                                {#% endfor %#}
+
+
                 </td>
+
+                <td>
+                    <a class="btn btn-info right mr-2" href="{% url  'main:accept-event' id_event=detail.id id_child=detail.child_id id=1 %} ">Accept</a>
+
+                </td>
+
+
 
             </tr>
         {% endfor %}

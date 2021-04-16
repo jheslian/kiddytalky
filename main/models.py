@@ -74,6 +74,7 @@ class Child(models.Model):
         return reverse("main:mykids:child-view", kwargs={"id": self.id})
 
     def get_corresponent_url(self):
+
         return reverse("main:meeting-update", kwargs={"id": self.id})
 
 

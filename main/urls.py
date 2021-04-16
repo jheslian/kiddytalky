@@ -26,8 +26,9 @@ urlpatterns = [
     path('home/', CorrespondentListView.as_view(), name='home'),
     #path('<int:id>', CorrespondentDetailView.as_view(), name="correspondent-detail"),
     path('<int:id>', MeetingValidationView.as_view(), name='meeting-update'),
-
-
+    path('accept/(?P<id_event>\d+)/(?P<id_child>\d+)(?P<id>\d+)', accept_event, name='accept-event'),
+    #path('<int:id>/accept', AcceptEvent.as_view(), name='accept-event'),
+    # (?P<id_event>\d+)/(?P<id_child>\d+)
 
 
 
