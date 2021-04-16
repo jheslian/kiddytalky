@@ -40,22 +40,19 @@
 
 
                 <td>
-                    <select id="option">
-                      <option  value="" selected="selected">--------</option>
+                    <form action="{% url 'main:accept-event' id_event=detail.id id_child=detail.child_id %}" method="get">
+                        <select name="option">
+                          <option  value="" selected="selected">--------</option>
                             {% for obj in select_child %}
-                       <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
-                        {% endfor %}
+                           <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
+                            {% endfor %}
 
-                    </select>
-                                {#% endfor %#}
-
-
+                        </select>
+                        <input type="submit" value="Accept"/>
+                    </form>
                 </td>
 
-                <td>
-                    <a class="btn btn-info right mr-2" href="{% url  'main:accept-event' id_event=detail.id id_child=detail.child_id id=1 %} ">Accept</a>
 
-                </td>
 
 
 

@@ -108,21 +108,21 @@ class MeetingValidationView(ListView):
 
 
 
-def accept_event(request,id_child, id_event, id):
-    print('SELECT CHILD ID', id)
-    # id_ = self.kwargs.get("id")
-    test = request.GET.get('option', None)
+def accept_event(request,id_child, id_event):
+    #print('SELECT CHILD ID', id)
+    correspondent_id = request.GET.get('option', None)
 
     print("ID CHILD who proposed", id_child)
     print("ID EVENT", id_event)
-    print("the select value", test)
+    print("the select valueGGGGG", correspondent_id)
 
-    #id_ = request.session['child_id']
-    #print('ZZZZZZZZZZ', id_)
-    # Languagetolearn.objects.get(id=id_event).delete()
-    Languagetolearn.objects.filter(id=id).update(validation_status='Confirmed' )
-    # correspondent_language_id=1
-    # child_correspondent_id = id,
+    language = Child.objects.get(id=id_child)
+    print("Child langID", language.id)
+
+    Languagetolearn.objects.filter(id=id_event).update(validation_status='Confirmed', child_correspondent_id=correspondent_id, correspondent_language_id=language.language_id)
+
+    print("buttona accept")
+
 
     return redirect(f"/{id_child}")
 
