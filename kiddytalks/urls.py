@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import previous_session_view
-from . import views
+from .views import PreviousSessionView, session
 
 app_name = 'kiddytalks'
+
 urlpatterns = [
-    path('', previous_session_view, name='contacts'),]
+    #path('', PreviousSessionView.as_view(), name='contacts'),
+    path('', session, name='contacts'),
+
+]

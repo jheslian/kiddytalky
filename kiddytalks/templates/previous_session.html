@@ -2,7 +2,29 @@
 
 {% block content %}
 
-<h1>Previous Contacts</h1>
+
+    <form action="{% url 'main:kiddytalks:contacts' %}" method="get">
+        <select name="option">
+
+            <option  value="" selected="selected">All</option>
+                {% for obj in select_child %}
+            <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
+                {% endfor %}
+
+        </select>
+        <input type="submit" value="Search"/>
+    </form>
+
+
+    <h1>Previous Contacts</h1>
+        {% for child in content %}
+            {% for data in child %}
+                <a href="{% url 'main:meeting-update' data.id %}"><h2>{{ data.first_name }} {{ data.last_name }}</h2></a>
+                {{ data.native_language }}
+                {{ data.country }}
+             {% endfor %}
+        {% endfor %}
+
 
 
 {% endblock %}

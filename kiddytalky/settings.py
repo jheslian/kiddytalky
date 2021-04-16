@@ -27,7 +27,7 @@ SECRET_KEY = load_dotenv('SECRET_KEY')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['kiddytalky.eu.ngrok.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['kiddytalky.ngrok.io', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'kiddytalks',
-    'correspondents',
     'mykids',
     'myaccounts',
     'conversation'

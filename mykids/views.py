@@ -146,7 +146,7 @@ class planning_view(FormView, generic.ListView):
         self.request.session['child_id'] = id_
         if datetime.strptime(request.POST['date_slot'], "%Y-%m-%d") < datetime.today():
             messages.error(request, 'the date must be greater than today')
-        elif request.POST['start_time_slot'] >= request.POST['end_time_slot']:
+        elif request.POST['start_time_slot'] > request.POST['end_time_slot']:
             messages.error(request, 'start date must be less than the end date ')
 
         else:
