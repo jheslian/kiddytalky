@@ -170,7 +170,7 @@ class planning_view(FormView, generic.ListView):
             Languagetolearn(language_id=request.POST['language'], start_time_slot=request.POST['start_time_slot'],
                             end_time_slot=request.POST['end_time_slot'], last_name_id=id_,
                             date_slot=request.POST['date_slot']).save()
-        rqt = Languagetolearn.objects.filter(last_name_id=id_)
+        # rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
         return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
 
@@ -187,14 +187,14 @@ class planning_view(FormView, generic.ListView):
 # --------------------------------------------------------------------------
 
 
+
 def sendmessage(request):
-    form = SendMessage(request.POST)
+    # form = SendMessage(request.POST)
     id_ = request.session['child_id']
-    print('______________________',id_)
+    print('______________________', id_)
     if request.method == 'POST':
+        print('XXXXXXXXX', request.POST['content'])
 
-        print('XXXXXXXXX',request.POST['content'])
-
-        Message(content=request.POST['content'], child_id=id_, message_from_id=1, message_to_id=1).save()
+        Message(content=request.POST['content'], child_id=id_, message_from_id=2, message_to_id=1).save()
 
     return redirect(f"/mykids/{id_}/planning")
