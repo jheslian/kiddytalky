@@ -139,8 +139,8 @@ def next_month(d):
 """
 
 
-# -------------------------------------------------
-# -------------------------------------------------
+# ------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 def deletevent(request, id_event):
     print(id_event)
     # id_ = self.kwargs.get("id")
@@ -151,6 +151,7 @@ def deletevent(request, id_event):
     return redirect(f"/mykids/{id_}/planning")
 
 
+# ------------------------------------------------------------------------
 class planning_view(FormView, generic.ListView):
     model = Languagetolearn
     form_class = EventForm
@@ -187,7 +188,6 @@ class planning_view(FormView, generic.ListView):
 # --------------------------------------------------------------------------
 
 
-
 def sendmessage(request):
     # form = SendMessage(request.POST)
     id_ = request.session['child_id']
@@ -197,4 +197,4 @@ def sendmessage(request):
 
         Message(content=request.POST['content'], child_id=id_, message_from_id=2, message_to_id=1).save()
 
-    return redirect(f"/mykids/{id_}/planning")
+    return redirect(f"/mykids/{id_}")
