@@ -4,6 +4,7 @@ from main.models import Parent, User, Child
 from .forms import EditParentInfo
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView, PasswordResetDoneView
+from django.contrib.auth import logout
 
 
 def my_account_view(request):
@@ -55,6 +56,13 @@ class DeleteParentView(DeleteView):
 class ParentPasswordChangeView(PasswordChangeView):
     template_name = 'parent/change_pass_parent.html'
     success_url = reverse_lazy('main:myaccounts:parent-password-succes')
+
+    def form_valid(self, form):
+        form.save()
+        logout(self.request)
+        self.request.session.flush()
+        return super().form_valid(form)
+
 
 
 

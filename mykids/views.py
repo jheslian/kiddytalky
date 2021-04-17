@@ -2,23 +2,18 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic import UpdateView, DetailView, DeleteView, CreateView, ListView, FormView
 from .forms import EditChildInfo, ChildRegistrationForm
 from main.models import Child, User, Parent, Languagetolearn
-from django.core.cache import cache
-from datetime import datetime, date, timedelta
-import datetime as dt
+
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect, request
 from django.views import generic
-from django.utils.safestring import mark_safe
-import calendar
 from django.urls import reverse_lazy
 from main.models import *
-from .utils import Calendar
 from .formplanning import EventForm
 import json
 import http.client
 from dotenv import load_dotenv, dotenv_values
-from django.http import HttpResponseRedirect
 from datetime import datetime, timedelta
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView, PasswordResetDoneView
 
 
 def child_list_view(request):
@@ -78,53 +73,10 @@ class ChildRegisterView(CreateView):
     def form_valid(self, form):
         form.save()
         return redirect('main:mykids:kids')
-        """print('id user: ', id_)
-        parent = Parent.objects.get(user_id=id_)
-        print('Objet user: ', parent)
-        print("id du parent: ", parent.id)"""
-        # Child.parent_id = parent.id
-        #  child = Child.objects.create(parent_id=parent.id)
-        # child = Child.parent_id
-        # print("child object",child)
-        # child.save()
-
-    """ def get_context_data(self):
-        context = super().get_context_data()
-        id_ = self.request.session['id_parent']
-        parent = Parent.objects.get(user_id=id_)
-        child = self.request.child
-        context["parent_id"] = parent.objects.all()
-        return context"""
 
 
-# -------------------------------------------------
-# -------------------------------------------------
-"""
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return datetime.today()
 
 
-def prev_month(d):
-    first = d.replace(day=1)
-    prev_month = first - timedelta(days=1)
-    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
-    return month
-
-
-def next_month(d):
-    days_in_month = calendar.monthrange(d.year, d.month)[1]
-    last = d.replace(day=days_in_month)
-    next_month = last + timedelta(days=1)
-    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
-    return month
-"""
-
-
-# -------------------------------------------------
-# -------------------------------------------------
 def deletevent(request, id_event):
     print(id_event)
     #id_ = self.kwargs.get("id")
@@ -210,46 +162,13 @@ class planning_view(FormView, generic.ListView):
         return context
 
 
-"""
+class ChildPasswordChangeView(PasswordChangeView):
+    template_name = 'parent/change_pass_parent.html'
+    success_url = reverse_lazy('main:mykids:child-password-success')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # print('CCCCC-----------', context)
-        # print('SsSS-------------', self.request.GET.get('month', None))
-        d1 = datetime.today()
-        print('TTTTTToday---------------', d1)
 
-        print('Year____TTTTTT', d1.year)
-        print('Month____TTTTTTTT', d1.month)
 
-        d = get_date(self.request.GET.get('month', None))
-
-        # print('DDDDD---------------', d)
-        # print('Year___DDDDDd', d.year)
-        # print('Month___DDDDDDD', d.month)
-        cal = Calendar(d.year, d.month)
-        print('_______________________________________________')
-        html_cal = cal.formatmonth(withyear=True)
-
-        # print('_________', html_cal)
-        context['calendar'] = mark_safe(html_cal)
-        print('_______________________________________________')
-        context['prev_month'] = prev_month(d)
-        context['next_month'] = next_month(d)
-
-        return context
-
-"""
-
-"""
-
-def event_details(request, event_id):
-    event = Languagetolearn.objects.get(id=event_id)
-    context = {
-        'event': event,
-    }
-    return render(request, 'event-details.html', context)
-"""
-
+class ChildPasswordDoneView(PasswordResetDoneView):
+    template_name = 'child/change_pass_child_success.html'
 
 
