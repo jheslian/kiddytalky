@@ -5,6 +5,9 @@
 <h1>My Account {{ request.session.id_parent }}</h1>
 
    <h2>{{ parent.first_name}} {{ parent.last_name}}</h2>
-    <a href="{{ user.get_absolute_url }}/delete"><input type="button" value="Delete profile"></a>
-    <a href="{{ user.get_absolute_url }}/edit"><input type="button" value="Edit profile"></a>
+    <a href="{{ user.get_absolute_url }}/delete"><input type="button" value="Delete Profile"></a>
+    <a href="{{ user.get_absolute_url }}/edit"><input type="button" value="Edit Profile"></a>
+    <a href="{{ user.get_absolute_url }}/change_password"><input type="button" value="Change Password"></a>
+
+
 {% endblock %}

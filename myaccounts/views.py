@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic import UpdateView, DeleteView, DetailView
 from main.models import Parent, User, Child
 from .forms import EditParentInfo
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView, PasswordResetDoneView
 
 
 def my_account_view(request):
@@ -50,4 +52,12 @@ class DeleteParentView(DeleteView):
         return get_object_or_404(User, id=id_)
 
 
+class ParentPasswordChangeView(PasswordChangeView):
+    template_name = 'parent/change_pass_parent.html'
+    success_url = reverse_lazy('main:myaccounts:parent-password-succes')
+
+
+
+class ParentPasswordDoneView(PasswordResetDoneView):
+    template_name = 'parent/change_pass_succes.html'
 

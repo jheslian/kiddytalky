@@ -30,34 +30,29 @@
 
 
 
-
-
-
-    {% for child in object_list %}
-        <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a></h4>
-        <p>Wish to learn: {{ child.language }} </p>
-        <p>Native language: {{ child.native_language }}</p>
-        <p>Country: {{ child.country }}</p>
-
-    {% endfor %}
-
     <div class="container">
-    {% load  %}
-        <div class="row">
-            {% for child in object_list | as_chunks:3 %}
-                <div class="col-sm">
+        {% for child in object_list %}
+            {% if forloop.counter0|divisibleby:3 %}
+                <div class="row text-center"> {% endif %}
+        <div class="col-md-4">
+            <div class="card p-3 m-2" >
+                <img class="rounded" src="http://placehold.it/300X150" alt="">
+                <div class="card-content">
+                    <br>
                     <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a>
                     </h4>
                     <p>Wish to learn: {{ child.language }} </p>
                     <p>Native language: {{ child.native_language }}</p>
                     <p>Country: {{ child.country }}</p>
 
-                </div>
-            {% endfor %}
+                </div><!-- card content -->
+            </div><!-- card -->
+        </div><!-- col-md-4 -->
+        {% if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing -->
 
-        </div>
-
-    </div>
+            {% endif %}
+        {% endfor %}
+    </div><!-- container -->
 
 
 
