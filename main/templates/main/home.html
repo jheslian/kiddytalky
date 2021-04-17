@@ -2,27 +2,27 @@
 
 {% block content %}
 
-<h1>Homepage Correspondents </h1>
+    <h1>Homepage Correspondents </h1>
 
     <form action="{% url 'main:home' %}" method="get">
 
 
         <select name="language">
 
-            <option  value="" selected="selected">All Languages</option>
-                {% for obj in option_laguage %}
-            <option value="{{obj.id}}">{{ obj.name|capfirst}}</option>
-                {% endfor %}
+            <option value="" selected="selected">All Languages</option>
+            {% for obj in option_laguage %}
+                <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
+            {% endfor %}
 
         </select>
 
 
         <select name="country">
 
-            <option  value="" selected="selected">All Countries</option>
-                {% for obj in option_country %}
-            <option value="{{obj.id}}">{{ obj.name|capfirst}}</option>
-                {% endfor %}
+            <option value="" selected="selected">All Countries</option>
+            {% for obj in option_country %}
+                <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
+            {% endfor %}
 
         </select>
         <input type="submit" value="Search"/>
@@ -35,13 +35,30 @@
 
     {% for child in object_list %}
         <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a></h4>
-        <p>Wish to learn: {{ child.language}} </p>
+        <p>Wish to learn: {{ child.language }} </p>
         <p>Native language: {{ child.native_language }}</p>
         <p>Country: {{ child.country }}</p>
 
-
-
     {% endfor %}
+
+    <div class="container">
+    {% load  %}
+        <div class="row">
+            {% for child in object_list | as_chunks:3 %}
+                <div class="col-sm">
+                    <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a>
+                    </h4>
+                    <p>Wish to learn: {{ child.language }} </p>
+                    <p>Native language: {{ child.native_language }}</p>
+                    <p>Country: {{ child.country }}</p>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
 
 
 
