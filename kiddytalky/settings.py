@@ -127,6 +127,12 @@ STATIC_URL = '/static/'
 
 
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static/images",
+]
+
+
+
 
 
 LOGIN_REDIRECT_URL = '/home'

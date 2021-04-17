@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %} Password Success {% endblock %}
+
+{% block change_pass_succes %}
+
+    <h1> You have successfully changed your password, Please click <a href="{% url 'main:login' %}">HERE</a> to log in </h1>
+
+{% endblock %}
