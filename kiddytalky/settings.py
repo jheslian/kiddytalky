@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'kiddytalks',
     'mykids',
     'myaccounts',
-    'conversation'
+    'conversation',
+    'child_account',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static/images",
+    'static',
 ]
 
 

@@ -47,7 +47,7 @@ class EventForm(ModelForm):
 
 
 
-    def clean_date_slot(self):
+def clean_date_slot(self):
         date_slot = self.cleaned_data['date_slot']
 
         if date_slot < dt.date.today():

@@ -30,13 +30,18 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 request.session['username'] = username
-                request.session['id_parent'] = user.id
-                print(request.session['id_parent'])
+                #request.session['id_parent'] = user.id
+                #request.session['id_child_app'] = user.id
+
 
                 if user.is_parent:
+                    request.session['id_parent'] = user.id
+                    print(request.session['id_parent'])
                     return redirect('main:home')
-                #else:
-                    #return redirect('main:kids_accounts')
+                else:
+                    request.session['id_child_app'] = user.id
+                    print("CHILD APP SESSION ID",  request.session['id_child_app'])
+                    return redirect('child_account:child-home')
 
             else:
                 messages.error(request, "Invalid username or password")

@@ -53,17 +53,12 @@ def session(request):
         for kiddy_talk in meetings_with_my_child_as_corr:
             current_id = kiddy_talk['child']
             # check if the current id to append is already known
-            # print("SSSSS,", meetings_with_my_child_as_corr)
-            # current_id = meetings_with_my_child_as_corr[0]['child']
             if current_id not in previous_sessions:
                 # then add it to the final list
                 previous_sessions.append(current_id)
 
     print("TO DISPLAY: ", previous_sessions)
 
-    # exclure les id de nos propres enfants filtrage à faire sur la colone child_id ET child_correspondant
-    print("Child SESSIONS", previous_sessions)
-    # Optionnel, à voir: exclure les doublons d'enfants pour n'avoir qu'un exemplaire de chaque enfant avec qui on a eu des contacts
     children_to_display = []
     for index, child_id in enumerate(previous_sessions):
         children_to_display.append(Child.objects.filter(id=child_id))
@@ -90,10 +85,7 @@ class PreviousSessionView(ListView):
         context['select_child'] = option
 
         # get a list of all kids belonging to the current parent except 1st child since its a dummy account
-
         parent_children = Child.objects.filter(parent_id=parent.id).exclude(id=1)
-
-        # print("exclude", parent_children)
 
         # test = Languagetolearn.objects.all().values('child', 'child_correspondent')
         previous_sessions = []
@@ -116,19 +108,14 @@ class PreviousSessionView(ListView):
             print("TIME", meetings_with_my_child_as_corr)
             for kiddy_talk in meetings_with_my_child_as_corr:
                 current_id = kiddy_talk['child']
-                # check if the current id to append is already known
-                # print("SSSSS,", meetings_with_my_child_as_corr)
-                # current_id = meetings_with_my_child_as_corr[0]['child']
+                # check if the current id to append is already known to avoid duplicates
                 if current_id not in previous_sessions:
                     # then add it to the final list
                     previous_sessions.append(current_id)
 
-        print("TO DISPLAY: ", previous_sessions)
-
-        # exclure les id de nos propres enfants filtrage à faire sur la colone child_id ET child_correspondant
         print("Child SESSIONS", previous_sessions)
-        # Optionnel, à voir: exclure les doublons d'enfants pour n'avoir qu'un exemplaire de chaque enfant avec qui on a eu des contacts
         children_to_display = []
+        # Stores the children list into a list and pass it to the template using a context
         for index, child_id in enumerate(previous_sessions):
             children_to_display.append(Child.objects.filter(id=child_id))
 

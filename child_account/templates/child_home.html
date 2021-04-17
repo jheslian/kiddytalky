@@ -1,0 +1,7 @@
+{% extends 'child_base.html' %}
+{% load static %}
+{% block content %}
+    <h1> COMING SOON!!! {{ request.session.id_parent }}</h1>
+    <p>This page will display a playlist of educational videos from Youtube Kids</p>
+    <img src="{% static 'iconfinder_barricade_416368.png' %}" width="50%" height="50%" alt="Work in progress!">
+{% endblock %}

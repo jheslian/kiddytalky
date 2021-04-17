@@ -1,0 +1,15 @@
+{% extends 'child_base.html' %}
+
+{% block content %}
+    <h1> PROFILE</h1>
+
+
+
+        <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+        <p>{{ profile.birthdate }}</p>
+        <p>{{ profile.country }}</p>
+        <p>{{ profile.description }}</p>
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'child_base.html' %}
+
+{% block content %}
+    <h1> HISTORY </h1>
+
+        <div>
+            {% for data in meetings %}
+            <p>{{ data.date }} {{ data.start_time }} {{ data.end_time }}
+
+                {% for language in languages %}
+                    {% if data.language == language.id %}
+                        {{ language.name }}
+                    {% endif %}
+                {% endfor %}
+
+                {% for name in children %}
+                    {% if data.id == name.id %}
+                        <a href="{% url 'child_account:friend-profile' id=data.id %}">{{ name.first_name }}</a>
+                    {% endif %}
+                {% endfor %}
+                    <a href="{{ data.link }}" target="_blank"><input type="button" value="Join"></a></p>
+            {% endfor %}
+            </div>
+    
+
+{% endblock %}

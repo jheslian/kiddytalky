@@ -446,8 +446,8 @@ class Languagetolearn(models.Model):
         return reverse('main:mykids:event-detail', args=(self.id,))
 
 
-    def __str__(self):
-        self.date_slot
+    """def __str__(self):
+        self.date_slot"""
 
 
 """

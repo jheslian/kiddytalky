@@ -19,26 +19,20 @@ class MyAccountView(DetailView):
         return get_object_or_404(Parent, user_id=id_)
 
 
-class UpdateParentView(UpdateView):
-    form_class = EditParentInfo
-    template_name = 'parent/editprofile_parent.html'
+def update_parent_view(request, id):
+   obj = Parent.objects.get(user_id=id)
+   form = EditParentInfo(request.POST or None, instance=obj)
+   if form.is_valid():
+      form.save()
+      return redirect(f"/myaccount/{id}")
+   context = {
+      'form': form
+   }
+   return render(request, 'parent/editprofile_parent.html', context)
 
-    """def get_success_url(self):
-        id_ = self.kwargs.get("id")
-        return redirect(f"/myaccount/")"""
 
-    def form_valid(self, form):
-        return super().form_valid(form)
 
-    def get_object(self):
-        id_ = self.kwargs.get("id")
 
-        print("USERRRRRR IDDDD", id_)
-        return get_object_or_404(Parent, user_id=id_)
-
-    """def get_success_url(self):
-        user_id = self.kwargs.get('id')
-        return reverse('myaccounts:my-account', kwargs={'user_id': user_id})"""
 
 
 class DeleteParentView(DeleteView):
