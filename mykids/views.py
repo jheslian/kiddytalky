@@ -104,43 +104,9 @@ class ChildRegisterView(CreateView):
         # print("child object",child)
         # child.save()
 
-    """ def get_context_data(self):
-        context = super().get_context_data()
-        id_ = self.request.session['id_parent']
-        parent = Parent.objects.get(user_id=id_)
-        child = self.request.child
-        context["parent_id"] = parent.objects.all()
-        return context"""
 
-
-# -------------------------------------------------
-# -------------------------------------------------
-"""
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return datetime.today()
-
-
-def prev_month(d):
-    first = d.replace(day=1)
-    prev_month = first - timedelta(days=1)
-    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
-    return month
-
-
-def next_month(d):
-    days_in_month = calendar.monthrange(d.year, d.month)[1]
-    last = d.replace(day=days_in_month)
-    next_month = last + timedelta(days=1)
-    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
-    return month
-"""
-
-
-# ------------------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
+# --------------------- delete event in message table-------------------------
 def deletevent(request, id_event):
     print(id_event)
     # id_ = self.kwargs.get("id")
@@ -151,7 +117,7 @@ def deletevent(request, id_event):
     return redirect(f"/mykids/{id_}/planning")
 
 
-# ------------------------------------------------------------------------
+# ----------------------- show all event in planning view ---------------------
 class planning_view(FormView, generic.ListView):
     model = Languagetolearn
     form_class = EventForm
@@ -185,16 +151,20 @@ class planning_view(FormView, generic.ListView):
 
 
 # --------------------------------------------------------------------------
-# --------------------------------------------------------------------------
+# -----------------  send a first message-----------------------------------
 
 
 def sendmessage(request):
-    # form = SendMessage(request.POST)
+    # ------------ used to redirect ---------------
     id_ = request.session['child_id']
-    print('______________________', id_)
+    # -------------------- id child : proposition---------------------
+    id_child_annonce = 1
+    # ------------------------ current user  id-----------------------
+    parent = Parent.objects.get(user=request.session['id_parent'])
+    from_id = parent.id
+    # -----------------------------------------------------------------
     if request.method == 'POST':
-        print('XXXXXXXXX', request.POST['content'])
-
-        Message(content=request.POST['content'], child_id=id_, message_from_id=2, message_to_id=1).save()
+        Message(content=request.POST['content'], child_id=id_child_annonce, message_from_id=from_id,
+                message_to_id=2).save()
 
     return redirect(f"/mykids/{id_}")
