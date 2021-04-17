@@ -36,6 +36,10 @@ class UpdateParentView(UpdateView):
         print("USERRRRRR IDDDD", id_)
         return get_object_or_404(Parent, user_id=id_)
 
+    """def get_success_url(self):
+        user_id = self.kwargs.get('id')
+        return reverse('myaccounts:my-account', kwargs={'user_id': user_id})"""
+
 
 class DeleteParentView(DeleteView):
     template_name = 'parent/delete.html'
