@@ -1,32 +1,37 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-    <h1>Homepage Correspondents </h1>
 
-    <form action="{% url 'main:home' %}" method="get">
+    <div class="d-flex justify-content-center m-5">
 
-
-        <select name="language">
-
-            <option value="" selected="selected">All Languages</option>
-            {% for obj in option_laguage %}
-                <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
-            {% endfor %}
-
-        </select>
+        <form class="d-flex" action="{% url 'main:home' %}" method="get">
 
 
-        <select name="country">
+                <select class="form-select m-3" name="language">
 
-            <option value="" selected="selected">All Countries</option>
-            {% for obj in option_country %}
-                <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
-            {% endfor %}
+                    <option value="" selected="selected">All Languages</option>
+                    {% for obj in option_laguage %}
+                        <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
+                    {% endfor %}
 
-        </select>
-        <input type="submit" value="Search"/>
-    </form>
+                </select>
+
+                <select class="form-select m-3" name="country">
+
+                    <option value="" selected="selected">All Countries</option>
+                    {% for obj in option_country %}
+                        <option value="{{ obj.id }}">{{ obj.name|capfirst }}</option>
+                    {% endfor %}
+
+                </select>
+
+                <input class="m-3" type="submit" value="Search"/>
+
+        </form>
+    </div>
+
+
 
 
 
@@ -35,27 +40,27 @@
             {% if forloop.counter0|divisibleby:3 %}
                 <div class="row text-center"> {% endif %}
         <div class="col-md-4">
-            <div class="card p-3 m-2" >
-                <img class="rounded" src="http://placehold.it/300X150" alt="">
+
+            <div class="card pt-4 pb-4 pl-2 pr-2 m-2">
+                <div class="d-flex justify-content-center">
+                    <img class="rounded" src="{% static 'images/misc/avatar.png' %}" width="150" height="150" alt="">
+                </div>
                 <div class="card-content">
-                    <br>
-                    <h4><a href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a>
+                    <h4 class="pb-3"><a
+                            href="{{ child.get_corresponent_url }}  ">{{ child.first_name }} {{ child.last_name }}</a>
                     </h4>
                     <p>Wish to learn: {{ child.language }} </p>
                     <p>Native language: {{ child.native_language }}</p>
                     <p>Country: {{ child.country }}</p>
 
                 </div><!-- card content -->
+
             </div><!-- card -->
         </div><!-- col-md-4 -->
         {% if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing -->
 
-            {% endif %}
+        {% endif %}
         {% endfor %}
     </div><!-- container -->
-
-
-
-
 
 {% endblock %}
