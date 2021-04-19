@@ -2,12 +2,39 @@
 
 {% block content %}
 
-<h1>My Account {{ request.session.id_parent }}</h1>
 
-   <h2>{{ parent.first_name}} {{ parent.last_name}}</h2>
-    <a href="{{ user.get_absolute_url }}/delete"><input type="button" value="Delete Profile"></a>
-    <a href="{{ user.get_absolute_url }}/edit"><input type="button" value="Edit Profile"></a>
-    <a href="{{ user.get_absolute_url }}/change_password"><input type="button" value="Change Password"></a>
+
+    <div class="d-flex flex-wrap flex-column align-content-center m-3 mt-5">
+
+                <div class="card mb-3 " style="width: 600px;">
+                    <div class="row g-0 p-3">
+
+                        <div class="col-md text-center">
+                            <div class="card-body px-5 ">
+                                <h3 class="card-title mb-3 text-center">{{ parent.first_name | capfirst }} {{ parent.last_name | capfirst }}</h3>
+                                <p class="card-text">Email: {{ parent.email }} </p>
+                                <p class="card-text">Birthdate: {{ parent.birthdate }}</p>
+                                <br>
+                                <h4>Address</h4>
+                                <p class="card-text"> {{ parent.street }}</p>
+                                <p class="card-text"> {{ parent.zipcode }}
+                                {{ parent.country }}</p>
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
 
 
 {% endblock %}

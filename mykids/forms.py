@@ -7,6 +7,7 @@ from django.contrib.sessions.models import Session
 from django.utils import timezone
 from crum import get_current_user
 from datetime import  datetime
+from django.forms.widgets import Input, PasswordInput
 
 """def get_object(self):
     id_ = self.request.session['id_parent']
@@ -19,8 +20,8 @@ from datetime import  datetime
 
 
 class ChildRegistrationForm(UserCreationForm):
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}) )
     birthdate = forms.DateField(widget=forms.SelectDateWidget(years=range((datetime.today().year)-15, (datetime.today().year)-8)))
     native_language = forms.ModelChoiceField(queryset=Language.objects.all(), empty_label="Language")
     country = forms.ModelChoiceField(queryset=Country.objects.all(), empty_label="Country")
@@ -32,6 +33,7 @@ class ChildRegistrationForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser
+
 
     @transaction.atomic
     def save(self):
@@ -51,11 +53,12 @@ class ChildRegistrationForm(UserCreationForm):
 
         child.save()
 
-
         return user
 
 
 class EditChildInfo(forms.ModelForm):
+    birthdate = forms.DateField(widget=forms.SelectDateWidget(years=range((datetime.today().year)-15, (datetime.today().year)-8)))
+
     class Meta:
         model = Child
         fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description']

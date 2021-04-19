@@ -3,11 +3,36 @@
 {% block title %}Edit my profile {% endblock title %}
 
 {% block content %}
+    {% load widget_tweaks %}
 
-    <form action='' method="POST"> {% csrf_token %}
-       {{ form.as_p }}
-       <input type="submit" value="Save">
-    </form>
+    <div class="d-flex justify-content-center mt-5 mb-5">
+        <div class="card p-3">
+            <div class="card-header text-center"><h3>Modify {{ child.first_name }}'s account</h3></div>
+            <div class="card-body pl-lg-5 pr-5 p-0">
+                <form method="POST" novalidate class="p-4">
+                    {% csrf_token %}
+
+                    {% load widget_tweaks %}
+
+                    {% for field in form.visible_fields %}
+
+                        <p> {{ field.label_tag }}</p>
+                        <p class="d-flex">
+                            {{ field | add_class:"form-control m-0" }}</p>
+
+                        {% for error in field.errors %}
+                            <span style="color:red">{{ error }}</span>
+                        {% endfor %}
+                    {% endfor %}
+                    <br>
+                    <div class="">
+                        <input class="btn btn-primary float-end mb-3" type="submit" value="Save">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock content %}

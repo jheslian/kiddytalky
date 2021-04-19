@@ -1,20 +1,50 @@
-<form action="{% url 'login' %}" method="POST" novalidate>
-    {% csrf_token %}
-    {% for field in form.visible_fields %}
-        <div class="form-group">
-        {{ field.label_tag }}
-        {{ field }}
-        {% if messages %}
-            {% for message in messages %}
-                <span style="color:red">{{ message }}</span>
+{% extends 'base.html' %}
+{% load static %}
+{% block login %}
+
+
+
+
+
+<div class="d-flex justify-content-center">
+
+
+              <main class="form-signin mt-5" style="width: 400px">
+        <form action="{% url 'login' %}" method="POST" novalidate>{% csrf_token %}
+            <div class="d-flex justify-content-center">
+                <img class="mb-2" src="{% static 'images/misc/kiddy-talky-logo.png' %}" alt="" width="150" height="150">
+            </div>
+
+            {% for field in form.visible_fields %}
+                <div class="w-100 pb-1 mb-2">
+                {% load widget_tweaks %}
+
+
+                  {% render_field field class="form-control" placeholder=field.label %}
+
+
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <span style="color:red">{{ message }}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
             {% endfor %}
-        {% endif %}
-    {% endfor %}
-    <br>
-    <input type="submit" value="Login" class="btn btn-block btn-primary">
-    <a href="{% url 'parent-register' %}">Sign up</a>
 
+        <div class="text-center mb-3">
+      <label>
 
-
+            Doesn't have an account? <a  href="{% url 'parent-register' %}">Sign Up</a>
+      </label>
     </div>
-</form>
+
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; kiddytalky 2021</p>
+        </form>
+    </main>
+
+</div>
+{% endblock login %}

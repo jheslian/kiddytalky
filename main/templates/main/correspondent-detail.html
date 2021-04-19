@@ -1,31 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
 
 
 
-    {% for data in child_data %}
-        <h3> {{ data.first_name|capfirst }} {{ data.last_name|capfirst }} </h3>
-        <p> Birthdate: {{ data.birthdate }} </p>
-        {% if data.country %} <p>  Country:  {{ data.country }} </p> {% endif %}
-        {% if data.hobbies %} <p> Hobbies: {{ data.hobbies }} </p> {% endif %}
-        {% if data.description %} <p> Description: {{ data.description }} </p> {% endif %}
-    {% endfor %}
 
 
-    <form action="">
-
-    </form>
 
 
 
     {% for data in child_data %}
         {% for obj in select_child %}
 
-        {% if data.id == obj.id %}
+            {% if data.id == obj.id %}
 
-            <h1 class="text-center" style="color: red">---- bad idea its your child you know ----</h1>
-        {% endif %}
+                <h1 class="text-center" style="color: red">---- bad idea its your child you know ----</h1>
+            {% endif %}
 
         {% endfor %}
     {% endfor %}
@@ -33,50 +24,96 @@
 
 
 
-    <table class="table table-sm">
-        <thead>
-        <tr>
-            <th scope="col">Wish to learn </th>
-            <th scope="col">When</th>
-            <th scope="col">Time</th>
-            <th scope="col">Child who will participate</th>
-            <th scope="col"></th>
+    <div class="d-flex flex-wrap flex-column align-content-center m-3 mt-5">
 
-        </tr>
-        </thead>
-        <tbody>
+        <div class="card mb-3 " style="width: 600px;">
+            <div class="row g-0 p-3">
+                <div class="col-md-4">
+                    <img src="{% static 'images/misc/avatar.png' %}" width="150" height="150"
+                         alt="profile picture">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body px-5">
+                        {% for data in child_data %}
+                            <h3> {{ data.first_name|capfirst }} {{ data.last_name|capfirst }} </h3>
+                            <p> Birthdate: {{ data.birthdate }} </p>
+                            {% if data.country %} <p> Country: {{ data.country }} </p> {% endif %}
+                            {% if data.hobbies %} <p> Hobbies: {{ data.hobbies }} </p> {% endif %}
+                            {% if data.description %} <p> Description: {{ data.description }} </p> {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    {% if proposition %}
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Wish to learn</th>
+                <th scope="col">When</th>
+                <th scope="col">Time</th>
+                <th scope="col">Child who will participate</th>
+                <th scope="col"></th>
+
+            </tr>
+            </thead>
+            <tbody>
 
 
             <tr>
-            {% for detail in proposition %}
+                {% for detail in proposition %}
 
-                <td> {{ detail.language }}</td>
-                <td> {{ detail.date_slot }}</td>
-
-
-                <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}</td>
+                    <td> {{ detail.language }}</td>
+                    <td> {{ detail.date_slot }}</td>
 
 
-                <td class="">
-                    <form action="{% url 'main:accept-event' id_event=detail.id id_child=detail.child_id %}" method="get">
-                        <div class="d-flex">
-                        <select name="option" class="form-select-padding-x-lg pe-xl-2 px-2">
-                          <option  value="" selected="selected">Choose a child</option>
-                            {% for obj in select_child %}
-                           <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
-                            {% endfor %}
-
-                        </select>
-                        <input class="mx-xl-3" type="submit" value="Accept"/>
-                        </div>
-                    </form>
-                </td>
+                    <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}</td>
 
 
-            </tr>
+                    <td class="">
+                        <form action="{% url 'main:accept-event' id_event=detail.id id_child=detail.child_id %}"
+                              method="get">
+                            <div class="d-flex">
+                                <select name="option" class="form-select-padding-x-lg pe-xl-2 px-2">
+                                    <option value="" selected="selected">Choose a child</option>
+                                    {% for obj in select_child %}
+                                        <option value="{{ obj.id }}">{{ obj.first_name|capfirst }} {{ obj.id }}</option>
+                                    {% endfor %}
+
+                                </select>
+                                <input class="mx-xl-3" type="submit" value="Accept"/>
+                            </div>
+                        </form>
+                    </td>
+
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    {% else %}
+        {% for data in child_data %}
+
+            <div class="alert alert-danger" role="alert">
+                <h3 class="text-center">{{ data.first_name }} doesn't have any proposition yet</h3>
+            </div>
+
         {% endfor %}
-        </tbody>
-    </table>
+
+
+    {% endif %}
 
 
 

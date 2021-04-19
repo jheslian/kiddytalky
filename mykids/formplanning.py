@@ -23,14 +23,15 @@ class EventForm(ModelForm):
 
         # datetime-local is a HTML5 input type, format to make date time show on fields
         widgets = {
-            'date_slot': DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
-            'start_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
-            'end_time_slot': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
+            'date_slot': DateInput(attrs={'type': 'date', 'class':'form-control'}, format='%Y-%m-%d',),
+            'start_time_slot': TimeInput(attrs={'type': 'time', 'class':'form-control'}, format='%H:%M'),
+            'end_time_slot': TimeInput(attrs={'type': 'time', 'class':'form-control'}, format='%H:%M'),
             'child_correspondent': forms.HiddenInput(),
             'correspondent_language': forms.HiddenInput(),
             'validation_status': forms.HiddenInput(),
             'link_video': forms.HiddenInput(),
             'meeting_id': forms.HiddenInput(),
+            'language': forms.Select(attrs={'class':'form-control'})
         }
 
         exclude = ['child']

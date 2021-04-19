@@ -6,27 +6,31 @@
 
     <form  method="post">
         {% csrf_token %}
-      <table class="form form-table">
-        {{ product_item_form.non_form_errors }}
-        {{ form }}
+      <table class="form form-table d-flex justify-content-center m-5">
 
-        <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
+        {{ product_item_form.non_form_errors }}
+
+        {{ form }}
           <tr><td colspan="2">
               {% if messages %}
                 {% for msg in messages %}
-                 <p>{{ msg }}</p>
+                 <p style="color:red;" class="text-center">{{ msg }}</p>
                 {% endfor %}
               {% endif %}
 
 
           </td></tr>
+
+
+        <tr ><td colspan="2" ><button type="submit" class="btn btn-primary float-end m-3 "> Submit </button></td></tr>
+
       </table>
 
 
     </form>
 
 
-    <table class="table table-sm">
+    <table class="table table-sm mt-5">
         <thead>
         <tr>
             <th scope="col">Date</th>
@@ -46,7 +50,7 @@
                 <!--<a class="btn btn-info right mr-2" href="{#% url 'main:mykids:planning'%#}?{#  #}{ deleteEvent }} %}">-->
 
                 <td>
-                    <a class="btn btn-info right mr-2"
+                    <a class="btn btn-danger right mr-2"
                        href="{% url 'main:mykids:deletevent' requete.id %} ">Delete </a>
                 </td>
 

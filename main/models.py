@@ -431,7 +431,7 @@ class Child(models.Model):
 
 class Languagetolearn(models.Model):
     child_correspondent = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_correspondent',
-                                            default=1)
+                                            default=10)
     child = models.ForeignKey(Child, on_delete=models.CASCADE, related_name='child_participant')
     language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1, related_name="participant_language")
     correspondent_language = models.ForeignKey(Language, default=1, on_delete=models.CASCADE,

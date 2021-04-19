@@ -1,56 +1,72 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>{{ object.first_name }} {{ object.last_name }} </h1>
-<p>Birthdate: {{ object.birthdate }}</p>
-<p>Languages:{{ object.native_language }}</p>
+
+    {% block sidebar %}
+        <link rel="stylesheet" href="{% static 'css/menusidebar.css' %}">
+    {% endblock %}
 
 
+    <div class="d-flex">
+        <div class="p-3 bg-white ml-5 px-lg-5" style="width: 450px;">
+            <ul class="list-unstyled ps-0">
 
 
-<div class="clearfix">
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#userchild" aria-expanded="true">
+                        {{ object.first_name }}
+                    </button>
 
-	<button><a class="btn btn-info right mr-2" href="{{ object.id }}/planning">Planification</a></button>
-</div>
+                    <div class="collapse" id="userchild">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="{{ child.get_absolute_url }}/planning" class="link-dark rounded">Create a
+                                proposal</a></li>
+                            <li><a href="{{ child.get_absolute_url }}/edit" class="link-dark rounded">Edit
+                                Profile</a></li>
+                            <li><a href="{{ child.get_absolute_url }}/change_password" class="link-dark rounded">Change
+                                Password</a></li>
+                            <li><a href="{{ child.get_absolute_url }}/delete" class="link-dark rounded">Delete
+                                Account</a></li>
+                        </ul>
 
 
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-<p>
-    <a href="{{ object.id }}/delete"><input type="button" value="Delete profile"></a>
-    <a href="{{ object.id }}/edit"><input type="button" value="Edit profile"></a>
-    <a href="{{ object.id }}/change_password"><input type="button" value="Change Password"></a>
+        <div>
 
+            <h1 class="text-center p-3"> {{ object.first_name }}'s Profile </h1>
 
-</p>
+            <div class="d-flex flex-wrap flex-column align-content-center m-3 ">
 
+                <div class="card mb-3 " style="width: 600px;">
+                    <div class="row g-0 p-3">
+                        <div class="col-md-4">
+                            <img src="{% static 'images/misc/avatar.png' %}" width="150" height="150"
+                                 alt="profile picture">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body px-5">
+                                <h4 class="card-title mb-3 text-center">{{ object.first_name | capfirst }} {{ object.last_name | capfirst }}</h4>
+                                <p class="card-text"> {{ object.birthdate }}</p>
+                                <p class="card-text">Language spoken: {{ object.native_language }}</p>
 
- <!--  +++++++++++++++++++++++++++++++ Messagerie vue profile mon ami++++++++++++++++  -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-    <h1> Messagerie </h1>
-    <form action="{% url 'main:mykids:sendmessage' %}" method="post">
-        {% csrf_token %}
-        <!--<table class="form form-table">
-            {#  #}{ form.as_p }}</table>-->
-           <div class="row message-body">
-          <div class="col-sm-12 message-main-sender">
-            <div class="sender">
-
-               <textarea class="content" cols="30" rows="13" name="content"></textarea>
-
-               <!-- <span class="message-time pull-right"> Sun</span> -->
             </div>
-          </div>
-          </div>
+
 
         </div>
 
-
-
-    <button type="submit"> Envoyer </button>
-    </form>
-
+    </div>
 
 
 {% endblock %}

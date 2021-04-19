@@ -74,6 +74,7 @@ class ChildRegisterView(CreateView):
     template_name = 'child/child_register.html'
 
     def form_valid(self, form):
+
         form.save()
         return redirect('main:mykids:kids')
 
@@ -94,8 +95,8 @@ def deletevent(request, id_event):
 class planning_view(FormView, generic.ListView):
     model = Languagetolearn
     form_class = EventForm
-    #template_name = 'planning.html'
-    template_name = 'mykids.html'
+    template_name = 'planning.html'
+    #template_name = 'mykids.html'
 
     def post(self, request, *args, **kwargs):
 
@@ -156,7 +157,7 @@ class planning_view(FormView, generic.ListView):
 
         #return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
 
-        return redirect(f"/mykids", {'form': EventForm})
+        return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
 
 
     def get_context_data(self, **kwargs):
@@ -169,7 +170,7 @@ class planning_view(FormView, generic.ListView):
 
 
 class ChildPasswordChangeView(PasswordChangeView):
-    template_name = 'parent/change_pass_parent.html'
+    template_name = 'child/change_pass_child.html'
     success_url = reverse_lazy('main:mykids:child-password-success')
 
 

@@ -2,22 +2,34 @@
 
 {% block content %}
 
-<form action="{% url 'main:mykids:childregister' %}" method="POST" novalidate>
-                      {% csrf_token %}
+    <div class="d-flex justify-content-center mt-5">
+        <div class="card p-3" >
+            <div class="card-header text-center"><h3>Create child's account</h3></div>
+            <div class="card-body pl-lg-5 pr-5 p-0">
+                <form action="{% url 'main:mykids:childregister' %}" method="POST" novalidate class="p-4">
+                    {% csrf_token %}
 
-                         {% for field in form.visible_fields %}
+                    {% load widget_tweaks %}
 
-                              <p> {{ field.label_tag }}
-                                  {{ field }}</p>
+                    {% for field in form.visible_fields %}
 
-                                    {% for error in field.errors %}
-                                      <span style="color:red">{{ error }}</span>
-                                    {% endfor %}
-                         {% endfor %}
-                                <br>
-                             <input type="submit" value="Register">
+                        <p> {{ field.label_tag }}</p>
+                        <p class="d-flex">
+                            {{ field | add_class:"form-control m-0" }}</p>
 
-                    </form>
+                        {% for error in field.errors %}
+                            <span style="color:red">{{ error }}</span>
+                        {% endfor %}
+                    {% endfor %}
+                    <br>
+                    <div class="">
+                        <input class="btn btn-primary float-end mb-3" type="submit" value="Register">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}
