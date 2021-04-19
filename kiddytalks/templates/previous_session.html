@@ -1,30 +1,69 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
-    <form action="{% url 'main:kiddytalks:contacts' %}" method="get">
-        <select name="option">
-
-            <option  value="" selected="selected">All</option>
-                {% for obj in select_child %}
-            <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
-                {% endfor %}
-
-        </select>
-        <input type="submit" value="Search"/>
-    </form>
-
+    {% load static %}
 
     <h1>Previous Contacts</h1>
-        {% for child in content %}
-            {% for data in child %}
-                <a href="{% url 'main:meeting-update' data.id %}"><h2>{{ data.first_name }} {{ data.last_name }}</h2></a>
-                {{ data.native_language }}
-                {{ data.country }}
-             {% endfor %}
+
+
+    <div class="d-flex justify-content-center px-3">
+    <form class="d-flex p-3" action="{% url 'main:kiddytalks:contacts' %}" method="get">
+        <select class="form-select px-5" name="option">
+
+            <option value="" selected="selected">All Child</option>
+            {% for obj in select_child %}
+                <option value="{{ obj.id }}">{{ obj.first_name|capfirst }} {{ obj.id }}</option>
+            {% endfor %}
+
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="px-4 ml-3" type="submit" value="Search"/>
+    </form>
+    </div>
+
+<div class="d-flex flex-wrap flex-column align-content-center m-3 ">
+
+
+
+{% if content%}
+
+
+    {% for child in content %}
+
+        {% for data in child %}
+            <div class="card mb-3 " style="width: 600px;">
+                <div class="row g-0 p-5 ">
+                    <div class="col-md-4">
+                        <img src="{% static 'images/misc/avatar.png' %}" width="150" height="150" alt="profile picture">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body px-5">
+                            <h4 class="card-title mb-3 text-center">{{ data.first_name | capfirst }} {{ data.last_name | capfirst }}</h4>
+                            <p class="card-text">Language i learned : {{ data.language }}</p>
+                            <p class="card-text">Where i'm from: {{ data.country }}</p>
+
+                            <p class="card-text text-center" ><small class="text-muted">History</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         {% endfor %}
 
+    {% endfor %}
+
+    {% else %}
 
 
+
+    <h2 class="text-center"> {{ clicked_child.first_name | capfirst }} doesn't have any previous contact yet, <br>
+        please create a proposition or accept a proposition
+        <br>and start learning a language</h2>
+
+
+
+{% endif %}
+
+</div>
 {% endblock %}

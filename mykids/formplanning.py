@@ -20,6 +20,7 @@ class EventForm(ModelForm):
     class Meta:
         model = Languagetolearn
         fields = '__all__'
+
         # datetime-local is a HTML5 input type, format to make date time show on fields
         widgets = {
             'date_slot': DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
@@ -29,18 +30,16 @@ class EventForm(ModelForm):
             'correspondent_language': forms.HiddenInput(),
             'validation_status': forms.HiddenInput(),
             'link_video': forms.HiddenInput(),
-            'meeting_id': forms.HiddenInput()
-
+            'meeting_id': forms.HiddenInput(),
         }
 
-        exclude = ['last_name']
+        exclude = ['child']
 
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
         self.fields['date_slot'].input_formats = ('%Y-%m-%d',)
         self.fields['start_time_slot'].input_formats = ('%H:%M',)
         self.fields['end_time_slot'].input_formats = ('%H:%M',)
-        self.fields['language'].queryset = Language.objects.all()
         self.fields['child_correspondent'].queryset = Child.objects.filter(parent_id=1)
 
 

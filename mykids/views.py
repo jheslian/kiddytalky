@@ -108,7 +108,6 @@ class planning_view(FormView, generic.ListView):
             date_input = request.POST['date_slot']
             start_time = request.POST['start_time_slot']
             end_time = request.POST['end_time_slot']
-            #duration_time = end_time - start_time
 
             fmt = '%H:%M'
             start_timestamp = datetime.strptime(start_time, fmt)
@@ -116,7 +115,6 @@ class planning_view(FormView, generic.ListView):
             end_timestamp = datetime.strptime(end_time, fmt)
             print("Start: ", start_timestamp)
             print("End: ", end_timestamp)
-            # duration = timedelta(end_timestamp.time()-start_timestamp.time())
             print("YYY",end_timestamp.time(), start_timestamp.time())
             calcul = end_timestamp - start_timestamp
             calcul = str(calcul)

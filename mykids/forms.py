@@ -6,6 +6,7 @@ from main.models import Child, User as MyCustomUser, Parent, Language, Country
 from django.contrib.sessions.models import Session
 from django.utils import timezone
 from crum import get_current_user
+from datetime import  datetime
 
 """def get_object(self):
     id_ = self.request.session['id_parent']
@@ -20,13 +21,13 @@ from crum import get_current_user
 class ChildRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
-    native_language = forms.CharField()
-    birthdate = forms.DateField()
-    country = forms.ModelChoiceField(queryset=Country.objects.all())
-    language = forms.ModelChoiceField(queryset=Language.objects.all())
+    birthdate = forms.DateField(widget=forms.SelectDateWidget(years=range((datetime.today().year)-15, (datetime.today().year)-8)))
+    native_language = forms.ModelChoiceField(queryset=Language.objects.all(), empty_label="Language")
+    country = forms.ModelChoiceField(queryset=Country.objects.all(), empty_label="Country")
+    # language = forms.ModelChoiceField(queryset=Language.objects.all(), label="Wish to learn", empty_label="Language")
 
 
-    #def __init__(self):
+
 
 
     class Meta(UserCreationForm.Meta):
@@ -45,7 +46,7 @@ class ChildRegistrationForm(UserCreationForm):
         user_id = get_current_user().id
         parent = Parent.objects.get(user_id=user_id)
         child.parent_id = parent.id
-        child.language_id = self.cleaned_data.get('language')
+        #child.language_id = self.cleaned_data.get('language')
         child.country_id=self.cleaned_data.get('country')
 
         child.save()
@@ -57,4 +58,4 @@ class ChildRegistrationForm(UserCreationForm):
 class EditChildInfo(forms.ModelForm):
     class Meta:
         model = Child
-        fields = ['first_name', 'last_name', 'birthdate', 'language', 'country', 'hobbies', 'description']
+        fields = ['first_name', 'last_name', 'birthdate', 'country', 'hobbies', 'description']

@@ -6,7 +6,7 @@
 
     <form method="POST">{% csrf_token %}
 
-   <p><input type="submit" value="Yes"><a href="../{{ user.get_absolute_url }}"><input type="button" value="Cancel"></a> </p>
+   <p><input type="submit" value="Yes"><a href="{{ user.get_absolute_url }}"><input type="button" value="Cancel"></a> </p>
 
     </form>
 

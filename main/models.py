@@ -94,7 +94,7 @@ class Country(models.Model):
         ('Kenya', 'Kenya'),
         ('Kiribati', 'Kiribati'),
         ('Korea North', 'Korea North'),
-        ('KoreaSouth', 'KoreaSouth'),
+        ('Korea South', 'Korea South'),
         ('Kosovo', 'Kosovo'),
         ('Kuwait', 'Kuwait'),
         ('Kyrgyzstan', 'Kyrgyzstan'),
@@ -379,6 +379,9 @@ class User(AbstractUser):
     def get_absolute_childlist_url(self):
         return reverse("main:mykids:kids", kwargs={"id": self.id})
 
+    def __str__(self):
+        return self.username
+
 
 class Parent(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -391,12 +394,13 @@ class Parent(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     date_joined = models.DateTimeField(auto_now_add=True, null=True)
 
+    def __str__(self):
+        return self.first_name
+
     def get_absolute_url(self):
         return reverse('main:myaccounts:my-account', kwargs={"id": self.id})
 
-    """def get_success_url(self):
-        user_id = self.kwargs.get('id')
-        return reverse('myaccounts:my-account', kwargs={'user_id': user_id})"""
+
 
 
 class Child(models.Model):
@@ -404,14 +408,14 @@ class Child(models.Model):
     last_name = models.CharField(max_length=100, blank=True, default='')
     first_name = models.CharField(max_length=100, default='')
     birthdate = models.DateTimeField(null=True)
-    native_language = models.CharField(max_length=100, default="")
+    native_language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1, related_name="native_language")
     hobbies = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(max_length=300, null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     # language_to_learn = models.ManyToManyField(Language, default="")
 
     # date_joined = models.DateField(auto_now_add=True, null=True)
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, default=1, related_name="wish_language")
     parent = models.ForeignKey(Parent, on_delete=models.CASCADE, default=0, blank=True)
 
     def __str__(self):
@@ -446,8 +450,8 @@ class Languagetolearn(models.Model):
         return reverse('main:mykids:event-detail', args=(self.id,))
 
 
-    """def __str__(self):
-        self.date_slot"""
+    def __str__(self):
+        self.meeting_id
 
 
 """

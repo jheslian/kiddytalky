@@ -2,16 +2,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.db import transaction
 from main.models import Parent, User as MyCustomUser, Language , Country
+from datetime import datetime
 
 
 class ParentRegistrationForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.EmailField()
-    birthdate = forms.DateField(required=True)
+    birthdate = forms.DateField(widget=forms.SelectDateWidget(years=range(1920, datetime.today().year)))
     zipcode = forms.CharField(required=True)
     street = forms.CharField(required=True)
-    country = forms.ModelChoiceField(queryset=Country.objects.all())
+    country = forms.ModelChoiceField(queryset=Country.objects.all(), empty_label="Country")
+
+
+
 
     class Meta(UserCreationForm.Meta):
         model = MyCustomUser

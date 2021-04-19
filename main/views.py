@@ -33,9 +33,9 @@ def correspondent_list_view(request):
     elif country_option:
         queryset = Child.objects.filter(country_id=country_option)
     elif language_option:
-        queryset = Child.objects.filter(language_id=language_option)
+        queryset = Child.objects.filter(native_language_id=language_option).exclude(id=1)
     else:
-        queryset = Child.objects.all()
+        queryset = Child.objects.all().exclude(id=1)
     
 
 
@@ -112,6 +112,19 @@ def create_meeting(request):
     print("THIS IS THE JOIN URL", data['join_url'])
 
     return HttpResponseRedirect('/')
+
+
+
+"""def child_data_nav(request):
+    user = get_current_user().id
+    parent = Parent.objects.get(user_id=user)
+    children = Child.objects.filter(parent_id=parent.id)
+
+    context = {
+        'children': children
+    }
+
+    return render(request, 'navbar.html', context)"""
 
 
 """def get_meeting(request):

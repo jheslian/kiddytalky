@@ -1,25 +1,66 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+
     <h1>My kids</h1>
-      <h2> <a href="{% url 'main:mykids:childregister' %}">Sign up Child</a> </h2>
+    <p><a href="{% url 'main:mykids:childregister' %}">Sign up Child</a></p>
 
+    <div class="container">
 
+        {% for child in object_list %}
 
-<div class="container">
+                <div class="row">
 
-{% for child in object_list %}
-   {% if forloop.counter|divisibleby:3  %}<div class="row">{% endif %}
+            <div class="col-sm">
+                <p><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></p>
 
-    <div class="col-sm">
-     <p><a href="{{ child.get_absolute_url }}">{{ child.first_name }}</a></p>
-
+            </div>
+        {% endfor %}
+        </div>
     </div>
 
-       {% endfor %}
 
-  </div>
+    {% block sidebar %}
+        <link rel="stylesheet" href="{% static 'css/menusidebar.css' %}">
+    {% endblock %}
+
+<div class="d-flex">
+    <div class="p-3 bg-white" style="width: 350px;">
+        <ul class="list-unstyled ps-0">
+            {% for child in object_list %}
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#home-collapse" aria-expanded="true">
+                        {{ child.first_name }}
+                    </button>
+
+                    <div class="collapse" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">Create a proposal</a></li>
+                            <li><a href="{{ child.get_absolute_url }}" class="link-dark rounded">Profile</a></li>
+                            <li><a href="{{ child.get_absolute_url }}/edit" class="link-dark rounded">Edit Profile</a></li>
+                            <li><a href="{{ child.get_absolute_url }}/change_password" class="link-dark rounded">Change Password</a></li>
+                            <!--  <li><a href="#" class="link-dark rounded">Reset Password</a></li> -->
+                            <li><a href="{{ child.get_absolute_url }}/delete" class="link-dark rounded">Delete Account</a></li>
+                        </ul>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+<div>Contents</div>
+
 </div>
 
+
+    {% block footer_sidebar %}
+
+        <!-- <script src="{#% static 'js/bootstrap.bundle.min.js' %#}"></script>
+
+    <script src="{#%  static 'js/sidebars.js' %#}"></script> -->
+
+    {% endblock %}
 
 {% endblock %}

@@ -4,7 +4,7 @@
 
 
 
-    {% for data in child_data %} My id: {{ data.id }}
+    {% for data in child_data %}
         <h3> {{ data.first_name|capfirst }} {{ data.last_name|capfirst }} </h3>
         <p> Birthdate: {{ data.birthdate }} </p>
         {% if data.country %} <p>  Country:  {{ data.country }} </p> {% endif %}
@@ -17,12 +17,29 @@
 
     </form>
 
+
+
+    {% for data in child_data %}
+        {% for obj in select_child %}
+
+        {% if data.id == obj.id %}
+
+            <h1 class="text-center" style="color: red">---- bad idea its your child you know ----</h1>
+        {% endif %}
+
+        {% endfor %}
+    {% endfor %}
+
+
+
+
     <table class="table table-sm">
         <thead>
         <tr>
-            <th scope="col">Language</th>
+            <th scope="col">Wish to learn </th>
+            <th scope="col">When</th>
             <th scope="col">Time</th>
-            <th scope="col">Child</th>
+            <th scope="col">Child who will participate</th>
             <th scope="col"></th>
 
         </tr>
@@ -34,33 +51,33 @@
             {% for detail in proposition %}
 
                 <td> {{ detail.language }}</td>
+                <td> {{ detail.date_slot }}</td>
 
 
                 <td>{{ detail.start_time_slot }} {{ detail.end_time_slot }}</td>
 
 
-                <td>
+                <td class="">
                     <form action="{% url 'main:accept-event' id_event=detail.id id_child=detail.child_id %}" method="get">
-                        <select name="option">
-                          <option  value="" selected="selected">--------</option>
+                        <div class="d-flex">
+                        <select name="option" class="form-select-padding-x-lg pe-xl-2 px-2">
+                          <option  value="" selected="selected">Choose a child</option>
                             {% for obj in select_child %}
                            <option value="{{obj.id}}">{{ obj.first_name|capfirst}} {{obj.id}}</option>
                             {% endfor %}
 
                         </select>
-                        <input type="submit" value="Accept"/>
+                        <input class="mx-xl-3" type="submit" value="Accept"/>
+                        </div>
                     </form>
                 </td>
-
-
-
 
 
             </tr>
         {% endfor %}
         </tbody>
     </table>
-{#% endfor %#}
+
 
 
 
