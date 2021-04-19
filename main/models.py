@@ -473,3 +473,12 @@ class Message(models.Model):
 
 
 
+
+
+class Message(models.Model):
+    message_to = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_to')
+    message_from = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name='message_from')
+    message_date = models.DateTimeField('date sent', auto_now_add=True)
+    content = models.TextField(max_length=300)
+    # title = models.CharField(max_length=20)
+    child = models.ForeignKey(Child, on_delete=models.CASCADE)

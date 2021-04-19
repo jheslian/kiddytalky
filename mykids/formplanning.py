@@ -1,4 +1,4 @@
-from main.models import Languagetolearn, Language, Child, Parent
+from main.models import Languagetolearn, Language, Child, Parent, Message
 import datetime as dt
 import django.http as rqt
 from django.forms import ModelForm, DateInput, TimeInput, ChoiceField
@@ -52,3 +52,23 @@ def clean_date_slot(self):
         if date_slot < dt.date.today():
             raise ValidationError('test')
         return date_slot
+
+
+class SendMessage(ModelForm):
+    class Meta:
+        model = Message
+        exclude = ['date_slot', 'language_id', 'end_time_slot', 'start_time_slot']
+        #fields = ['content']
+        content = forms.CharField(
+            required=False,
+
+            widget=forms.Textarea(
+                attrs={
+                    "placeholder": "Your description",
+                    "class": "new-class-name two",
+                    "id": "my-id-for-textarea",
+                    "rows": 20,
+                    'cols': 120
+                }
+            )
+        )

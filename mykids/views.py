@@ -15,6 +15,9 @@ from datetime import datetime, timedelta
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView, PasswordResetDoneView
 
+from .utils import Calendar
+from .formplanning import EventForm, SendMessage
+from crum import get_current_user
 
 def child_list_view(request):
     user_id = request.session['id_parent']
@@ -75,18 +78,19 @@ class ChildRegisterView(CreateView):
         return redirect('main:mykids:kids')
 
 
-
-
+# --------------------------------------------------------------------------
+# --------------------- delete event in message table-------------------------
 def deletevent(request, id_event):
     print(id_event)
-    #id_ = self.kwargs.get("id")
-    id_ =request.session['child_id']
+    # id_ = self.kwargs.get("id")
+    id_ = request.session['child_id']
     print('ZZZZZZZZZZ', id_)
     Languagetolearn.objects.get(id=id_event).delete()
 
     return redirect(f"/mykids/{id_}/planning")
 
 
+# ----------------------- show all event in planning view ---------------------
 class planning_view(FormView, generic.ListView):
     model = Languagetolearn
     form_class = EventForm
@@ -169,4 +173,26 @@ class ChildPasswordChangeView(PasswordChangeView):
 class ChildPasswordDoneView(PasswordResetDoneView):
     template_name = 'child/change_pass_child_success.html'
 
+
+
+
+# --------------------------------------------------------------------------
+# -----------------  send a first message-----------------------------------
+
+
+
+def sendmessage(request):
+    # ------------ used to redirect ---------------
+    id_ = request.session['child_id']
+    # -------------------- id child : proposition---------------------
+    id_child_annonce = 1
+    # ------------------------ current user  id-----------------------
+    parent = Parent.objects.get(user=request.session['id_parent'])
+    from_id = parent.id
+    # -----------------------------------------------------------------
+    if request.method == 'POST':
+        Message(content=request.POST['content'], child_id=id_child_annonce, message_from_id=from_id,
+                message_to_id=2).save()
+
+    return redirect(f"/mykids/{id_}")
 
