@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from django.urls import path, include
 from .views import planning_view, deletevent, sendmessage
 # event_details
-from .views import ChildRegisterView, MyChildView, UpdateChildView, DeleteChildView, child_list_view
+from .views import *
 
 app_name = 'mykids'
 

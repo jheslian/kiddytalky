@@ -94,7 +94,8 @@ def deletevent(request, id_event):
 class planning_view(FormView, generic.ListView):
     model = Languagetolearn
     form_class = EventForm
-    template_name = 'planning.html'
+    #template_name = 'planning.html'
+    template_name = 'mykids.html'
 
     def post(self, request, *args, **kwargs):
 
@@ -153,7 +154,10 @@ class planning_view(FormView, generic.ListView):
                             date_slot=request.POST['date_slot'], meeting_id=data['id'], link_video=data['join_url']).save()
         #rqt = Languagetolearn.objects.filter(last_name_id=id_)
 
-        return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
+        #return redirect(f"/mykids/{id_}/planning", {'form': EventForm})
+
+        return redirect(f"/mykids", {'form': EventForm})
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
