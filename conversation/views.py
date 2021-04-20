@@ -74,7 +74,7 @@ def send_msg(request, id):
     # context['child_id']= child_id
     context['id'] = id
 
-    print('testtttttt', id)
+    #print('testtttttt', id)
 
     return render(request, 'sendmessage.html', context)
 
@@ -96,5 +96,5 @@ def answer_message(request, id):
         Message(content=request.POST['content'], child_id=id_, message_from_id=request.session['id_parent_parent'],
                 message_to_id=id_from).save()
 
-    return render(request, 'msg.html')
+    return redirect('main:conversation:messages')
 # --------------------------------------------------------------------------------------------------------
